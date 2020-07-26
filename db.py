@@ -24,11 +24,13 @@ class My_log_database(object):
 		cursor = conn.cursor()
 		# cursor.execute('INSERT INTO test values(2, 200)')
 
-		cursor.execute('CREATE TABLE target_distance('
+		cursor.execute('CREATE TABLE milage_log('
                'id int NOT NULL AUTO_INCREMENT,'
-               'month date NOT NULL,'
-               'monthly_value int NOT NULL,'
-               'dayly_value int NOT NULL,'
+               'date datetime NOT NULL,'
+               'milage int NOT NULL,'
+               'elevation int NOT NULL,'
+               'weather_id int NOT NULL,'
+               'target_id int NOT NULL,'
                'PRIMARY KEY(id))'
                )
 
@@ -36,6 +38,6 @@ class My_log_database(object):
 		cursor.close()
 		conn.close()
 
-		return 'create table target_distance'
+		return 'create table milage_log'
 
 
