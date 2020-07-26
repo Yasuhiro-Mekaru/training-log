@@ -10,7 +10,7 @@ RUN pip3 install flask \
 
 WORKDIR /app
 
-COPY app.py db.py /app/
+COPY app.py db.py cert.pem cleardb-ca.pem unlock-key.pem /app/
 
 ENV FLASK_APP /app/app.py
 
