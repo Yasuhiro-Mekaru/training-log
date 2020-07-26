@@ -20,11 +20,11 @@ class My_log_database(object):
 		# 	ssl_ca=SSL_CA, ssl_cert=SSL_CERT, ssl_key=SSL_KEY)
 		conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
 			ssl_disabled=True)
-		# cursol = conn.cursol()
-		# cursol.execute('INSERT INTO weather_select values(1, "晴れ: 追い風")')
-		# conn.commit()
-		# cursol.close()
+		cursol = conn.cursol()
+		cursol.execute('INSERT INTO test values(1, 100)')
+		conn.commit()
+		cursol.close()
 		conn.close()
-		return 'Status 200'
+		return 'Status 201'
 
 
