@@ -22,11 +22,18 @@ class My_log_database(object):
 			ssl_disabled=True)
 		# re = conn.is_connected()
 		cursor = conn.cursor()
-		cursor.execute('INSERT INTO test values(2, 200)')
+		# cursor.execute('INSERT INTO test values(2, 200)')
+
+		cursor.execute('CREATE TABLE weather('
+               'id int NOT NULL AUTO_INCREMENT,'
+               'content varchar(30) NOT NULL,'
+               'PRIMARY KEY(id))'
+               )
+
 		conn.commit()
 		cursor.close()
 		conn.close()
 
-		return 'Status 201'
+		return 'create table weather'
 
 
