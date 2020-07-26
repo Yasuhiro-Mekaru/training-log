@@ -22,7 +22,7 @@ class My_log_database(object):
 			ssl_disabled=True)
 		# re = conn.is_connected()
 		cursor = conn.cursor()
-		cursor.execute('INSERT INTO test values(1, 100)')
+		cursor.execute('INSERT INTO test values(2, 200)')
 		conn.commit()
 		cursor.close()
 		conn.close()
