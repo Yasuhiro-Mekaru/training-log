@@ -18,6 +18,6 @@ class My_log_database(object):
 		# conn.commit()
 		# cursol.close()
 		conn.close()
-		return 'Status 201'
+		return 'Status 200'
 
 

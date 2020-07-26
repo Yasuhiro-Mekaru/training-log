@@ -13,7 +13,7 @@ def hello():
     datebase = db.My_log_database()
     res = datebase.insert_data()
     # return 'Hello World.'
-    return 'The response is {}'.format(res)
+    return 'The response is {}!!'.format(res)
 
 
 
