@@ -31,7 +31,8 @@ def reply():
 @app.route('/test1', methods=['POST'])
 def test1():
     data = request.get_data()
-    return data
+    t = type(data)
+    return t
 
 @app.route('/test2', methods=['POST'])
 def test2():
