@@ -31,17 +31,20 @@ def reply():
 @app.route('/test1', methods=['POST'])
 def test1():
     data = request.get_data()
-    return data['key']
+    r = data['key']
+    return jsonify(r)
 
 @app.route('/test2', methods=['POST'])
 def test2():
     data = request.data()
-    return data['key']
+    r = data['key']
+    return jsonify(r)
 
 @app.route('/test3', methods=['POST'])
 def test3():
     data = request.get_json()
-    return data['key']
+    r = data['key']
+    return jsonify(r)
 
 
 
