@@ -31,22 +31,25 @@ def reply():
 @app.route('/test1', methods=['POST'])
 def test1():
     data = request.get_data()
-    t = type(data)
-    return t
+    data = json.loads(data)
+    return data
 
 @app.route('/test2', methods=['POST'])
 def test2():
     data = request.data()
+    data = json.loads(data)
     return data
 
 @app.route('/test3', methods=['POST'])
 def test3():
     data = request.get_json()
+    data = json.loads(data)
     return data
 
 @app.route('/test4', methods=['POST'])
 def test4():
     data = request.json()
+    data = json.loads(data)
     return data
 
 
