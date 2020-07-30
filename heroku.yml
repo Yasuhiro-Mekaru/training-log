@@ -1,7 +1,6 @@
 setup:
   addons:
     - plan: ClearDB
-      as: DATABASE
 
 build:
   docker:

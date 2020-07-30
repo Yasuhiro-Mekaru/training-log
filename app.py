@@ -10,10 +10,10 @@ app.debug = True
 
 @app.route("/", methods=['GET'])
 def hello():
-    datebase = db.My_log_database()
-    res = datebase.insert_data()
-    # return 'Hello World.'
-    return 'The response is {}!!'.format(res)
+    # datebase = db.My_log_database()
+    # res = datebase.insert_data()
+    return 'Hello World.'
+    # return 'The response is {}!!'.format(res)
 
 
 
@@ -22,10 +22,36 @@ def reply():
     data = json.loads(request.data)
     answer = "Yes, it is %s!\n" % data["keyword"]
     result = {
-      "Content-Type": "application/json",
       "Answer":{"Text": answer}
     }
     return jsonify(result)
+
+
+# Test
+@app.route('/test1', methods=['POST'])
+def test1():
+    data = request.get_data()
+    return data['key']
+
+@app.route('/test2', methods=['POST'])
+def test2():
+    data = request.data()
+    return data['key']
+
+@app.route('/test3', methods=['POST'])
+def test3():
+    data = request.get_json()
+    return data['key']
+
+
+
+
+#milage dataがPOSTされた際の処理
+@app.route('/post_data', methods=['POST'])
+def  post_data():
+    pass
+
+
 
 # if __name__ == "__main__":
     # app.debug = True
