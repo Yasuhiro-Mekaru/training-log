@@ -10,10 +10,10 @@ app.debug = True
 
 @app.route("/", methods=['GET'])
 def hello():
-    # datebase = db.My_log_database()
-    # res = datebase.insert_data()
-    return 'Hello World.'
-    # return 'The response is {}!!'.format(res)
+    datebase = db.My_log_database()
+    res = datebase.insert_data()
+    # return 'Hello World.'
+    return 'The response is {}!!'.format(res)
 
 
 
@@ -36,7 +36,7 @@ def test1():
 
 @app.route('/test2', methods=['POST'])
 def test2():
-    data = request.data()
+    data = request.data
     data = json.loads(data)
     return data
 
@@ -48,7 +48,7 @@ def test3():
 
 @app.route('/test4', methods=['POST'])
 def test4():
-    data = request.json()
+    data = request.json
     data = json.loads(data)
     return data
 
