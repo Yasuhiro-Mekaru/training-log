@@ -139,7 +139,7 @@ def test4():
 
 @app.route('/test5', methods=['POST'])
 def test5():
-    posted_data = request.value
+    posted_data = request.values
     logger.info({
         'action': 'test5',
         'posted_data': posted_data
