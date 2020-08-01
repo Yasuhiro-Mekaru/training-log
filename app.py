@@ -58,29 +58,108 @@ def test1():
         })
     return 'Success'
 
+
 @app.route('/test2', methods=['POST'])
 def test2():
-    data = request.data
-    data = json.loads(data)
-    data_type = type(data)
-    return data_type
+    posted_data = request.data
+    logger.info({
+        'action': 'test2',
+        'posted_data': posted_data
+        })
+    posted_data_type = type(posted_data)
+    logger.info({
+        'action': 'test2',
+        'posted_data_type': posted_data_type
+        })
+    loaded_data = json.loads(posted_data)
+    logger.info({
+        'action': 'test2',
+        'loaded_data': loaded_data
+        })
+    loaded_data_type = type(loaded_data)
+    logger.info({
+        'action': 'test2',
+        'loaded_data_type': loaded_data_type
+        })
+    return 'Success'
+
+
 
 @app.route('/test3', methods=['POST'])
 def test3():
-    data = request.get_json()
-    value = data['key']
-    return jsonify(value)
+    posted_data = request.get_json()
+    logger.info({
+        'action': 'test3',
+        'posted_data': posted_data
+        })
+    posted_data_type = type(posted_data)
+    logger.info({
+        'action': 'test3',
+        'posted_data_type': posted_data_type
+        })
+    loaded_data = json.loads(posted_data)
+    logger.info({
+        'action': 'test3',
+        'loaded_data': loaded_data
+        })
+    loaded_data_type = type(loaded_data)
+    logger.info({
+        'action': 'test3',
+        'loaded_data_type': loaded_data_type
+        })
+    return 'Success'
+
+
 
 @app.route('/test4', methods=['POST'])
 def test4():
-    data = request.json
-    value = data['key']
-    return jsonify(value)
+    posted_data = request.json
+    logger.info({
+        'action': 'test4',
+        'posted_data': posted_data
+        })
+    posted_data_type = type(posted_data)
+    logger.info({
+        'action': 'test4',
+        'posted_data_type': posted_data_type
+        })
+    loaded_data = json.loads(posted_data)
+    logger.info({
+        'action': 'test4',
+        'loaded_data': loaded_data
+        })
+    loaded_data_type = type(loaded_data)
+    logger.info({
+        'action': 'test4',
+        'loaded_data_type': loaded_data_type
+        })
+    return 'Success'
+
+
 
 @app.route('/test5', methods=['POST'])
 def test5():
-    data = request.value
-    return jsonify(data)
+    posted_data = request.value
+    logger.info({
+        'action': 'test5',
+        'posted_data': posted_data
+        })
+    posted_data_type = type(posted_data)
+    logger.info({
+        'action': 'test5',
+        'posted_data_type': posted_data_type
+        })
+    loaded_data = json.loads(posted_data)
+    logger.info({
+        'action': 'test5',
+        'loaded_data': loaded_data
+        })
+    loaded_data_type = type(loaded_data)
+    logger.info({
+        'action': 'test5',
+        'loaded_data_type': loaded_data_type
+        })
+    return 'Success'
 
 
 
