@@ -36,14 +36,27 @@ def reply():
 # Test
 @app.route('/test1', methods=['POST'])
 def test1():
-    data = request.get_data()
-    data = json.loads(data)
-    data_type = type(data)
+    posted_data = request.get_data()
     logger.info({
         'action': 'test1',
-        'data_type': data_type
+        'posted_data': posted_data
         })
-    return data
+    posted_data_type = type(posted_data)
+    logger.info({
+        'action': 'test1',
+        'posted_data_type': posted_data_type
+        })
+    loaded_data = json.loads(posted_data)
+    logger.info({
+        'action': 'test1',
+        'loaded_data': loaded_data
+        })
+    loaded_data_type = type(loaded_data)
+    logger.info({
+        'action': 'test1',
+        'loaded_data_type': loaded_data_type
+        })
+    return 'Success'
 
 @app.route('/test2', methods=['POST'])
 def test2():
