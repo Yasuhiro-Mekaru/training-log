@@ -33,7 +33,8 @@ def test1():
     data = request.get_data()
     data = json.loads(data)
     data_type = type(data)
-    return data_type
+    print(data_type)
+    return data
 
 @app.route('/test2', methods=['POST'])
 def test2():
