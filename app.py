@@ -43,14 +43,12 @@ def test2():
 @app.route('/test3', methods=['POST'])
 def test3():
     data = request.get_json()
-    data = json.loads(data)
-    return data
+    return jsonify(data)
 
 @app.route('/test4', methods=['POST'])
 def test4():
     data = request.json
-    data = json.loads(data)
-    return data
+    return jsonify(data)
 
 
 
