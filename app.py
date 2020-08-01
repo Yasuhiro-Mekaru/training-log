@@ -1,11 +1,17 @@
 import json
+import logging
 
 from flask import Flask, jsonify, request
 
 import db
 
+
 app = Flask(__name__)
 app.debug = True
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 
 @app.route("/", methods=['GET'])
@@ -33,7 +39,10 @@ def test1():
     data = request.get_data()
     data = json.loads(data)
     data_type = type(data)
-    print(data_type)
+    logger.info({
+        'action': 'test1',
+        'data_type': data_type
+        })
     return data
 
 @app.route('/test2', methods=['POST'])
