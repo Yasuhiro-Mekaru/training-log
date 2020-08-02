@@ -1,4 +1,4 @@
-import os
+import logging
 
 import mysql.connector
 
@@ -8,36 +8,75 @@ DB_USERNAME = 'b57547af749fe1'
 DB_PASSWORD = '74315ba5'
 DB_DATABASE = 'heroku_d2e365081e3ffbe'
 
-SSL_CA = '/app/cleardb-ca.pem'
-SSL_CERT = '/app/cert.pem'
-SSL_KEY = '/app/unlock-key.pem'
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 class My_log_database(object):
 
+	def __init__(self, data):
+		self.data = data
+
+
+
 	def insert_data(self):
-		# conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
-		# 	ssl_ca=SSL_CA, ssl_cert=SSL_CERT, ssl_key=SSL_KEY, ssl_verify_cert=True)
-		conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
-			ssl_disabled=True)
-		# re = conn.is_connected()
-		# cursor = conn.cursor()
-		# # cursor.execute('INSERT INTO test values(2, 200)')
+		# Insert するテーブルによって処理を分岐する
+		if self.data['table'] == 'milage_log':
+			# 引数のdataから各データを取り出す処理
+			date = self.data['date']
+			milage = self.data['milage']
+			elevation = self.data['elevation']
+			weather_id = self.data['weather_id']
+			target_id = self.data['target_id']
 
-		# cursor.execute('CREATE TABLE milage_log('
-  #              'id int NOT NULL AUTO_INCREMENT,'
-  #              'date datetime NOT NULL,'
-  #              'milage int NOT NULL,'
-  #              'elevation int NOT NULL,'
-  #              'weather_id int NOT NULL,'
-  #              'target_id int NOT NULL,'
-  #              'PRIMARY KEY(id))'
-  #              )
+			logger.info({
+		        'action': 'insert_data: milage_log',
+		        'date': date,
+		        'milage': milage
+	        })
 
-		# conn.commit()
-		# cursor.close()
-		conn.close()
+			#MySQLにコネクトし Insert文を実行
+			conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
+				ssl_disabled=True)
+			cursor = conn.cursor()
+			cursor.execute('Insert into milage_log(date, milage, elevation, weather_id, target_id) '
+				'Values("{}", "{}", "{}", "{}", "{}")'.format(date, milage, elevation, weather_id, target_id))
+			conn.commit()
+			cursor.close()
+			conn.close()
 
-		return 'Connected'
+			logger.info({
+		        'action': 'insert_data: milage_log',
+		        'status': 'connection close'
+	        })
+
+			return 'Connected'
+			
+
+		elif self.data['table'] == 'weather':
+			content = self.data['content']
+
+			logger.info({
+		        'action': 'insert_data: weather',
+		        'content': content
+	        })
+
+	        #MySQLにコネクトし Insert文を実行
+			conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
+				ssl_disabled=True)
+			cursor = conn.cursor()
+			cursor.execute('Insert into weather(content) Values("{}")'.format(content))
+			conn.commit()
+			cursor.close()
+			conn.close()
+
+			logger.info({
+		        'action': 'insert_data: weather',
+		        'status': 'connection close'
+	        })
+
+			return 'Connected'
+
+
 
 

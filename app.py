@@ -85,89 +85,23 @@ def test2():
 
 
 
-@app.route('/test3', methods=['POST'])
-def test3():
-    posted_data = request.get_json()
-    logger.info({
-        'action': 'test3',
-        'posted_data': posted_data
-        })
-    posted_data_type = type(posted_data)
-    logger.info({
-        'action': 'test3',
-        'posted_data_type': posted_data_type
-        })
-    loaded_data = json.loads(posted_data)
-    logger.info({
-        'action': 'test3',
-        'loaded_data': loaded_data
-        })
-    loaded_data_type = type(loaded_data)
-    logger.info({
-        'action': 'test3',
-        'loaded_data_type': loaded_data_type
-        })
-    return 'Success'
-
-
-
-@app.route('/test4', methods=['POST'])
-def test4():
-    posted_data = request.json
-    logger.info({
-        'action': 'test4',
-        'posted_data': posted_data
-        })
-    posted_data_type = type(posted_data)
-    logger.info({
-        'action': 'test4',
-        'posted_data_type': posted_data_type
-        })
-    loaded_data = json.loads(posted_data)
-    logger.info({
-        'action': 'test4',
-        'loaded_data': loaded_data
-        })
-    loaded_data_type = type(loaded_data)
-    logger.info({
-        'action': 'test4',
-        'loaded_data_type': loaded_data_type
-        })
-    return 'Success'
-
-
-
-@app.route('/test5', methods=['POST'])
-def test5():
-    posted_data = request.values
-    logger.info({
-        'action': 'test5',
-        'posted_data': posted_data
-        })
-    posted_data_type = type(posted_data)
-    logger.info({
-        'action': 'test5',
-        'posted_data_type': posted_data_type
-        })
-    loaded_data = json.loads(posted_data)
-    logger.info({
-        'action': 'test5',
-        'loaded_data': loaded_data
-        })
-    loaded_data_type = type(loaded_data)
-    logger.info({
-        'action': 'test5',
-        'loaded_data_type': loaded_data_type
-        })
-    return 'Success'
-
-
 
 
 #milage dataがPOSTされた際の処理
-@app.route('/post_data', methods=['POST'])
-def  post_data():
-    pass
+@app.route('/insert_data', methods=['POST'])
+def  insert_data():
+    posted_data = request.get_data()
+    loaded_data = json.loads(posted_data)
+
+    logger.info({
+        'action': 'insert_data',
+        'loaded_data': loaded_data
+        })
+
+    datebase = db.My_log_database(loaded_data)
+    res = datebase.insert_data()
+
+    return pass
 
 
 
