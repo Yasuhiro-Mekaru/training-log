@@ -20,6 +20,12 @@ class My_log_database(object):
 
 
 	def insert_data(self):
+
+		logger.info({
+	        'action': 'insert_data'
+	        'self.date': self.date
+	    })
+	    
 		# Insert するテーブルによって処理を分岐する
 		if self.data['table'] == 'milage_log':
 			# 引数のdataから各データを取り出す処理
@@ -51,7 +57,7 @@ class My_log_database(object):
 	        })
 
 			return 'Connected'
-			
+
 
 		elif self.data['table'] == 'weather':
 			content = self.data['content']
