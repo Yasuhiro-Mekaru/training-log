@@ -101,7 +101,7 @@ def  insert_data():
     datebase = db.My_log_database(loaded_data)
     res = datebase.insert_data()
 
-    return pass
+    return 'Posted'
 
 
 
