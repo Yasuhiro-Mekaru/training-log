@@ -23,9 +23,9 @@ class My_log_database(object):
 
 		logger.info({
 	        'action': 'insert_data'
-	        'self.date': self.date
+	        'self.data': self.data
 	    })
-	    
+
 		# Insert するテーブルによって処理を分岐する
 		if self.data['table'] == 'milage_log':
 			# 引数のdataから各データを取り出す処理
