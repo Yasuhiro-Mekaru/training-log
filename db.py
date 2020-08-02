@@ -51,7 +51,7 @@ class My_log_database(object):
 		        'status': 'connection close'
 	        })
 
-			return 'Connected'
+			# return 'Connected'
 
 
 		elif self.data['table'] == 'weather':
@@ -76,8 +76,26 @@ class My_log_database(object):
 		        'status': 'connection close'
 	        })
 
-			return 'Connected'
+			# return 'Connected'
 
 
+		elif self.data['table'] == 'target_distance':
+			month = self.data['month']
+			monthly_value = self.data['monthly_value']
+			dayly_value = self.data['dayly_value']
+			logger.info({
+		        'action': 'insert_data: target_distance',
+		        'month': month,
+		        'monthly_value': monthly_value
+	        })
+	        #MySQLにコネクトし Insert文を実行
+			conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
+				ssl_disabled=True)
+			cursor = conn.cursor()
+			cursor.execute('Insert into target_distance(month, monthly_value, dayly_value) '
+				'Values("{}", "{}", "{}")'.format(month, monthly_value, dayly_value))
+			conn.commit()
+			cursor.close()
+			conn.close()
 
 
