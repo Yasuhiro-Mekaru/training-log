@@ -45,9 +45,9 @@ class My_log_database(object):
 			conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
 				ssl_disabled=True)
 			cursor = conn.cursor()
-			cursor.execute('Insert into {table}(date, milage, elevation, weather_id, target_id) '
+			cursor.execute('Insert into milage_log(date, milage, elevation, weather_id, target_id) '
 				'Values({date}, {milage}, {elevation}, {weather_id}, {target_id})'.format(
-					table=table, date=date, milage=milage, elevation=elevation, weather_id=weather_id, target_id=target_id))
+					date=date, milage=milage, elevation=elevation, weather_id=weather_id, target_id=target_id))
 			conn.commit()
 			cursor.close()
 			conn.close()
