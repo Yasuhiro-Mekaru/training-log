@@ -86,7 +86,7 @@ def test2():
 
 
 
-#milage dataがPOSTされた際の処理
+# DBのテーブルにPOSTする際の処理
 @app.route('/insert_data', methods=['POST'])
 def  insert_data():
     posted_data = request.get_data()
@@ -101,6 +101,20 @@ def  insert_data():
     datebase.insert_data()
 
     return 'Posted'
+
+
+# DBのテーブルのデータをDELETEする際の処理
+@app.route('/delete_data', methods=['DELETE'])
+def delete_data():
+    posted_data = request.get_data()
+    loaded_data = json.loads(posted_data)
+
+    logger.info({
+        'action': 'delete_data',
+        'loaded_data': loaded_data
+        })
+
+    return 'Deleted'
 
 
 
