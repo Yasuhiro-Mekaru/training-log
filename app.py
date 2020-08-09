@@ -114,6 +114,9 @@ def delete_data():
         'loaded_data': loaded_data
         })
 
+    datebase = db.My_log_database(loaded_data)
+    datebase.delete_data()
+
     return 'Deleted'
 
 

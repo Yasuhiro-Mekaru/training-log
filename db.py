@@ -48,7 +48,7 @@ class My_log_database(object):
 
 			logger.info({
 		        'action': 'insert_data: milage_log',
-		        'status': 'connection close'
+		        'status': 'connection closed'
 	        })
 
 			# return 'Connected'
@@ -73,7 +73,7 @@ class My_log_database(object):
 
 			logger.info({
 		        'action': 'insert_data: weather',
-		        'status': 'connection close'
+		        'status': 'connection closed'
 	        })
 
 			# return 'Connected'
@@ -92,10 +92,44 @@ class My_log_database(object):
 			conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
 				ssl_disabled=True)
 			cursor = conn.cursor()
-			cursor.execute('Insert into target_distance(month, monthly_value, dayly_value) '
-				'Values("{}", "{}", "{}")'.format(month, monthly_value, dayly_value))
+			cursor.execute('INSERT INTO target_distance(month, monthly_value, dayly_value) '
+				'VALUES("{}", "{}", "{}")'.format(month, monthly_value, dayly_value))
 			conn.commit()
 			cursor.close()
 			conn.close()
+
+
+
+	def delete_data(self):
+
+		if self.data['table'] == 'milage_log':
+			pass
+
+		elif self.data['table'] == 'weather':
+			pass
+
+		elif self.data['table'] == 'target_distance':
+			table = self.data['table']
+			key = self.data['key']
+			value = self.data['value']
+			logger.info({
+				'action': 'delete_data: target_distance',
+				'key': key,
+				'value': value
+				})
+			# MySQL にコネクトし Delete文を実行
+			conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
+				ssl_disabled=True)
+			cursor = conn.cursor()
+			cursor.execute('DELETE from "{table}" where "{key}"={value}'.format(table=table, key=key, value=value))
+			conn.commit()
+			cursor.close()
+			conn.close()
+			logger.info({
+				'action': 'delete_data: target_distance',
+				'status': 'connection closed'
+				})
+
+
 
 
