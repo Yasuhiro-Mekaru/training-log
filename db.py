@@ -46,7 +46,7 @@ class My_log_database(object):
 				ssl_disabled=True)
 			cursor = conn.cursor()
 			cursor.execute('Insert into milage_log(date, milage, elevation, weather_id, target_id) '
-				'Values({date}, {milage}, {elevation}, {weather_id}, {target_id})'.format(
+				'Values("{date}", "{milage}", "{elevation}", "{weather_id}", "{target_id}")'.format(
 					date=date, milage=milage, elevation=elevation, weather_id=weather_id, target_id=target_id))
 			conn.commit()
 			cursor.close()
