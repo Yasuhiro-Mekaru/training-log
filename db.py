@@ -121,7 +121,7 @@ class My_log_database(object):
 			conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
 				ssl_disabled=True)
 			cursor = conn.cursor()
-			cursor.execute('DELETE from "{table}" where "{key}"={value}'.format(table=table, key=key, value=value))
+			cursor.execute('DELETE from {table} where {key}={value}'.format(table=table, key=key, value=value))
 			conn.commit()
 			cursor.close()
 			conn.close()
