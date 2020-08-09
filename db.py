@@ -24,6 +24,7 @@ class My_log_database(object):
 		# Insert するテーブルによって処理を分岐する
 		if self.data['table'] == 'milage_log':
 			# 引数のdataから各データを取り出す処理
+			table = self.data['table']
 			date = self.data['date']
 			milage = self.data['milage']
 			elevation = self.data['elevation']
@@ -32,16 +33,21 @@ class My_log_database(object):
 
 			logger.info({
 		        'action': 'insert_data: milage_log',
+		        'table': table,
 		        'date': date,
-		        'milage': milage
+		        'milage': milage,
+		        'elevation': elevation,
+		        'weather_id': weather_id,
+		        'target_id': target_id
 	        })
 
 			#MySQLにコネクトし Insert文を実行
 			conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
 				ssl_disabled=True)
 			cursor = conn.cursor()
-			cursor.execute('Insert into milage_log(date, milage, elevation, weather_id, target_id) '
-				'Values("{}", "{}", "{}", "{}", "{}")'.format(date, milage, elevation, weather_id, target_id))
+			cursor.execute('Insert into {table}(date, milage, elevation, weather_id, target_id) '
+				'Values({date}, {milage}, {elevation}, {weather_id}, {target_id})'.format(
+					table=table, date=date, milage=milage, elevation=elevation, weather_id=weather_id, target_id=target_id))
 			conn.commit()
 			cursor.close()
 			conn.close()
