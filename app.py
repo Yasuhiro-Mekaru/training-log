@@ -1,7 +1,7 @@
 import json
 import logging
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, render_template, request
 
 import db
 
@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 @app.route("/", methods=['GET'])
 def hello():
-    return 'Hello World.'
+    return render_template('index.html')
 
 
 
