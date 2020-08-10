@@ -10,7 +10,7 @@ RUN pip3 install flask \
 
 WORKDIR /app
 
-COPY training_log/ /app/
+COPY . /app/
 
 ENV FLASK_APP /app/app.py
 
