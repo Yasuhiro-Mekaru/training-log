@@ -102,10 +102,26 @@ class My_log_database(object):
 	def delete_data(self):
 
 		if self.data['table'] == 'milage_log':
-			pass
-
-		elif self.data['table'] == 'weather':
-			pass
+			table = self.data['table']
+			key = self.data['key']
+			value = self.data['value']
+			logger.info({
+				'action': 'delete_data: milage_log',
+				'key': key,
+				'value': value
+				})
+			# MySQL にコネクトし Delete文を実行
+			conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
+				ssl_disabled=True)
+			cursor = conn.cursor()
+			cursor.execute('DELETE from {table} where {key}={value}'.format(table=table, key=key, value=value))
+			conn.commit()
+			cursor.close()
+			conn.close()
+			logger.info({
+				'action': 'delete_data: milage_log',
+				'status': 'connection closed'
+				})
 
 		elif self.data['table'] == 'target_distance':
 			table = self.data['table']
@@ -128,6 +144,9 @@ class My_log_database(object):
 				'action': 'delete_data: target_distance',
 				'status': 'connection closed'
 				})
+
+		elif self.data['table'] == 'weather':
+			pass
 
 
 
