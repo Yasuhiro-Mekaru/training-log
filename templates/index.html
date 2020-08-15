@@ -64,7 +64,7 @@
 			$(function(){
 				//読み込みが完了した時点でメモリにselect要素を入れる処理
 				let options = ['晴れ', '曇り', '雨', '晴れ/追い風', '晴れ/向い風', '曇り/追い風', '曇り/向い風', '雨/追い風', '雨/向い風', '不明'];
-				for(let i=0; i<options.length(); i++){
+				for(let i=0; i<options.length; i++){
 					$('#select_weather').append('<option value="' + i + '">' + options[i] + '</option>');
 				}
 				console.log('options: ' + options);
