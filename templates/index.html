@@ -64,10 +64,19 @@
 			$(function(){
 				console.log('jquery Start');
 				//読み込みが完了した時点でメモリにselect要素を入れる処理
-				let options = ['Select Weather Condition', '晴れ', '曇り', '雨', '晴れ/追い風', '晴れ/向い風', '曇り/追い風', '曇り/向い風', '雨/追い風', 
-					'雨/向い風', '不明'];
+				let options = [['Select Weather Condition', 0],
+							    ['晴れ', 71],
+								['曇り', 81],
+								['雨', 91],
+								['晴れ/追い風', 1],
+								['晴れ/向い風', 11],
+								['曇り/追い風', 21],
+								['曇り/向い風', 31],
+								['雨/追い風', 41], 
+								['雨/向い風', 51],
+								['不明', 61]];
 				for(let i=0; i<options.length; i++){
-					$('#select_weather').append('<option value="' + i + '">' + options[i] + '</option>');
+					$('#select_weather').append('<option value="' + options[i][1] + '">' + options[i][0] + '</option>');
 				}
 
 				//logデータを入力するブロックを表示する処理
