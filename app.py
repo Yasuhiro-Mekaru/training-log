@@ -100,6 +100,8 @@ def  insert_data():
     datebase = db.My_log_database(loaded_data)
     datebase.insert_data()
 
+    return 'Success', 201
+
 
 # DBのテーブルのデータをDELETEする際の処理
 @app.route('/delete_data', methods=['DELETE'])
