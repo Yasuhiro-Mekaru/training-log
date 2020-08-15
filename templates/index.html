@@ -98,10 +98,6 @@
 					console.log('weather_id type: ' + (typeof weather_id));
 				})
 				// let weather_id = $('#input_weather_id').val();
-				if(weather_id != Number){
-					weather_id = Number(weather_id);
-					console.log('weather_id: ' + (typeof weather_id));
-				}
 
 				//logデータをDBへ送信する処理
 				$('#button_input_to_db').click(function(){
@@ -123,10 +119,10 @@
 					// 	console.log('weather_id type: ' + (typeof weather_id));
 					// })
 					// // let weather_id = $('#input_weather_id').val();
-					// if(weather_id != Number){
-					// 	weather_id = Number(weather_id);
-					// 	console.log('weather_id: ' + (typeof weather_id));
-					// }
+					if(weather_id != Number){
+						weather_id = Number(weather_id);
+						console.log('weather_id: ' + (typeof weather_id));
+					}
 					let target_id = $('#input_target_id').val();
 					if(target_id != Number){
 						target_id = Number(target_id);
