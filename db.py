@@ -47,6 +47,10 @@ class My_log_database(object):
 			cursor.execute('Insert into milage_log(date, milage, elevation, weather_id, target_id) '
 				'Values("{date}", "{milage}", "{elevation}", "{weather_id}", "{target_id}")'.format(
 					date=date, milage=milage, elevation=elevation, weather_id=weather_id, target_id=target_id))
+			logger.info({
+				'action': 'insert_data: milage_log',
+				'cursor': cursor
+				})
 			conn.commit()
 			cursor.close()
 			conn.close()
@@ -55,6 +59,7 @@ class My_log_database(object):
 		        'action': 'insert_data: milage_log',
 		        'status': 'connection closed'
 	        })
+	        return 'Success'
 
 		elif self.data['table'] == 'weather':
 			content = self.data['content']

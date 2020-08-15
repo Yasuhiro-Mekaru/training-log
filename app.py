@@ -98,9 +98,9 @@ def  insert_data():
         })
 
     datebase = db.My_log_database(loaded_data)
-    datebase.insert_data()
+    response = datebase.insert_data()
 
-    return 'Posted'
+    return response
 
 
 # DBのテーブルのデータをDELETEする際の処理

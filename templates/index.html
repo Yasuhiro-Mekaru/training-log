@@ -72,21 +72,15 @@
 
 				//logデータを入力するブロックを表示する処理
 				$('#button_to_input_page').click(function(){
+					console.log('input_block fadeIn');
 					$('#input_block').fadeIn();
 				});
 
 				//Top画面に戻る処理
 				$('#button_back_to_top').click(function(){
+					console.log('input_block fadeOut');
 					$('#input_block').fadeOut();
 				})
-
-				let weather_id;
-				$('#select_weather').change(function(){
-					weather_id = $('option:selected').val();
-					console.log('weather_id: ' + weather_id);
-					console.log('weather_id type: ' + (typeof weather_id));
-				})
-
 
 				//logデータをDBへ送信する処理
 				$('#button_input_to_db').click(function(){
@@ -125,19 +119,19 @@
 						"weather_id": weather_id,
 						"target_id": target_id
 					}
-					console.log(data);
+					console.log('data: ' + data);
 
 					//Ajax通信
 					$.ajax({
 						type: 'POST',
 	                    contentType: 'application/json',
-	                    url: 'https://training-logs.herokuapp.com/insert_data', //herokuにアップした際に使用予定
+	                    url: 'https://training-logs.herokuapp.com/insert_data', 
 	                    data: JSON.stringify(data),
 	                    dataType: 'json'
 					}).then(function(response){
-						console.log(response);
+						console.log('Ajax response: ' + response);
 						}, function(error){
-							console.log(error);
+							console.log('Ajax error: ' + error);
 						});
 				})
 			});
