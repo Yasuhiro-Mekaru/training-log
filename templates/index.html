@@ -91,6 +91,18 @@
 					$('#input_block').fadeOut();
 				})
 
+				let weather_id;
+				$('#select_weather').change(function(){
+					weather_id = $('option:selected').val();
+					console.log('weather_id: ' + weather_id);
+					console.log('weather_id type: ' + (typeof weather_id));
+				})
+				// let weather_id = $('#input_weather_id').val();
+				if(weather_id != Number){
+					weather_id = Number(weather_id);
+					console.log('weather_id: ' + (typeof weather_id));
+				}
+
 				//logデータをDBへ送信する処理
 				$('#button_input_to_db').click(function(){
 					let table = 'milage_log';
@@ -104,17 +116,17 @@
 						elevation = Number(elevation);
 					}
 
-					let weather_id;
-					$('#select_weather').change(function(){
-						weather_id = $('option:selected').val();
-						console.log('weather_id: ' + weather_id);
-						console.log('weather_id type: ' + (typeof weather_id));
-					})
-					// let weather_id = $('#input_weather_id').val();
-					if(weather_id != Number){
-						weather_id = Number(weather_id);
-						console.log('weather_id: ' + (typeof weather_id));
-					}
+					// let weather_id;
+					// $('#select_weather').change(function(){
+					// 	weather_id = $('option:selected').val();
+					// 	console.log('weather_id: ' + weather_id);
+					// 	console.log('weather_id type: ' + (typeof weather_id));
+					// })
+					// // let weather_id = $('#input_weather_id').val();
+					// if(weather_id != Number){
+					// 	weather_id = Number(weather_id);
+					// 	console.log('weather_id: ' + (typeof weather_id));
+					// }
 					let target_id = $('#input_target_id').val();
 					if(target_id != Number){
 						target_id = Number(target_id);

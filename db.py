@@ -102,8 +102,6 @@ class My_log_database(object):
 			cursor.close()
 			conn.close()
 
-		return 'Success'
-
 
 
 	def delete_data(self):
