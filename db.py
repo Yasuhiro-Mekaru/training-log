@@ -59,7 +59,8 @@ class My_log_database(object):
 		        'action': 'insert_data: milage_log',
 		        'status': 'connection closed'
 	        })
-	    	return 'Success'
+
+	        return 'Success'
 
 		elif self.data['table'] == 'weather':
 			content = self.data['content']
