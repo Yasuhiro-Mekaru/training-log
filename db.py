@@ -60,7 +60,6 @@ class My_log_database(object):
 		        'status': 'connection closed'
 	        })
 
-	        return 'Success'
 
 		elif self.data['table'] == 'weather':
 			content = self.data['content']
@@ -102,6 +101,8 @@ class My_log_database(object):
 			conn.commit()
 			cursor.close()
 			conn.close()
+
+		return 'Success'
 
 
 
