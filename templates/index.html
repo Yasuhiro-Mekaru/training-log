@@ -80,6 +80,13 @@
 					$('#input_block').fadeOut();
 				})
 
+				let weather_id;
+				$('#select_weather').change(function(){
+					weather_id = $('option:selected').val();
+					console.log('weather_id: ' + weather_id);
+					console.log('weather_id type: ' + (typeof weather_id));
+				})
+
 
 				//logデータをDBへ送信する処理
 				$('#button_input_to_db').click(function(){
@@ -97,7 +104,8 @@
 					let weather_id;
 					$('#select_weather').change(function(){
 						weather_id = $('option:selected').val();
-						console.log('weather_id: ' + (typeof weather_id));
+						console.log('weather_id: ' + weather_id);
+						console.log('weather_id type: ' + (typeof weather_id));
 					})
 					// let weather_id = $('#input_weather_id').val();
 					if(weather_id != Number){
