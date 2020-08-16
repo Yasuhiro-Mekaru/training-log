@@ -9,7 +9,8 @@ RUN pip3 install flask \
 	mysql-connector-python==8.0.19
 
 RUN pip3 install numpy \
-	pandas
+	pandas \
+	bokeh
 
 WORKDIR /app
 

@@ -4,6 +4,7 @@ import logging
 from flask import Flask, jsonify, render_template, request
 import numpy as np
 import pandas as pd
+import bokeh
 
 import db
 
@@ -22,6 +23,11 @@ logging.info({
 logging.info({
     'action': 'pandas',
     'version': pd.__version__
+    })
+
+logging.info({
+    'action': 'bokeh',
+    'version': bokeh.__version__
     })
 
 
