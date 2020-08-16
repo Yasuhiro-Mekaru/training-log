@@ -2,6 +2,8 @@ import json
 import logging
 
 from flask import Flask, jsonify, render_template, request
+import numpy as np
+import pandas as pd
 
 import db
 
@@ -11,6 +13,16 @@ app.debug = True
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+logging.info({
+    'action': 'numpy',
+    'version': np.__version__
+    })
+
+logging.info({
+    'action': 'pandas',
+    'version': pd.__version__
+    })
 
 
 
