@@ -18,6 +18,39 @@ class My_log_database(object):
 		self.data = data
 
 
+    def select_data(self):
+		pass
+	    # table = self.data['table']
+	    # target_id = self.data['target_id']
+	    # logger.info({
+		   #  'action': 'select_data',
+		   #  'table': table,
+		   #  'target_id': target_id,
+		   #  'target_id type': type(target_id)
+		   #  })
+	    # # MySQL にコネクトし Delete文を実行
+	    # conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
+		   #  ssl_disabled=True)
+	    # cursor = conn.cursor()
+	    # datas = []
+	    # cursor.execute('SELECT * from {table} where target_id={target_id}'.format(table=table, target_id=target_id))
+	    # for row in cursor:
+		   #  datas.append(row)
+
+	    # logger.info({
+		   #  'action': 'select_data row',
+		   #  'datas[0]: ': datas[0],
+		   #  'datas type: ': type(datas[0])
+		   #  })
+	    # cursor.close()
+	    # conn.close()
+
+	    # logger.info({
+		   #  'action': 'select_data: milage_log',
+		   #  'status': 'Connection Closed'
+		   #  })
+
+	    # return datas[0]
 
 	def insert_data(self):
 		# Insert するテーブルによって処理を分岐する
@@ -152,41 +185,6 @@ class My_log_database(object):
 
 		elif self.data['table'] == 'weather':
 			pass
-        
-
-    def select_data(self):
-    	pass
-	    # table = self.data['table']
-	    # target_id = self.data['target_id']
-	    # logger.info({
-		   #  'action': 'select_data',
-		   #  'table': table,
-		   #  'target_id': target_id,
-		   #  'target_id type': type(target_id)
-		   #  })
-	    # # MySQL にコネクトし Delete文を実行
-	    # conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
-		   #  ssl_disabled=True)
-	    # cursor = conn.cursor()
-	    # datas = []
-	    # cursor.execute('SELECT * from {table} where target_id={target_id}'.format(table=table, target_id=target_id))
-	    # for row in cursor:
-		   #  datas.append(row)
-
-	    # logger.info({
-		   #  'action': 'select_data row',
-		   #  'datas[0]: ': datas[0],
-		   #  'datas type: ': type(datas[0])
-		   #  })
-	    # cursor.close()
-	    # conn.close()
-
-	    # logger.info({
-		   #  'action': 'select_data: milage_log',
-		   #  'status': 'Connection Closed'
-		   #  })
-
-	    # return datas[0]
 
 
 
