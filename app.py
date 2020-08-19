@@ -138,6 +138,22 @@ def delete_data():
     return 'Deleted'
 
 
+# DBのテーブルからデータをGETする際の処理
+@app.route('/select_data', methods=['POST'])
+def select_data():
+    posted_data = request.get_data()
+    loaded_data = json.loads(posted_data)
+
+    logger.info({
+        'action': 'select_data',
+        'loaded_data': loaded_data
+        })
+
+    datebase = db.My_log_database(loaded_data)
+    response = datebase.select_data()
+
+    return response
+
 
 # if __name__ == "__main__":
     # app.debug = True
