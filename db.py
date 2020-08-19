@@ -17,8 +17,9 @@ class My_log_database(object):
 	def __init__(self, data):
 		self.data = data
 
-	def something():
-		pass
+
+    def something():
+    	pass
 	    # table = self.data['table']
 	    # target_id = self.data['target_id']
 	    # logger.info({
