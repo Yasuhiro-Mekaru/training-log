@@ -20,8 +20,8 @@ class My_log_database(object):
 
 	def select_data():
 		table = self.data['table']
-	    target_id = self.data['target_id']
-	    logger.info({
+		target_id = self.data['target_id']
+		logger.info({
 		    'action': 'select_data',
 		    'table': table,
 		    'target_id': target_id,
