@@ -38,7 +38,9 @@ class My_log_database(object):
 		logger.info({
 		    'action': 'select_data row',
 		    'datas[0]: ': datas[0],
-		    'datas type: ': type(datas[0])
+		    'datas type: ': type(datas[0]),
+		    'datas:': datas,
+		    'datas type:': type(datas)
 		    })
 		cursor.close()
 		conn.close()
@@ -46,7 +48,7 @@ class My_log_database(object):
 		    'action': 'select_data: milage_log',
 		    'status': 'Connection Closed'
 		    })
-		return datas[0]
+		return 'Nothing'
 		
 
 	def insert_data(self):
