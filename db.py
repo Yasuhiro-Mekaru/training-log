@@ -48,7 +48,7 @@ class My_log_database(object):
 		    'action': 'select_data: milage_log',
 		    'status': 'Connection Closed'
 		    })
-		return 'Nothing'
+		return datas
 		
 
 	def insert_data(self):
