@@ -17,6 +17,9 @@ class My_log_database(object):
 	def __init__(self, data):
 		self.data = data
 
+	def something():
+		pass
+
 
     # def something():
     # 	pass
