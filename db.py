@@ -18,8 +18,8 @@ class My_log_database(object):
 		self.data = data
 
 
-    def something():
-    	pass
+    # def something():
+    # 	pass
 	    # table = self.data['table']
 	    # target_id = self.data['target_id']
 	    # logger.info({
