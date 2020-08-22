@@ -157,14 +157,18 @@ def select_data():
         #'response': response,
         'response type': type(response)
         })
-    change_type_response = tuple(response)
+    listed_response = []
+    for data in response:
+        listed_data = list(data)
+        listed_response.append(listed_data)
+
     logger.info({
         'action': 'select_data',
-        'change_type_response': change_type_response,
-        'change_type_response type': type(change_type_response)
+        'listed_response': listed_response,
+        'listed_response type': type(listed_response)
         })
 
-    return change_type_response
+    return 200, OK
 
 
 # if __name__ == "__main__":
