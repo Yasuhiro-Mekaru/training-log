@@ -32,7 +32,7 @@ class My_log_database(object):
 		    ssl_disabled=True)
 		cursor = conn.cursor()
 		datas = []
-		cursor.execute('SELECT * from {table} where target_id={target_id}'.format(table=table, target_id=target_id))
+		cursor.execute('SELECT date, milage, elevation from {table} where target_id={target_id}'.format(table=table, target_id=target_id))
 		for row in cursor:
 			datas.append(row)
 		logger.info({
