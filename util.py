@@ -12,7 +12,7 @@ logger.info({
 	})
 
 
-Class Pandas_data(object):
+class my_pandas_data(object):
 	def __init__(self):
 		pass
 
