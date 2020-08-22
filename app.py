@@ -158,7 +158,7 @@ def select_data():
         'response type': type(response)
         })
 
-    return str(response[0][0])
+    return response
 
 
 # if __name__ == "__main__":
