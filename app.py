@@ -164,7 +164,7 @@ def select_data():
         'change_type_response type': type(change_type_response)
         })
 
-    return response
+    return change_type_response
 
 
 # if __name__ == "__main__":
