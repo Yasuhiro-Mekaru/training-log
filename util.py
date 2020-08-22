@@ -12,10 +12,12 @@ logger.info({
 	})
 
 
-class my_pandas_data(object):
-	def __init__(self):
-		pass
+class My_pandas_data(object):
+	def __init__(self, datas):
+		self.datas = datas
 
 
 	def create_data_frame(self):
-		pass
+		df = pd.DataFrame(self.datas)
+
+		return df

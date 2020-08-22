@@ -168,7 +168,16 @@ def select_data():
         'listed_response type': type(listed_response)
         })
 
-    return 200, OK
+    pandas_instance = util.My_pandas_data(listed_response)
+    df = pandas_instance.create_data_frame()
+
+    logger.info({
+        'action': 'select_data',
+        'df': df,
+        'df type': type(df)
+        })
+
+    return 200
 
 
 # if __name__ == "__main__":
