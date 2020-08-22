@@ -39,7 +39,7 @@ class My_log_database(object):
 		    'action': 'select_data row',
 		    'datas[0]: ': datas[0],
 		    'datas type: ': type(datas[0]),
-		    'datas:': datas,
+		    #'datas:': datas,
 		    'datas type:': type(datas)
 		    })
 		cursor.close()

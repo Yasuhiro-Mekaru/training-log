@@ -152,11 +152,16 @@ def select_data():
 
     datebase = db.My_log_database(loaded_data)
     response = datebase.select_data()
-
     logger.info({
         'action': 'select_data',
-        'response': response,
+        #'response': response,
         'response type': type(response)
+        })
+    change_type_response = tuple(response)
+    logger.info({
+        'action': 'select_data',
+        'change_type_response': change_type_response,
+        'change_type_response type': type(change_type_response)
         })
 
     return response
