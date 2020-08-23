@@ -23,7 +23,7 @@ class My_bokeh_chart(object):
 
 	def create_chart(self):
 		# DataFrameの値を Bokeh用セット
-	    source = ColumnDataSource(df)
+	    source = ColumnDataSource(self.df)
 	    source.add(df.index, 'index')
 
 	    output_file("milage_log.html")
