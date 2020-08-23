@@ -22,5 +22,59 @@ class My_bokeh_chart(object):
 
 
 	def create_chart(self):
-		pass
+		# DataFrameの値を Bokeh用セット
+	    source = ColumnDataSource(df)
+	    source.add(df.index, 'index')
+
+	    output_file("milage_log.html")
+	    
+	    # チャートのツールを設定
+	    tools = "pan,box_zoom,reset,save"
+
+	    # チャート内のツールチップのツールチップを設定
+	    hover_tool = HoverTool(
+	        tooltips=[
+	            ('index', "@index{%F %T}"),
+	            ('Milage', "@Milage"),
+	        ],
+	        formatters={
+	            'index': 'datetime',
+	        },
+	        mode='vline')
+
+	    # figureオブジェクトを生成
+	    p = figure(x_axis_type="datetime",
+	               plot_width=1000,
+	               plot_height=400,
+	               title='Milage Line_Chart',
+	               tools=[hover_tool, tools])
+
+	    # 終値の描画設定
+	    p.circle(x='index',
+	             y='Milage',
+	             source=source,
+	             size=1,
+	             line_color='red',
+	             fill_color='red',
+	             fill_alpha=0.3)
+
+	    # 終値のラインを設定
+	    p.line(x='index',
+	           y='Milage',
+	           source=source,
+	           line_color='blue',
+	           line_alpha=0.5,
+	           legend='Milage',
+	          )
+
+	    # SMA28のラインを設定
+	    p.line(x='index',
+	          y='Elevation',
+	          source=source,
+	          line_color='orange',
+	          line_alpha=1.0,
+	          legend='Elevation')
+
+	    # figureインスタンスを描画
+	    show(p)
 
