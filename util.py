@@ -21,6 +21,6 @@ class My_pandas_data(object):
 		df = pd.DataFrame(self.datas)
 		df.columns = ['Date', 'Milage', 'Elevation']
 		df = df.set_index('Date')
-		df.index = df.to_datetime(df.index)
+		df.index = pd.to_datetime(df.index)
 
 		return df
