@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import bokeh
 
+import bokeh_chart
 import db
 import util
 
@@ -176,6 +177,8 @@ def select_data():
         'df': df,
         'df type': type(df)
         })
+
+    bokeh_instance = bokeh_chart.My_bokeh_chart(df)
 
     return 200,
 
