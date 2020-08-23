@@ -19,5 +19,8 @@ class My_pandas_data(object):
 
 	def create_data_frame(self):
 		df = pd.DataFrame(self.datas)
+		df.columns = ['Date', 'Milage', 'Elevation']
+		df = df.set_index('Time')
+		df.index = df.to_datetime(df.index)
 
 		return df
