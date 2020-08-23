@@ -181,7 +181,7 @@ def select_data():
     bokeh_instance = bokeh_chart.My_bokeh_chart(df)
     bokeh_instance.create_chart()
 
-    return render_template("milage_log.html")
+    return 'created'
 
 
 # if __name__ == "__main__":
