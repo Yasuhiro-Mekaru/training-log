@@ -5,6 +5,7 @@ from flask import Flask, jsonify, render_template, request
 import numpy as np
 import pandas as pd
 import bokeh
+from bokeh.embed import components 
 
 import bokeh_chart
 import db
@@ -181,7 +182,15 @@ def select_data():
     bokeh_instance = bokeh_chart.My_bokeh_chart(df)
     bokeh_instance.create_chart()
 
-    return 'created'
+    script, div = components(bokeh_instance)
+
+    logger.info({
+        'action': 'select_data',
+        'script': script,
+        'div': div
+        })
+
+    return render_template('index.html', script=script, div=div)
 
 
 # if __name__ == "__main__":

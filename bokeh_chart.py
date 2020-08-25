@@ -26,7 +26,7 @@ class My_bokeh_chart(object):
 	    source = ColumnDataSource(self.df)
 	    source.add(self.df.index, 'index')
 
-	    output_file("milage_log.html")
+	    # output_file("milage_log.html")
 	    
 	    # チャートのツールを設定
 	    tools = "pan,box_zoom,reset,save"
@@ -75,6 +75,12 @@ class My_bokeh_chart(object):
 	          line_alpha=1.0,
 	          legend='Elevation')
 
+	    logger.info({
+	    	'action': 'bokeh_chart.py',
+	    	'p: ': p
+	    	})
+
 	    # figureインスタンスを描画
-	    show(p)
+	    # show(p)
+	    return p
 
