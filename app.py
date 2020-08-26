@@ -180,9 +180,9 @@ def select_data():
         })
 
     bokeh_instance = bokeh_chart.My_bokeh_chart(df)
-    bokeh_instance.create_chart()
+    bokeh_response = bokeh_instance.create_chart()
 
-    script, div = components(bokeh_instance)
+    script, div = components(bokeh_response)
 
     logger.info({
         'action': 'select_data',
