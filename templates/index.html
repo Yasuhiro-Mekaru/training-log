@@ -29,7 +29,11 @@
 			<p>Welcome To Training Log Application</p>
 			<p>push the under button to input your training log.</p>
 			<input type="button" value="To Input Menu" id="button_to_input_page">
-
+		</div>
+		<div>
+			<input type="button" value="To Input Menu" id="button_to_input_page">
+			<input type="button" value="To Chart Menu" id="button_to_chart_page">
+		</div>
 
 		<div id="input_block">
 			<p>Input Your Log of Training</p>
@@ -161,6 +165,27 @@
 						}, function(error){
 							console.log('Ajax error: ' + error);
 						});
+				})
+
+				//チャートを表示する処理
+				$('#button_to_chart_page').click(function(){
+					let table = 'milage_log';
+					let target_id = 51;
+					let data = {
+						'table': table,
+						'target_id': target_id
+					}
+					console.log('chart button clicked');
+					//Ajax
+					$.ajax({
+						type: 'POST',
+						contentType: 'application/json',
+						url: 'https://training-logs.herokuapp.com/select_data',
+						data: JSON.stringify(data),
+						dataType: 'json'
+					}).then(function(response){
+						console.log(response);
+					})
 				})
 			});
 		</script>
