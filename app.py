@@ -190,7 +190,7 @@ def select_data():
         'div': div
         })
 
-    return render_template('index.html', script=script, div=div)
+    return render_template('chart.html', script=script, div=div)
 
 
 # if __name__ == "__main__":
