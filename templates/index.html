@@ -43,6 +43,12 @@
 			<input type="button" value="To Chart Menu" id="button_to_chart_page">
 		</div>
 
+		<div>
+			<h3>Hello Bokeh</h3>
+			<div id="test1"></div>
+			<div id="test2"></div>
+		</div>
+
 		<div id="input_block">
 			<p>Input Your Log of Training</p>
 
@@ -181,11 +187,11 @@
 						data: JSON.stringify(data),
 						dataType: 'json'
 					}).then(function(response){
-						console.log('response: ' + response);
-						let r = JSON.parse(response);
-						console.log('r: ' + r);
-						console.log('r.script: ' + r.script);
-						console.log('r.div: ' + r.div);
+						let response_data = JSON.parse(response);
+						console.log('r.script: ' + response_data.script);
+						console.log('r.div: ' + response_data.div);
+						$('#test1').html(response_data.script);
+						$('#test2').html(response_data.div);
 					})
 				})
 			});
