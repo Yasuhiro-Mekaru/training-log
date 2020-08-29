@@ -175,21 +175,21 @@ def select_data():
     date_instance = date.My_date(listed_response)
     changed_listed_response = date_instance.change_to_date()
 
-    logger.info({
-        'action': 'select_data',
-        'changed_listed_response': changed_listed_response,
-        'changed_listed_response type': type(changed_listed_response)
-        })
-
-
-    pandas_instance = util.My_pandas_data(listed_response)
-    df = pandas_instance.create_data_frame()
-
     # logger.info({
     #     'action': 'select_data',
-    #     'df': df,
-    #     'df type': type(df)
+    #     'changed_listed_response': changed_listed_response,
+    #     'changed_listed_response type': type(changed_listed_response)
     #     })
+
+
+    pandas_instance = util.My_pandas_data(changed_listed_response)
+    df = pandas_instance.create_data_frame()
+
+    logger.info({
+        'action': 'select_data',
+        'df': df,
+        'df type': type(df)
+        })
 
     bokeh_instance = bokeh_chart.My_bokeh_chart(df)
     bokeh_response = bokeh_instance.create_chart()
