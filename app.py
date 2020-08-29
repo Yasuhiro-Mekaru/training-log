@@ -8,6 +8,7 @@ import bokeh
 from bokeh.embed import components 
 
 import bokeh_chart
+import date
 import db
 import util
 
@@ -169,6 +170,8 @@ def select_data():
         'listed_response': listed_response,
         'listed_response type': type(listed_response)
         })
+
+    #ここにdate関係を書く
 
     pandas_instance = util.My_pandas_data(listed_response)
     df = pandas_instance.create_data_frame()
