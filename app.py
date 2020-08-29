@@ -207,7 +207,7 @@ def select_data():
         })
 
 
-    return response_datas
+    return jsonify(response_datas)
 
 
 # if __name__ == "__main__":
