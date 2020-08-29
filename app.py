@@ -187,10 +187,12 @@ def select_data():
     logger.info({
         'action': 'select_data',
         'script': script,
-        'div': div
+        'script type': type(script),
+        'div': div,
+        'div type': type(div)
         })
 
-    return render_template('chart.html', script=script, div=div)
+    return jsonify(script)
 
 
 # if __name__ == "__main__":
