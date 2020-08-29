@@ -186,13 +186,28 @@ def select_data():
 
     logger.info({
         'action': 'select_data',
-        'script': script,
         'script type': type(script),
-        'div': div,
-        'div type': type(div)
         })
 
-    return jsonify(script)
+    response_datas = {
+        'script': script,
+        'div': div
+    }
+
+    logger.info({
+        'action': 'select_data',
+        'response_datas type': type(response_datas),
+        })
+
+    response_datas = json.dumps(response_datas)
+
+    logger.info({
+        'action': 'select_data',
+        'response_datas changed type': type(response_datas),
+        })
+
+
+    return response_datas
 
 
 # if __name__ == "__main__":

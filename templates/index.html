@@ -182,6 +182,8 @@
 						dataType: 'json'
 					}).then(function(response){
 						console.log('response: ' + response);
+						let r = JSON.parse(response);
+						console.log('r: ' + r);
 					})
 				})
 			});
