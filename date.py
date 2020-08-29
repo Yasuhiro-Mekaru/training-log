@@ -23,7 +23,6 @@ class My_date(object):
 			'self.datas': self.datas
 			})
 
-		date_changed_datas = []
 		date_format = '%Y-%m-%d %H:%M:%S'
 		changed_date_format = '%Y-%m-%d'
 
@@ -40,6 +39,28 @@ class My_date(object):
 			})
 
 		return self.datas
+
+
+	def set_datas(self, datas):
+		changed_datas = []
+		i = 0
+		for data in datas:
+			if i == 0:
+				changed_datas.append(data)
+				i = i + 1
+			else:
+				for change_data in changed_datas:
+					if data[0] == change_data[0]:
+						change_data[1] = data[1] + change_data[1]
+						change_data[2] = data[2] + change_data[2]
+					else:
+						changed_datas.append(data)
+
+		return changed_datas
+
+
+
+		
 
 		
 
