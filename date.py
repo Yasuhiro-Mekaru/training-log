@@ -35,10 +35,11 @@ class My_date(object):
 
 		logger.info({
 			'action': 'date.py',
-			'changed_datas': self.datas
+			'changed_datas': self.datas,
+			'change_data type': type(self.datas[0][0])
 			})
 
 		return self.datas
-		
+
 		
 

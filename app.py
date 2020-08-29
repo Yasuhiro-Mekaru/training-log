@@ -165,11 +165,11 @@ def select_data():
         listed_data = list(data)
         listed_response.append(listed_data)
 
-    logger.info({
-        'action': 'select_data',
-        'listed_response': listed_response,
-        'listed_response type': type(listed_response)
-        })
+    # logger.info({
+    #     'action': 'select_data',
+    #     'listed_response': listed_response,
+    #     'listed_response type': type(listed_response)
+    #     })
 
     #ここにdate関係を書く
     date_instance = date.My_date(listed_response)
@@ -185,11 +185,11 @@ def select_data():
     pandas_instance = util.My_pandas_data(listed_response)
     df = pandas_instance.create_data_frame()
 
-    logger.info({
-        'action': 'select_data',
-        'df': df,
-        'df type': type(df)
-        })
+    # logger.info({
+    #     'action': 'select_data',
+    #     'df': df,
+    #     'df type': type(df)
+    #     })
 
     bokeh_instance = bokeh_chart.My_bokeh_chart(df)
     bokeh_response = bokeh_instance.create_chart()
