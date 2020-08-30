@@ -56,10 +56,11 @@ class My_date(object):
 		for i in range(length):
 			if i == 0:
 				changed_datas.append(datas[i])
-					logger.info({
-						'action': 'date.py',
-						'for statement 1 if: changed_datas': changed_datas
-						})
+				logger.info({
+					'action': 'date.py',
+					'for statement 1 if: changed_datas': changed_datas
+					})
+					
 			else:
 				if datas[i][0] != changed_datas[i-1][0]:
 					changed_datas.append(datas[i])
