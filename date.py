@@ -73,7 +73,6 @@ class My_date(object):
 
 					changed_datas[i-1][1] = milage
 					changed_datas[i-1][2] = elevation
-
 					logger.info({
 						'action': 'date.py',
 						'for statement 2 else: changed_datas': changed_datas
