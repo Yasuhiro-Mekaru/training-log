@@ -42,6 +42,13 @@ class My_date(object):
 
 
 	def set_datas(self, datas):
+
+		logger.info({
+			'action': 'date.py',
+			'datas': datas,
+			'datas type': type(datas[0][0])
+			})
+
 		changed_datas = []
 		i = 0
 		for data in datas:
@@ -55,6 +62,12 @@ class My_date(object):
 						change_data[2] = data[2] + change_data[2]
 					else:
 						changed_datas.append(data)
+
+		logger.info({
+			'action': 'date.py',
+			'changed_datas': changed_datas,
+			'changed_datas type': type(changed_datas)
+			})
 
 		return changed_datas
 
