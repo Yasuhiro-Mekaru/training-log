@@ -54,6 +54,10 @@ class My_date(object):
 		for data in datas:
 			if len(changed_datas) == 0:
 				changed_datas.append(data)
+				logger.info({
+					'action': 'date.py',
+					'for statement changed_datas': changed_datas
+					})
 			else:
 				for changed_data in changed_datas:
 					if data[0] == changed_data[0]:
@@ -61,6 +65,10 @@ class My_date(object):
 						changed_data[2] = data[2] + changed_data[2]
 					else:
 						changed_datas.append(data)
+						logger.info({
+							'action': 'date.py',
+							'for statement changed_datas': changed_datas
+							})
 
 		logger.info({
 			'action': 'date.py',
