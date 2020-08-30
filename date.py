@@ -51,30 +51,60 @@ class My_date(object):
 			})
 
 		changed_datas = []
-		for data in datas:
-			if len(changed_datas) == 0:
-				changed_datas.append(data)
-				logger.info({
-					'action': 'date.py',
-					'for statement 1 if: changed_datas': changed_datas
-					})
+		length = len(datas)
+
+		for i in range(length):
+			if i == 0:
+				changed_datas.append(datas[i])
+					logger.info({
+						'action': 'date.py',
+						'for statement 1 if: changed_datas': changed_datas
+						})
 			else:
-				for changed_data in changed_datas:
-					if data[0] != changed_data[0]:
-						changed_datas.append(data)
-						logger.info({
-							'action': 'date.py',
-							'for statement 2 if: changed_datas': changed_datas
-							})
+				if datas[i][0] != changed_datas[i-1][0]:
+					changed_datas.append(datas[i])
+					logger.info({
+						'action': 'date.py',
+						'for statement 2 if: changed_datas': changed_datas
+						})
+				else:
+					milage = datas[i][1] + changed_datas[i-1][1]
+					elevation = datas[i][2] + changed_datas[i-1][2]
+
+					changed_datas[i-1][1] = milage
+					changed_datas[i-1][2] = elevation
+
+					logger.info({
+						'action': 'date.py',
+						'for statement 2 else: changed_datas': changed_datas
+						})
+
+
+
+		# for data in datas:
+		# 	if len(changed_datas) == 0:
+		# 		changed_datas.append(data)
+		# 		logger.info({
+		# 			'action': 'date.py',
+		# 			'for statement 1 if: changed_datas': changed_datas
+		# 			})
+		# 	else:
+		# 		for changed_data in changed_datas:
+		# 			if data[0] != changed_data[0]:
+		# 				changed_datas.append(data)
+		# 				logger.info({
+		# 					'action': 'date.py',
+		# 					'for statement 2 if: changed_datas': changed_datas
+		# 					})
 						
-					else:
-						changed_data[1] = data[1] + changed_data[1]
-						changed_data[2] = data[2] + changed_data[2]
-						
-						logger.info({
-							'action': 'date.py',
-							'for statement 2 else: changed_datas': changed_datas
-							})
+		# 			else:
+		# 				changed_data[1] = data[1] + changed_data[1]
+		# 				changed_data[2] = data[2] + changed_data[2]
+
+		# 				logger.info({
+		# 					'action': 'date.py',
+		# 					'for statement 2 else: changed_datas': changed_datas
+		# 					})
 
 		logger.info({
 			'action': 'date.py',
