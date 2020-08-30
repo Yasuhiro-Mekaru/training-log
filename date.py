@@ -58,7 +58,8 @@ class My_date(object):
 				changed_datas.append(datas[i])
 				logger.info({
 					'action': 'date.py',
-					'for statement 1 if: changed_datas': changed_datas
+					'for statement 1 if: changed_datas': changed_datas,
+					'number i:': i
 					})
 					
 			else:
@@ -66,7 +67,8 @@ class My_date(object):
 					changed_datas.append(datas[i])
 					logger.info({
 						'action': 'date.py',
-						'for statement 2 if: changed_datas': changed_datas
+						'for statement 2 if: changed_datas': changed_datas,
+						'number i:': i
 						})
 				else:
 					milage = datas[i][1] + changed_datas[i-1][1]
@@ -76,7 +78,8 @@ class My_date(object):
 					changed_datas[i-1][2] = elevation
 					logger.info({
 						'action': 'date.py',
-						'for statement 2 else: changed_datas': changed_datas
+						'for statement 2 else: changed_datas': changed_datas,
+						'number i:': i
 						})
 
 
