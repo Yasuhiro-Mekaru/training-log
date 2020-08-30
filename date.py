@@ -32,11 +32,11 @@ class My_date(object):
 			changed_to_str = changed_to_date.strftime(changed_date_format)
 			data[0] = changed_to_str
 
-		logger.info({
-			'action': 'date.py',
-			'changed_datas': self.datas,
-			'change_data type': type(self.datas[0][0])
-			})
+		# logger.info({
+		# 	'action': 'date.py',
+		# 	'changed_datas': self.datas,
+		# 	'change_data type': type(self.datas[0][0])
+		# 	})
 
 		return self.datas
 
@@ -45,8 +45,8 @@ class My_date(object):
 
 		logger.info({
 			'action': 'date.py',
-			'datas': datas,
-			'datas type': type(datas[0][0])
+			'set_datas datas': datas,
+			'set_datas datas type': type(datas[0][0])
 			})
 
 		changed_datas = []
