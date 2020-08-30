@@ -18,10 +18,10 @@ class My_date(object):
 
 
 	def change_to_date(self):
-		logger.info({
-			'action': 'date.py',
-			'self.datas': self.datas
-			})
+		# logger.info({
+		# 	'action': 'date.py',
+		# 	'self.datas': self.datas
+		# 	})
 
 		date_format = '%Y-%m-%d %H:%M:%S'
 		changed_date_format = '%Y-%m-%d'
@@ -46,7 +46,8 @@ class My_date(object):
 		logger.info({
 			'action': 'date.py',
 			'set_datas datas': datas,
-			'set_datas datas type': type(datas[0][0])
+			'set_datas datas type': type(datas),
+			'set_datas datas length': len(datas)
 			})
 
 		changed_datas = []
@@ -66,7 +67,8 @@ class My_date(object):
 		logger.info({
 			'action': 'date.py',
 			'changed_datas': changed_datas,
-			'changed_datas type': type(changed_datas)
+			'changed_datas type': type(changed_datas),
+			'changed_datas len': len(changed_datas)
 			})
 
 		return changed_datas
