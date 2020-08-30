@@ -51,16 +51,14 @@ class My_date(object):
 			})
 
 		changed_datas = []
-		i = 0
 		for data in datas:
-			if i == 0:
+			if len(changed_datas) == 0:
 				changed_datas.append(data)
-				i = i + 1
 			else:
-				for change_data in changed_datas:
-					if data[0] == change_data[0]:
-						change_data[1] = data[1] + change_data[1]
-						change_data[2] = data[2] + change_data[2]
+				for changed_data in changed_datas:
+					if data[0] == changed_data[0]:
+						changed_data[1] = data[1] + changed_data[1]
+						changed_data[2] = data[2] + changed_data[2]
 					else:
 						changed_datas.append(data)
 
