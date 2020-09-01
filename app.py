@@ -177,16 +177,24 @@ def select_data():
 
     logger.info({
         'action': 'select_data',
-        # 'changed_listed_response': changed_listed_response,
-        'changed_listed_response length': len(changed_listed_response)
+        'changed_listed_response': changed_listed_response,
+        # 'changed_listed_response length': len(changed_listed_response)
         })
-    setted_datas = date_instance.set_datas(changed_listed_response)
+
+    result = date_instance.compare_date()
 
     logger.info({
         'action': 'select_data',
-        'setted_datas': setted_datas,
-        'setted_datas type': type(setted_datas)
+        'result': result
+        # 'changed_listed_response length': len(changed_listed_response)
         })
+    # setted_datas = date_instance.set_datas(changed_listed_response)
+
+    # logger.info({
+    #     'action': 'select_data',
+    #     'setted_datas': setted_datas,
+    #     'setted_datas type': type(setted_datas)
+    #     })
 
     pandas_instance = util.My_pandas_data(changed_listed_response)
     df = pandas_instance.create_data_frame()

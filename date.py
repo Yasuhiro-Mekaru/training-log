@@ -37,7 +37,7 @@ class My_date(object):
 			data[0] = changed_to_date
 
 		logger.info({
-			'action': 'date.py',
+			'action': 'date.py change_to_date',
 			'changed_datas': self.datas,
 			'change_data type': type(self.datas[0][0])
 			})
@@ -45,54 +45,62 @@ class My_date(object):
 		return self.datas
 
 
-	def set_datas(self, datas):
-
-		changed_datas = []
-		datas_length = len(datas)
+	def compare_date(self):
+		result1 = self.datas[0][0] == self.datas[1][0]
+		result2 = self.datas[1][0] == self.datas[2][0]
+		result3 = self.datas[2][0] == self.datas[3][0]
+		result4 = self.datas[3][0] == self.datas[4][0]
+		result5 = self.datas[4][0] == self.datas[5][0]
 
 		logger.info({
-			'action': 'date.py',
-			'set_datas datas': datas,
-			'datas_length': datas_length
+			'action': 'date.py compare_date',
+			'result1': result1,
+			'result2': result2,
+			'result3': result3,
+			'result4': result4,
+			'result5': result5
 			})
 
-		for i in range(datas_length):
-			changed_datas_length = len(changed_datas)
-			logger.info({
-				'action': 'date.py for first',
-				'datas_length': datas_length,
-				'changed_datas_length': changed_datas_length
-				})
-			if i == 0:
-				changed_datas.append(datas[i])
-				logger.info({
-					'action': 'date.py',
-					'for statement 1 if: changed_datas': changed_datas,
-					'number i:': i
-					})
-					
-			else:
-				for j in range(changed_datas_length):
-					if datas[i][0] != changed_datas[j][0]:
-						changed_datas.append(datas[i])
-						logger.info({
-							'action': 'date.py',
-							'for statement 2 if: changed_datas': changed_datas,
-							'number i:': i,
-							'number j:': j
-							})
-					else:
-						milage = datas[i][1] + changed_datas[j][1]
-						elevation = datas[i][2] + changed_datas[j][2]
+		return (result1, result2, result3, result4, result5)
 
-						changed_datas[j][1] = milage
-						changed_datas[j][2] = elevation
-						logger.info({
-							'action': 'date.py',
-							'for statement 2 else: changed_datas': changed_datas,
-							'number i:': i,
-							'number j:': j
-							})
+
+	def set_datas(self, datas):
+		pass
+
+		# changed_datas = []
+		# datas_length = len(datas)
+
+		# changed_datas.append(datas[0])
+
+		# for i in range(1, datas_length):
+		# 	changed_datas_length = len(changed_datas)
+		# 	logger.info({
+		# 		'action': 'date.py for first',
+		# 		'datas_length': datas_length,
+		# 		'changed_datas_length': changed_datas_length
+		# 		})
+				
+		# 	for j in range(changed_datas_length):
+		# 		if datas[i][0] != changed_datas[j][0]:
+		# 			changed_datas.append(datas[i])
+		# 			logger.info({
+		# 				'action': 'date.py',
+		# 				'for statement 2 if: changed_datas': changed_datas,
+		# 				'number i:': i,
+		# 				'number j:': j
+		# 				})
+		# 		else:
+		# 			milage = datas[i][1] + changed_datas[j][1]
+		# 			elevation = datas[i][2] + changed_datas[j][2]
+
+		# 			changed_datas[j][1] = milage
+		# 			changed_datas[j][2] = elevation
+		# 			logger.info({
+		# 				'action': 'date.py',
+		# 				'for statement 2 else: changed_datas': changed_datas,
+		# 				'number i:': i,
+		# 				'number j:': j
+		# 				})
 
 
 
@@ -121,14 +129,14 @@ class My_date(object):
 		# 					'for statement 2 else: changed_datas': changed_datas
 		# 					})
 
-		logger.info({
-			'action': 'date.py',
-			'changed_datas': changed_datas,
-			'changed_datas type': type(changed_datas),
-			'changed_datas len': len(changed_datas)
-			})
+		# logger.info({
+		# 	'action': 'date.py',
+		# 	'changed_datas': changed_datas,
+		# 	'changed_datas type': type(changed_datas),
+		# 	'changed_datas len': len(changed_datas)
+		# 	})
 
-		return changed_datas
+		# return changed_datas
 
 
 
