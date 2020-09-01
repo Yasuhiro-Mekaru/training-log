@@ -43,18 +43,23 @@ class My_date(object):
 
 	def set_datas(self, datas):
 
-		logger.info({
-			'action': 'date.py',
-			'set_datas datas': datas,
-			'set_datas datas type': type(datas),
-			'set_datas datas length': len(datas)
-			})
-
 		changed_datas = []
 		datas_length = len(datas)
 		changed_datas_length = len(changed_datas)
 
+		logger.info({
+			'action': 'date.py',
+			'set_datas datas': datas,
+			'datas_length': datas_length,
+			'changed_datas_length': changed_datas_length
+			})
+
 		for i in range(datas_length):
+			logger.info({
+				'action': 'date.py for first',
+				'datas_length': datas_length,
+				'changed_datas_length': changed_datas_length
+				})
 			if i == 0:
 				changed_datas.append(datas[i])
 				logger.info({
