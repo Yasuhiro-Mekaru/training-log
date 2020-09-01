@@ -67,7 +67,27 @@ class My_date(object):
 
 
 	def set_datas(self):
-		pass
+		new_lists = []
+		lists = []
+		for data in self.datas:
+			if not new_lists:
+				lists.append(data)
+				new_lists.append(lists)
+			else:
+				for new_list in new_lists:
+					for l in new_list:
+						if data[0] == l[0]:
+							lists.append(data)
+						else:
+							lists = []
+							lists.append(data)
+							new_lists.append(lists)
+		logger.info({
+			'action': 'date.py set_datas',
+			'new_lists': new_lists 
+			})
+
+
 		
 
 

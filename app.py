@@ -181,6 +181,8 @@ def select_data():
         # 'changed_listed_response length': len(changed_listed_response)
         })
 
+    date_instance.set_datas()
+
     pandas_instance = util.My_pandas_data(changed_listed_response)
     df = pandas_instance.create_data_frame()
 
