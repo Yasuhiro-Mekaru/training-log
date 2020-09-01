@@ -27,16 +27,20 @@ class My_date(object):
 		changed_date_format = '%Y-%m-%d'
 
 		for data in self.datas:
+			#datetimeのstrptimeメソッドで文字列の日付をdatetimeインスタンスに変更する
 			datetime_instance = datetime.datetime.strptime(data[0], date_format)
+			#datetimeインスタンスをdateインスタンスに変更する
 			changed_to_date = datetime_instance.date()
-			changed_to_str = changed_to_date.strftime(changed_date_format)
-			data[0] = changed_to_str
+			# #dateインスタンスをstrftimeメソッドで文字列に変換する
+			# changed_to_str = changed_to_date.strftime(changed_date_format)
+			#リストに代入
+			data[0] = changed_to_date
 
-		# logger.info({
-		# 	'action': 'date.py',
-		# 	'changed_datas': self.datas,
-		# 	'change_data type': type(self.datas[0][0])
-		# 	})
+		logger.info({
+			'action': 'date.py',
+			'changed_datas': self.datas,
+			'change_data type': type(self.datas[0][0])
+			})
 
 		return self.datas
 
