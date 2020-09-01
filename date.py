@@ -45,7 +45,6 @@ class My_date(object):
 
 		changed_datas = []
 		datas_length = len(datas)
-		changed_datas_length = len(changed_datas)
 
 		logger.info({
 			'action': 'date.py',
@@ -55,6 +54,7 @@ class My_date(object):
 			})
 
 		for i in range(datas_length):
+			changed_datas_length = len(changed_datas)
 			logger.info({
 				'action': 'date.py for first',
 				'datas_length': datas_length,
