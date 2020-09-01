@@ -71,11 +71,11 @@ class My_date(object):
 
 
 	def set_datas(self):
-		logger.info({
-			'action': 'date.py set_datas',
-			'self.datas': self.datas,
-			'self. type': type(self.datas[0][0])
-			})
+		# logger.info({
+		# 	'action': 'date.py set_datas',
+		# 	'self.datas': self.datas,
+		# 	'self. type': type(self.datas[0][0])
+		# 	})
 
 		sliced_datas = self.datas[0:6]
 		sliced_datas_len = len(sliced_datas)
@@ -93,7 +93,8 @@ class My_date(object):
 				new_datas.append(data)
 				i = i + 1
 				logger.info({
-					'Number:': i
+					'Number:': i,
+					'first if': data
 					})
 			else:
 				for new_data in new_datas:
@@ -102,13 +103,15 @@ class My_date(object):
 						new_data[2] = data[2] + new_data[2]
 						i = i + 1
 						logger.info({
-							'Number:': i
+							'Number:': i,
+							'second if': data
 							})
 					else:
 						new_datas.append(data)
 						i = i + 1
 						logger.info({
-							'Number:': i
+							'Number:': i,
+							'second else': data
 							})
 		logger.info({
 			'action': 'date.py set_datas after for statement',
