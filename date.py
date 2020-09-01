@@ -49,8 +49,7 @@ class My_date(object):
 		logger.info({
 			'action': 'date.py',
 			'set_datas datas': datas,
-			'datas_length': datas_length,
-			'changed_datas_length': changed_datas_length
+			'datas_length': datas_length
 			})
 
 		for i in range(datas_length):
