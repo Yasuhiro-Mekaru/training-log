@@ -46,6 +46,12 @@ class My_date(object):
 
 
 	def compare_date(self):
+		logger.info({
+			'action': 'date.py compare_date',
+			'self.datas': self.datas,
+			'self. type': type(self.datas[0][0])
+			})
+
 		result1 = self.datas[0][0] == self.datas[1][0]
 		result2 = self.datas[1][0] == self.datas[2][0]
 		result3 = self.datas[2][0] == self.datas[3][0]
