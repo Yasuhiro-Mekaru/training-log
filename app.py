@@ -175,11 +175,11 @@ def select_data():
     date_instance = date.My_date(listed_response)
     changed_listed_response = date_instance.change_to_date()
 
-    logger.info({
-        'action': 'select_data',
-        'changed_listed_response': changed_listed_response,
-        # 'changed_listed_response length': len(changed_listed_response)
-        })
+    # logger.info({
+    #     'action': 'select_data',
+    #     'changed_listed_response': changed_listed_response,
+    #     # 'changed_listed_response length': len(changed_listed_response)
+    #     })
 
     result = date_instance.compare_date()
 

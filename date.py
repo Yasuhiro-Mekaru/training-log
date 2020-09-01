@@ -87,19 +87,33 @@ class My_date(object):
 			})
 
 		new_datas = []
+		i = 0
 		for data in sliced_datas:
 			if not new_datas:
 				new_datas.append(data)
+				i = i + 1
+				logger.info({
+					'Number:' i
+					})
 			else:
 				for new_data in new_datas:
 					if data[0] == new_data[0]:
 						new_data[1] = data[1] + new_data[1]
 						new_data[2] = data[2] + new_data[2]
+						i = i + 1
+						logger.info({
+							'Number:' i
+							})
 					else:
 						new_datas.append(data)
+						i = i + 1
+						logger.info({
+							'Number:' i
+							})
 		logger.info({
 			'action': 'date.py set_datas after for statement',
-			'new_datas': new_datas
+			'new_datas': new_datas,
+			'new_datas length': len(new_datas)
 			})
 
 		return new_datas
