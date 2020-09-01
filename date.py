@@ -19,7 +19,8 @@ class My_date(object):
 
 	def change_to_date(self):
 
-		date_format = '%Y-%m-%d %H:%M:%S'
+		date_format = '%Y-%m-%d'
+		# date_format = '%Y-%m-%d %H:%M:%S'
 		changed_date_format = '%Y-%m-%d'
 
 		for data in self.datas:
