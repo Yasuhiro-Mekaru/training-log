@@ -70,80 +70,43 @@ class My_date(object):
 		return (result1, result2, result3, result4, result5)
 
 
-	def set_datas(self, datas):
-		pass
+	def set_datas(self):
+		logger.info({
+			'action': 'date.py set_datas',
+			'self.datas': self.datas,
+			'self. type': type(self.datas[0][0])
+			})
 
-		# changed_datas = []
-		# datas_length = len(datas)
+		sliced_datas = self.datas[0:6]
+		sliced_datas_len = len(sliced_datas)
+		logger.info({
+			'action': 'date.py set_datas',
+			'sliced_datas': sliced_datas,
+			'sliced_datas length': sliced_datas_len,
+			'self. type': type(sliced_datas[0][0])
+			})
 
-		# changed_datas.append(datas[0])
+		new_datas = []
+		for data in sliced_datas:
+			if not new_datas:
+				new_datas.append(data)
+			else:
+				for new_data in new_datas:
+					if data[0] == new_data[0]:
+						new_data[1] = data[1] + new_data[1]
+						new_data[2] = data[2] + new_data[2]
+					else:
+						new_datas.append(data)
+		logger.info({
+			'action': 'date.py set_datas after for statement',
+			'new_datas': new_datas
+			})
 
-		# for i in range(1, datas_length):
-		# 	changed_datas_length = len(changed_datas)
-		# 	logger.info({
-		# 		'action': 'date.py for first',
-		# 		'datas_length': datas_length,
-		# 		'changed_datas_length': changed_datas_length
-		# 		})
-				
-		# 	for j in range(changed_datas_length):
-		# 		if datas[i][0] != changed_datas[j][0]:
-		# 			changed_datas.append(datas[i])
-		# 			logger.info({
-		# 				'action': 'date.py',
-		# 				'for statement 2 if: changed_datas': changed_datas,
-		# 				'number i:': i,
-		# 				'number j:': j
-		# 				})
-		# 		else:
-		# 			milage = datas[i][1] + changed_datas[j][1]
-		# 			elevation = datas[i][2] + changed_datas[j][2]
-
-		# 			changed_datas[j][1] = milage
-		# 			changed_datas[j][2] = elevation
-		# 			logger.info({
-		# 				'action': 'date.py',
-		# 				'for statement 2 else: changed_datas': changed_datas,
-		# 				'number i:': i,
-		# 				'number j:': j
-		# 				})
+		return new_datas
+		
 
 
-
-		# for data in datas:
-		# 	if len(changed_datas) == 0:
-		# 		changed_datas.append(data)
-		# 		logger.info({
-		# 			'action': 'date.py',
-		# 			'for statement 1 if: changed_datas': changed_datas
-		# 			})
-		# 	else:
-		# 		for changed_data in changed_datas:
-		# 			if data[0] != changed_data[0]:
-		# 				changed_datas.append(data)
-		# 				logger.info({
-		# 					'action': 'date.py',
-		# 					'for statement 2 if: changed_datas': changed_datas
-		# 					})
-						
-		# 			else:
-		# 				changed_data[1] = data[1] + changed_data[1]
-		# 				changed_data[2] = data[2] + changed_data[2]
-
-		# 				logger.info({
-		# 					'action': 'date.py',
-		# 					'for statement 2 else: changed_datas': changed_datas
-		# 					})
-
-		# logger.info({
-		# 	'action': 'date.py',
-		# 	'changed_datas': changed_datas,
-		# 	'changed_datas type': type(changed_datas),
-		# 	'changed_datas len': len(changed_datas)
-		# 	})
-
-		# return changed_datas
-
+		
 
 
 		
