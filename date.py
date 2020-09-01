@@ -54,7 +54,7 @@ class My_date(object):
 		datas_length = len(datas)
 		changed_datas_length = len(changed_datas)
 
-		for i in range(length):
+		for i in range(datas_length):
 			if i == 0:
 				changed_datas.append(datas[i])
 				logger.info({
@@ -75,10 +75,10 @@ class My_date(object):
 							})
 					else:
 						milage = datas[i][1] + changed_datas[j][1]
-						elevation = datas[i][2] + changed_datas[i-1][2]
+						elevation = datas[i][2] + changed_datas[j][2]
 
-						changed_datas[i-1][1] = milage
-						changed_datas[i-1][2] = elevation
+						changed_datas[j][1] = milage
+						changed_datas[j][2] = elevation
 						logger.info({
 							'action': 'date.py',
 							'for statement 2 else: changed_datas': changed_datas,
