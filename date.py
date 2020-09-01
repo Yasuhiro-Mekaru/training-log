@@ -93,7 +93,7 @@ class My_date(object):
 				new_datas.append(data)
 				i = i + 1
 				logger.info({
-					'Number:' i
+					'Number:': i
 					})
 			else:
 				for new_data in new_datas:
@@ -102,13 +102,13 @@ class My_date(object):
 						new_data[2] = data[2] + new_data[2]
 						i = i + 1
 						logger.info({
-							'Number:' i
+							'Number:': i
 							})
 					else:
 						new_datas.append(data)
 						i = i + 1
 						logger.info({
-							'Number:' i
+							'Number:': i
 							})
 		logger.info({
 			'action': 'date.py set_datas after for statement',
