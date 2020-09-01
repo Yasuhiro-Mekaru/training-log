@@ -165,35 +165,20 @@ def select_data():
         listed_data = list(data)
         listed_response.append(listed_data)
 
-    # logger.info({
-    #     'action': 'select_data',
-    #     'listed_response': listed_response,
-    #     'listed_response type': type(listed_response)
-    #     })
+    logger.info({
+        'action': 'select_data',
+        'listed_response': listed_response,
+        'listed_response type': type(listed_response)
+        })
 
     #ここにdate関係を書く
     date_instance = date.My_date(listed_response)
     changed_listed_response = date_instance.change_to_date()
 
-    # logger.info({
-    #     'action': 'select_data',
-    #     'changed_listed_response': changed_listed_response,
-    #     # 'changed_listed_response length': len(changed_listed_response)
-    #     })
-
-    result = date_instance.compare_date()
-
     logger.info({
         'action': 'select_data',
-        'result': result
+        'changed_listed_response': changed_listed_response,
         # 'changed_listed_response length': len(changed_listed_response)
-        })
-    setted_datas = date_instance.set_datas()
-
-    logger.info({
-        'action': 'select_data',
-        'setted_datas': setted_datas,
-        'setted_datas type': type(setted_datas)
         })
 
     pandas_instance = util.My_pandas_data(changed_listed_response)
