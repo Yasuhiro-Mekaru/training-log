@@ -36,11 +36,11 @@ class My_date(object):
 			#リストに代入
 			data[0] = changed_to_date
 
-		logger.info({
-			'action': 'date.py change_to_date',
-			'changed_datas': self.datas,
-			'change_data type': type(self.datas[0][0])
-			})
+		# logger.info({
+		# 	'action': 'date.py change_to_date',
+		# 	'changed_datas': self.datas,
+		# 	'change_data type': type(self.datas[0][0])
+		# 	})
 
 		return self.datas
 
@@ -79,12 +79,12 @@ class My_date(object):
 
 		sliced_datas = self.datas[0:6]
 		sliced_datas_len = len(sliced_datas)
-		logger.info({
-			'action': 'date.py set_datas',
-			'sliced_datas': sliced_datas,
-			'sliced_datas length': sliced_datas_len,
-			'self. type': type(sliced_datas[0][0])
-			})
+		# logger.info({
+		# 	'action': 'date.py set_datas',
+		# 	'sliced_datas': sliced_datas,
+		# 	'sliced_datas length': sliced_datas_len,
+		# 	'self. type': type(sliced_datas[0][0])
+		# 	})
 
 		new_datas = []
 		i = 0
