@@ -49,31 +49,39 @@ class My_bokeh_chart(object):
 	               title='Milage Line_Chart',
 	               tools=[hover_tool, tools])
 
-	    # 終値の描画設定
-	    p.circle(x='index',
-	             y='Milage',
-	             source=source,
-	             size=1,
-	             line_color='red',
-	             fill_color='red',
-	             fill_alpha=0.3)
+	    p.vbar(
+	    	x='index',
+	    	top='Milage',
+	    	source=source,
+	    	width=0.3,
+	    	bottom=0,
+	    	color='firebrick')
 
-	    # 終値のラインを設定
-	    p.line(x='index',
-	           y='Milage',
-	           source=source,
-	           line_color='blue',
-	           line_alpha=0.5,
-	           legend='Milage',
-	          )
+	    # # 終値の描画設定
+	    # p.circle(x='index',
+	    #          y='Milage',
+	    #          source=source,
+	    #          size=1,
+	    #          line_color='red',
+	    #          fill_color='red',
+	    #          fill_alpha=0.3)
 
-	    # SMA28のラインを設定
-	    p.line(x='index',
-	          y='Elevation',
-	          source=source,
-	          line_color='orange',
-	          line_alpha=1.0,
-	          legend='Elevation')
+	    # # 終値のラインを設定
+	    # p.line(x='index',
+	    #        y='Milage',
+	    #        source=source,
+	    #        line_color='blue',
+	    #        line_alpha=0.5,
+	    #        legend='Milage',
+	    #       )
+
+	    # # SMA28のラインを設定
+	    # p.line(x='index',
+	    #       y='Elevation',
+	    #       source=source,
+	    #       line_color='orange',
+	    #       line_alpha=1.0,
+	    #       legend='Elevation')
 
 	    logger.info({
 	    	'action': 'bokeh_chart.py',
