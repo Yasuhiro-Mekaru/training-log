@@ -1,3 +1,4 @@
+import calendar
 import logging
 
 import pandas as pd
@@ -15,8 +16,9 @@ logger.info({
 
 
 class My_pandas_data(object):
-	def __init__(self, datas):
+	def __init__(self, datas, target_distance):
 		self.datas = datas
+		self.target_distance = target_distance
 
 
 	def create_data_frame(self):
@@ -24,5 +26,53 @@ class My_pandas_data(object):
 		df.columns = ['Date', 'Milage', 'Elevation']
 		df = df.set_index('Date')
 		df.index = pd.to_datetime(df.index)
+
+		length = len(self.datas)
+
+		# milage_dataを合計していく処理
+		added_milage_data = []
+		for i in range(length):
+			if i == 0:
+				added_milage_data.append(datas[i][1])
+			else:
+				datas[i][1] = datas[i][1] + datas[i-1][1]
+				added_milage_data.append(datas[i][1])
+
+		# elevation_dataを合計していく処理
+		added_elevation_data = []
+		for i in range(length):
+			if i == 0:
+				added_elevation_data.append(datas[i][2])
+			else:
+				datas[i][2] = datas[i][2] + datas[i-1][2]
+				added_elevation_data.append(datas[i][2])
+
+		#dfのカラムに追加
+		df['Sum_milage'] = added_milage_data
+		df['Sum_elevation'] = added_elevation_data
+
+		counts_in_month = calendar.monthrange(2020, 8)
+		average_in_month = target_distance / counts_in_month[1]
+		daily_target = round(average_in_month)
+
+		daily_list = []
+		for _ in range(length):
+			daily_list.append(daily_target)
+
+		added_daily_target_data = []
+		for i in range(length):
+			if i == 0:
+				added_daily_target_data.append(daily_list[i])
+			else:
+				daily_list[i] = daily_list[i] + daily_list[i-1]
+				added_daily_target_data.append(daily_list[i])
+
+		#dfのカラムに追加
+		df['Daily_target'] = daily_list
+		df['Sum_target'] = added_daily_target_data
+
+		df['Daily_diff'] = df['Milage'] - df['Daily_target']
+		df['Sum_diff'] = df['Sum_milage'] - df['Sum_target']
+		df['Target_diff'] = target_distance - df['Sum_milage']
 
 		return df
