@@ -53,7 +53,7 @@ class My_bokeh_chart(object):
 	    	x='index',
 	    	top='Milage',
 	    	source=source,
-	    	width=10.0,
+	    	width=0.3,
 	    	bottom=0,
 	    	color='firebrick')
 

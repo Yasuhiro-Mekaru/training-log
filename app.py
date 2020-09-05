@@ -80,31 +80,6 @@ def test1():
     return 'Success'
 
 
-@app.route('/test2', methods=['POST'])
-def test2():
-    posted_data = request.data
-    logger.info({
-        'action': 'test2',
-        'posted_data': posted_data
-        })
-    posted_data_type = type(posted_data)
-    logger.info({
-        'action': 'test2',
-        'posted_data_type': posted_data_type
-        })
-    loaded_data = json.loads(posted_data)
-    logger.info({
-        'action': 'test2',
-        'loaded_data': loaded_data
-        })
-    loaded_data_type = type(loaded_data)
-    logger.info({
-        'action': 'test2',
-        'loaded_data_type': loaded_data_type
-        })
-    return 'Success'
-
-
 
 
 
@@ -155,11 +130,11 @@ def select_data():
 
     datebase = db.My_log_database(loaded_data)
     response = datebase.select_data()
-    logger.info({
-        'action': 'select_data',
-        #'response': response,
-        'response type': type(response)
-        })
+    # logger.info({
+    #     'action': 'select_data',
+    #     'response': response,
+    #     'response type': type(response)
+    #     })
     listed_response = []
     for data in response:
         listed_data = list(data)
@@ -178,7 +153,7 @@ def select_data():
     logger.info({
         'action': 'select_data',
         'changed_listed_response': changed_listed_response,
-        # 'changed_listed_response length': len(changed_listed_response)
+        'changed_listed_response length': len(changed_listed_response)
         })
 
     # date_instance.set_datas()
@@ -207,17 +182,17 @@ def select_data():
         'div': div
     }
 
-    logger.info({
-        'action': 'select_data',
-        'response_datas type': type(response_datas),
-        })
+    # logger.info({
+    #     'action': 'select_data',
+    #     'response_datas type': type(response_datas),
+    #     })
 
     response_datas = json.dumps(response_datas)
 
-    logger.info({
-        'action': 'select_data',
-        'response_datas changed type': type(response_datas),
-        })
+    # logger.info({
+    #     'action': 'select_data',
+    #     'response_datas changed type': type(response_datas),
+    #     })
 
 
     return jsonify(response_datas)
