@@ -33,11 +33,11 @@ class My_date(object):
 			#リストに代入
 			data[0] = changed_to_date
 
-		# logger.info({
-		# 	'action': 'date.py change_to_date',
-		# 	'changed_datas': self.datas,
-		# 	'change_data type': type(self.datas[0][0])
-		# 	})
+		logger.info({
+			'action': 'date.py change_to_date',
+			'changed_datas': self.datas,
+			'change_data type': type(self.datas[0][0])
+			})
 
 		return self.datas
 
