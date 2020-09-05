@@ -29,7 +29,7 @@ class My_date(object):
 			#datetimeインスタンスをdateインスタンスに変更する
 			changed_to_date = datetime_instance.date()
 			# #dateインスタンスをstrftimeメソッドで文字列に変換する
-			# changed_to_str = changed_to_date.strftime(changed_date_format)
+			changed_to_str = changed_to_date.strftime(changed_date_format)
 			#リストに代入
 			data[0] = changed_to_date
 
