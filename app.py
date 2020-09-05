@@ -123,9 +123,12 @@ def select_data():
     posted_data = request.get_data()
     loaded_data = json.loads(posted_data)
 
+    target_distance = loaded_data['target_distance']
+
     logger.info({
         'action': 'select_data',
-        'loaded_data': loaded_data
+        'loaded_data': loaded_data,
+        'target_distance': target_distance
         })
 
     datebase = db.My_log_database(loaded_data)
@@ -158,7 +161,7 @@ def select_data():
 
     # date_instance.set_datas()
 
-    pandas_instance = util.My_pandas_data(changed_listed_response)
+    pandas_instance = util.My_pandas_data(changed_listed_response, target_distance)
     df = pandas_instance.create_data_frame()
 
     logger.info({

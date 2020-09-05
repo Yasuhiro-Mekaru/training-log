@@ -51,9 +51,11 @@ class My_pandas_data(object):
 		df['Sum_milage'] = added_milage_data
 		df['Sum_elevation'] = added_elevation_data
 
+		# calendarモジュールで当該月の日数を取得し、日割りの目標値を取得する処理
 		counts_in_month = calendar.monthrange(2020, 8)
-		average_in_month = target_distance / counts_in_month[1]
+		average_in_month = self.target_distance / counts_in_month[1]
 		daily_target = round(average_in_month)
+
 
 		daily_list = []
 		for _ in range(length):
@@ -73,6 +75,6 @@ class My_pandas_data(object):
 
 		df['Daily_diff'] = df['Milage'] - df['Daily_target']
 		df['Sum_diff'] = df['Sum_milage'] - df['Sum_target']
-		df['Target_diff'] = target_distance - df['Sum_milage']
+		df['Target_diff'] = self.target_distance - df['Sum_milage']
 
 		return df

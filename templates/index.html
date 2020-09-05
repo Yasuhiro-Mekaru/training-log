@@ -174,9 +174,11 @@
 				$('#button_to_chart_page').click(function(){
 					let table = 'milage_log';
 					let target_id = 51;
+					let target_distance = 2000;
 					let data = {
 						'table': table,
-						'target_id': target_id
+						'target_id': target_id,
+						'target_distance': target_distance
 					}
 					console.log('chart button clicked');
 					//Ajax
