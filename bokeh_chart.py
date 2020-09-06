@@ -34,64 +34,64 @@ class My_bokeh_chart(object):
 
 	    # チャート内のツールチップのツールチップを設定
 		milage_hover_tool = HoverTool(
-	    	tooltips=[
-	    		('日付', "@index{%F}"),
-	    		('当日走行距離', '@Milage'+' (km)'),
-	    		('合計走行距離', '@Sum_milage'+'( km)'),
-	    		('目標距離', '@Sum_target'+' (km)')],
-	    	formatters={
-	    		'index': 'datetime',
-	    		},
-	    	mode='mouse')
+	    		tooltips=[
+		    		('日付', "@index{%F}"),
+		    		('当日走行距離', '@Milage'+' (km)'),
+		    		('合計走行距離', '@Sum_milage'+'( km)'),
+		    		('目標距離', '@Sum_target'+' (km)')],
+	    		formatters={
+		    		'index': 'datetime',
+		    		},
+	    		mode='mouse')
 
 		elevation_hover_tool = HoverTool(
-			tooltips=[
-				('日付', "@index{%F}"),
-				('当日獲得標高', "@Elevation"+' (m)'),
-				('合計獲得標高', '@Sum_elevation'+' (m)')],
-			formatters={
-				'index': 'datetime',
-				},
-			mode='mouse')
+				tooltips=[
+					('日付', "@index{%F}"),
+					('当日獲得標高', "@Elevation"+' (m)'),
+					('合計獲得標高', '@Sum_elevation'+' (m)')],
+				formatters={
+					'index': 'datetime',
+					},
+				mode='mouse')
 		left_plot = figure(
-		    x_axis_type="datetime",
-		    x_axis_label = "date",
-		    y_axis_label = "distance(km)",
-		    title='Milage Line_Chart',
-		    tools=[milage_hover_tool, tools]
-		)
+			    x_axis_type="datetime",
+			    x_axis_label = "date",
+			    y_axis_label = "distance(km)",
+			    title='Milage Line_Chart',
+			    tools=[milage_hover_tool, tools]
+			)
 		left_plot.line(
-		    x = "index",
-		    y = "Sum_milage",
-		    source = source,
-		    legend = "走行距離",
-		    color = "blue",
-		    line_width = 2
-		)
+			    x = "index",
+			    y = "Sum_milage",
+			    source = source,
+			    legend = "走行距離",
+			    color = "blue",
+			    line_width = 2
+			)
 		left_plot.line(
-		    x = "index",
-		    y = "Sum_target",
-		    source = source,
-		    legend = "目標値",
-		    color = "red",
-		    line_width = 2
-		)
+			    x = "index",
+			    y = "Sum_target",
+			    source = source,
+			    legend = "目標値",
+			    color = "red",
+			    line_width = 2
+			)
 
 		right_plot = figure(
-		    x_axis_type="datetime",
-		    x_axis_label = "date",
-		    y_axis_label = "height(m)",
-		    title='Elevation Line_Chart',
-		    tools=[elevation_hover_tool, tools]
-		)
+			    x_axis_type="datetime",
+			    x_axis_label = "date",
+			    y_axis_label = "height(m)",
+			    title='Elevation Line_Chart',
+			    tools=[elevation_hover_tool, tools]
+			)
 		right_plot.line(
-		    x = "index",
-		    y = "Sum_elevation",
-		    source = source,
-		    legend = "獲得標高",
-		    color = "blue",
-		    line_width = 2
-		)
+			    x = "index",
+			    y = "Sum_elevation",
+			    source = source,
+			    legend = "獲得標高",
+			    color = "blue",
+			    line_width = 2
+			)
 
 		p = gridplot([[left_plot, right_plot]])
 
