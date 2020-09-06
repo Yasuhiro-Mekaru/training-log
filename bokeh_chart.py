@@ -3,6 +3,7 @@ import logging
 from bokeh.io import output_file, show
 from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource, HoverTool
+from bokeh.layouts import gridplot
 import pandas as pd
 
 
@@ -32,30 +33,105 @@ class My_bokeh_chart(object):
 	    tools = "pan,box_zoom,reset,save"
 
 	    # チャート内のツールチップのツールチップを設定
-	    hover_tool = HoverTool(
-	        tooltips=[
-	            ('index', "@index{%F %T}"),
-	            ('Milage', "@Milage"),
-	        ],
-	        formatters={
-	            'index': 'datetime',
-	        },
-	        mode='vline')
+	    milage_hover_tool = HoverTool(
+	    	tooltips=[
+	    		('日付', "@index{%F}"),
+	    		('当日走行距離', '@Milage'+' (km)'),
+	    		('合計走行距離', '@Sum_milage'+'( km)'),
+	    		('目標距離', '@Sum_target'+' (km)')],
+	    	formatters={
+	    		'index': 'datetime',
+	    		},
+	    	mode='mouse')
 
-	    # figureオブジェクトを生成
-	    p = figure(x_axis_type="datetime",
-	               plot_width=1000,
-	               plot_height=400,
-	               title='Milage Line_Chart',
-	               tools=[hover_tool, tools])
+		elevation_hover_tool = HoverTool(
+			tooltips=[
+				('日付', "@index{%F}"),
+				('当日獲得標高', "@Elevation"+' (m)'),
+				('合計獲得標高', '@Sum_elevation'+' (m)')],
+			formatters={
+				'index': 'datetime',
+				},
+			mode='mouse')
 
-	    p.vbar(
-	    	x='index',
-	    	top='Milage',
-	    	source=source,
-	    	width=0.3,
-	    	bottom=0,
-	    	color='firebrick')
+		left_plot = figure(
+		    x_axis_type="datetime",
+		    x_axis_label = "date",
+		    y_axis_label = "distance(km)",
+		    title='Milage Line_Chart',
+		    tools=[milage_hover_tool, tools]
+		)
+		left_plot.line(
+		    x = "index",
+		    y = "Sum_milage",
+		    source = source,
+		    legend = "走行距離",
+		    color = "blue",
+		    line_width = 2
+		)
+		left_plot.line(
+		    x = "index",
+		    y = "Sum_target",
+		    source = source,
+		    legend = "目標値",
+		    color = "red",
+		    line_width = 2
+		)
+
+		right_plot = figure(
+		    x_axis_type="datetime",
+		    x_axis_label = "date",
+		    y_axis_label = "height(m)",
+		    title='Elevation Line_Chart',
+		    tools=[elevation_hover_tool, tools]
+		)
+		right_plot.line(
+		    x = "index",
+		    y = "Sum_elevation",
+		    source = source,
+		    legend = "獲得標高",
+		    color = "blue",
+		    line_width = 2
+		)
+
+		p = gridplot([[left_plot, right_plot]])
+
+
+
+
+
+
+
+
+
+
+
+
+
+	    # hover_tool = HoverTool(
+	    #     tooltips=[
+	    #         ('index', "@index{%F %T}"),
+	    #         ('Milage', "@Milage"),
+	    #     ],
+	    #     formatters={
+	    #         'index': 'datetime',
+	    #     },
+	    #     mode='vline')
+
+	    # # figureオブジェクトを生成
+	    # p = figure(x_axis_type="datetime",
+	    #            plot_width=1000,
+	    #            plot_height=400,
+	    #            title='Milage Line_Chart',
+	    #            tools=[hover_tool, tools])
+
+	    # p.vbar(
+	    # 	x='index',
+	    # 	top='Milage',
+	    # 	source=source,
+	    # 	width=0.3,
+	    # 	bottom=0,
+	    # 	color='firebrick')
 
 	    # # 終値の描画設定
 	    # p.circle(x='index',
