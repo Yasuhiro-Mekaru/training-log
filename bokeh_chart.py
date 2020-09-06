@@ -44,7 +44,7 @@ class My_bokeh_chart(object):
 	    		},
 	    	mode='mouse')
 
-		elevation_hover_tool = HoverTool(
+	    elevation_hover_tool = HoverTool(
 			tooltips=[
 				('日付', "@index{%F}"),
 				('当日獲得標高', "@Elevation"+' (m)'),
@@ -54,7 +54,7 @@ class My_bokeh_chart(object):
 				},
 			mode='mouse')
 
-		left_plot = figure(
+	    left_plot = figure(
 		    x_axis_type="datetime",
 		    x_axis_label = "date",
 		    y_axis_label = "distance(km)",
