@@ -33,7 +33,7 @@ class My_bokeh_chart(object):
 	    tools = "pan,box_zoom,reset,save"
 
 	    # チャート内のツールチップのツールチップを設定
-        milage_hover_tool = HoverTool(
+	    milage_hover_tool = HoverTool(
 	    		tooltips=[
 		    		('日付', "@index{%F}"),
 		    		('当日走行距離', '@Milage'+' (km)'),
