@@ -33,19 +33,19 @@ class My_pandas_data(object):
 		added_milage_data = []
 		for i in range(length):
 			if i == 0:
-				added_milage_data.append(datas[i][1])
+				added_milage_data.append(self.datas[i][1])
 			else:
-				datas[i][1] = datas[i][1] + datas[i-1][1]
-				added_milage_data.append(datas[i][1])
+				self.datas[i][1] = self.datas[i][1] + self.datas[i-1][1]
+				added_milage_data.append(self.datas[i][1])
 
 		# elevation_dataを合計していく処理
 		added_elevation_data = []
 		for i in range(length):
 			if i == 0:
-				added_elevation_data.append(datas[i][2])
+				added_elevation_data.append(self.datas[i][2])
 			else:
-				datas[i][2] = datas[i][2] + datas[i-1][2]
-				added_elevation_data.append(datas[i][2])
+				self.datas[i][2] = self.datas[i][2] + self.datas[i-1][2]
+				added_elevation_data.append(self.datas[i][2])
 
 		#dfのカラムに追加
 		df['Sum_milage'] = added_milage_data
@@ -55,7 +55,6 @@ class My_pandas_data(object):
 		counts_in_month = calendar.monthrange(2020, 8)
 		average_in_month = self.target_distance / counts_in_month[1]
 		daily_target = round(average_in_month)
-
 
 		daily_list = []
 		for _ in range(length):
