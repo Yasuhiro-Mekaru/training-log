@@ -40,7 +40,7 @@ logging.info({
 def hello():
     data = {'table': 'target_distance'}
     database = db.My_log_database(data)
-    response = datebase.select_data()
+    response = database.select_data()
     logger.info({
         'action': 'root',
         'response': response,
@@ -112,8 +112,8 @@ def  insert_data():
         'loaded_data': loaded_data
         })
 
-    datebase = db.My_log_database(loaded_data)
-    datebase.insert_data()
+    database = db.My_log_database(loaded_data)
+    database.insert_data()
 
     return 'Success', 201
 
@@ -129,8 +129,8 @@ def delete_data():
         'loaded_data': loaded_data
         })
 
-    datebase = db.My_log_database(loaded_data)
-    datebase.delete_data()
+    database = db.My_log_database(loaded_data)
+    database.delete_data()
 
     return 'Deleted'
 
@@ -149,8 +149,8 @@ def select_data():
         'target_distance': target_distance
         })
 
-    datebase = db.My_log_database(loaded_data)
-    response = datebase.select_data()
+    database = db.My_log_database(loaded_data)
+    response = database.select_data()
     # logger.info({
     #     'action': 'select_data',
     #     'response': response,
