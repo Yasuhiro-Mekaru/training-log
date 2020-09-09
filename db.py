@@ -51,6 +51,36 @@ class My_log_database(object):
 			    'status': 'Connection Closed'
 			    })
 			return datas
+
+		elif self.data['table'] == 'target_distance':
+			table = self.data['table']
+			logger.info({
+				'action': 'select_data',
+				'table': table
+			    })
+			# MySQL にコネクトし Delete文を実行
+			conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
+			    ssl_disabled=True)
+			cursor = conn.cursor()
+			datas = []
+			cursor.execute('SELECT id, month, monthly_value from {table}'.format(table=table))
+			for row in cursor:
+				datas.append(row)
+			logger.info({
+			    'action': 'select_data row',
+			    'datas[0]: ': datas[0],
+			    'datas type: ': type(datas[0]),
+			    #'datas:': datas,
+			    'datas type:': type(datas)
+			    })
+			cursor.close()
+			conn.close()
+			logger.info({
+			    'action': 'select_data: target_distance',
+			    'status': 'Connection Closed'
+			    })
+			return datas
+
 		
 
 	def insert_data(self):

@@ -38,6 +38,24 @@ logging.info({
 
 @app.route("/", methods=['GET'])
 def hello():
+    data = {'table': 'target_distance'}
+    database = db.My_log_database(data)
+    response = datebase.select_data()
+    logger.info({
+        'action': 'root',
+        'response': response,
+        'response type': type(response)
+        })
+    listed_response = []
+    for data in response:
+        listed_data = list(data)
+        listed_response.append(listed_data)
+
+    logger.info({
+        'action': 'root',
+        'listed_response': listed_response,
+        'listed_response type': type(listed_response)
+        })
     return render_template('index.html')
 
 
