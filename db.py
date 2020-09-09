@@ -19,36 +19,38 @@ class My_log_database(object):
 
 
 	def select_data(self):
-		table = self.data['table']
-		target_id = self.data['target_id']
-		logger.info({
-			'action': 'select_data',
-			'table': table,
-			'target_id': target_id,
-			'target_id type': type(target_id)
-		    })
-		# MySQL にコネクトし Delete文を実行
-		conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
-		    ssl_disabled=True)
-		cursor = conn.cursor()
-		datas = []
-		cursor.execute('SELECT date, sum(milage), sum(elevation) from {table} where target_id={target_id} group by date'.format(table=table, target_id=target_id))
-		for row in cursor:
-			datas.append(row)
-		logger.info({
-		    'action': 'select_data row',
-		    'datas[0]: ': datas[0],
-		    'datas type: ': type(datas[0]),
-		    #'datas:': datas,
-		    'datas type:': type(datas)
-		    })
-		cursor.close()
-		conn.close()
-		logger.info({
-		    'action': 'select_data: milage_log',
-		    'status': 'Connection Closed'
-		    })
-		return datas
+		# Insert するテーブルによって処理を分岐する
+		if self.data['table'] == 'milage_log':
+			table = self.data['table']
+			target_id = self.data['target_id']
+			logger.info({
+				'action': 'select_data',
+				'table': table,
+				'target_id': target_id,
+				'target_id type': type(target_id)
+			    })
+			# MySQL にコネクトし Delete文を実行
+			conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
+			    ssl_disabled=True)
+			cursor = conn.cursor()
+			datas = []
+			cursor.execute('SELECT date, sum(milage), sum(elevation) from {table} where target_id={target_id} group by date'.format(table=table, target_id=target_id))
+			for row in cursor:
+				datas.append(row)
+			logger.info({
+			    'action': 'select_data row',
+			    'datas[0]: ': datas[0],
+			    'datas type: ': type(datas[0]),
+			    #'datas:': datas,
+			    'datas type:': type(datas)
+			    })
+			cursor.close()
+			conn.close()
+			logger.info({
+			    'action': 'select_data: milage_log',
+			    'status': 'Connection Closed'
+			    })
+			return datas
 		
 
 	def insert_data(self):
