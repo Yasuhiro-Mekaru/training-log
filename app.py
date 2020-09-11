@@ -1,7 +1,7 @@
 import json
 import logging
 
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, redirect
 import numpy as np
 import pandas as pd
 import bokeh
@@ -60,7 +60,7 @@ def hello():
 
 @app.route('/login', methods=['GET'])
 def login():
-    return render_template('login.html')
+    return redirect('login.html')
 
 
 
