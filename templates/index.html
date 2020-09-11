@@ -39,6 +39,7 @@
 			<p>push the under button to input your training log.</p>
 		</div>
 		<div>
+			<input type="button" value="Login" id="button_to_login">
 			<input type="button" value="To Input Menu" id="button_to_input_page">
 			<input type="button" value="To Chart Menu" id="button_to_chart_page">
 		</div>
@@ -194,6 +195,17 @@
 						console.log('r.div: ' + response_data.div);
 						$('#test1').html(response_data.script);
 						$('#test2').html(response_data.div);
+						})
+				})
+
+				//ログインページを表示する処理
+				$('#button_to_login').click(function(){
+					$.ajax({
+						type: 'GET',
+						contentType: 'application/json',
+	                    url: 'https://training-logs.herokuapp.com/login', 
+					}).then(function(response){
+						console.log('login response: ' + response);
 					})
 				})
 			});

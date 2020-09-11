@@ -34,6 +34,7 @@ logging.info({
     'version': bokeh.__version__
     })
 
+TARGET_DISTANCE = []
 
 
 @app.route("/", methods=['GET'])
@@ -46,17 +47,20 @@ def hello():
         'response': response,
         'response type': type(response)
         })
-    listed_response = []
-    for data in response:
+    for datas in response:
         listed_data = list(data)
-        listed_response.append(listed_data)
+        TARGET_DISTANCE.append(listed_data)
 
     logger.info({
         'action': 'root',
-        'listed_response': listed_response,
-        'listed_response type': type(listed_response)
+        'TARGET_DISTANCE ': TARGET_DISTANCE 
         })
-    return render_template('index.html')
+    return render_template('index.html', datas=TARGET_DISTANCE)
+
+
+@app.route('/login', methods=['GET'])
+def login():
+    return render_template('login.html')
 
 
 
@@ -69,35 +73,6 @@ def reply():
       "Answer":{"Text": answer}
     }
     return jsonify(result)
-
-
-
-# Test
-@app.route('/test1', methods=['POST'])
-def test1():
-    posted_data = request.get_data()
-    logger.info({
-        'action': 'test1',
-        'posted_data': posted_data
-        })
-    posted_data_type = type(posted_data)
-    logger.info({
-        'action': 'test1',
-        'posted_data_type': posted_data_type
-        })
-    loaded_data = json.loads(posted_data)
-    logger.info({
-        'action': 'test1',
-        'loaded_data': loaded_data
-        })
-    loaded_data_type = type(loaded_data)
-    logger.info({
-        'action': 'test1',
-        'loaded_data_type': loaded_data_type
-        })
-    return 'Success'
-
-
 
 
 
