@@ -13,8 +13,23 @@ logger.info({
 
 class My_date(object):
 	"""docstring for My_date"""
-	def __init__(self, datas):
+	def __init__(self, datas=None):
 		self.datas = datas
+
+
+	def today_date():
+		# datetime で今日の日付け情報をdateオブジェクトとして取得
+		today = datetime.date.today()
+		# dateオブジェクトを文字列に変更
+		changed_to_str = changed_to_date.strftime(changed_date_format)
+
+		logger.info({
+			'action': 'date.py today_date',
+			'changed_to_str': changed_to_str,
+			'changed_to_str type': type(changed_to_str)
+			})
+		return changed_to_str
+
 
 
 	def change_to_date(self):

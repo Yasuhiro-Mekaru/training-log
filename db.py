@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 class My_log_database(object):
 
-	def __init__(self, data):
+	def __init__(self, data=None):
 		self.data = data
 
 

@@ -48,13 +48,21 @@ def hello():
         'response type': type(response)
         })
     for datas in response:
-        listed_data = list(data)
+        listed_data = list(datas)
         TARGET_DISTANCE.append(listed_data)
 
     logger.info({
         'action': 'root',
         'TARGET_DISTANCE ': TARGET_DISTANCE 
         })
+    date_instance = date.My_date()
+    today = date_instance.today_date()
+    logger.info({
+        'action': 'root',
+        'today': today,
+        'today type': type(today)
+        })
+    
     return render_template('index.html', datas=TARGET_DISTANCE)
 
 

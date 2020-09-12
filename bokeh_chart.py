@@ -18,7 +18,7 @@ logger.info({
 
 class My_bokeh_chart(object):
 	"""docstring for My_bokeh_chart"""
-	def __init__(self, df):
+	def __init__(self, df=None):
 		self.df = df
 
 
