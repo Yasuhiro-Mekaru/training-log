@@ -200,13 +200,7 @@
 
 				//ログインページを表示する処理
 				$('#button_to_login').click(function(){
-					$.ajax({
-						type: 'GET',
-						contentType: 'application/json',
-	                    url: 'https://training-logs.herokuapp.com/login', 
-					}).then(function(response){
-						console.log('login response: ' + response);
-					})
+					window.location.href = 'https://training-logs.herokuapp.com/login'
 				})
 			});
 		</script>

@@ -60,7 +60,7 @@ def hello():
 
 @app.route('/login', methods=['GET'])
 def login():
-    return redirect('login.html')
+    return render_template('login.html')
 
 
 
