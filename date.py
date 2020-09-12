@@ -17,7 +17,7 @@ class My_date(object):
 		self.datas = datas
 
 
-	def today_date():
+	def today_date(self):
 		# datetime で今日の日付け情報をdateオブジェクトとして取得
 		today = datetime.date.today()
 		# dateオブジェクトを文字列に変更
