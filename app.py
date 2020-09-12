@@ -62,7 +62,7 @@ def hello():
         'today': today,
         'today type': type(today)
         })
-    
+
     return render_template('index.html', datas=TARGET_DISTANCE)
 
 
@@ -70,6 +70,11 @@ def hello():
 def login():
     return render_template('login.html')
 
+
+
+@app.route('/bicycle_contents', methods=['GET'])
+def bicycle_contents():
+    return render_template('bicycle_contents.html')
 
 
 
