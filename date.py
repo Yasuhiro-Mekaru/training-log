@@ -21,7 +21,8 @@ class My_date(object):
 		# datetime で今日の日付け情報をdateオブジェクトとして取得
 		today = datetime.date.today()
 		# dateオブジェクトを文字列に変更
-		changed_to_str = changed_to_date.strftime(today)
+		date_format = '%Y-%m-%d'
+		changed_to_str = today.strftime(date_format)
 
 		logger.info({
 			'action': 'date.py today_date',
