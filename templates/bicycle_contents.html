@@ -15,7 +15,7 @@
 	    	}
 	    	#test_dialog {
 	    		width: 90%;
-	    		height: 75%;
+	    		height: 50%;
 	    	}
 	    </style>
 
@@ -42,10 +42,13 @@
 			<p>Welcome To Training Log Application</p>
 			<p>push the under button to input your training log.</p>
 		</div>
-		<input type="button" value="dialog" id="button_to_dialog">
+		<div>
+			<input type="button" value="Input Dialog" id="button_to_input_dialog">
+			<input type="button" value="Chart Dialog" id="button_to_chart_dialog">
+		</div>
 
 		<div>
-			<dialog id="test_dialog">
+			<dialog id="input_dialog">
 				<p>Input Your Log of Training</p>
 				<br/>
 				<p>
@@ -62,18 +65,25 @@
 				</p>
 				<p>
 					<label>weather_id: </label>
-					<input type="text" name="date" id="input_weather_id">
+					<!-- <input type="text" name="date" id="input_weather_id"> -->
 					<select id="select_weather"></select>
 				</p>
 				<p>
 					<label>target_id: </label>
 					<input type="text" name="date" id="input_target_id">
 				</p>
+				<br/>
 				<p>
 					<input type="button" value="INPUT" id="button_input_to_db">
 				</p>
 				<br/>
 				<input type="button" value="back" id="button_back">
+			</dialog>
+		</div>
+
+		<div>
+			<dialog id="chart_dialog">
+				<p>test</p>
 			</dialog>
 		</div>
 
@@ -144,17 +154,17 @@
 					$('#select_weather').append('<option value="' + options[i][1] + '">' + options[i][0] + '</option>');
 				}
 
-				//logデータを入力するブロックを表示する処理
-				$('#button_to_input_page').click(function(){
-					console.log('input_block fadeIn');
-					$('#input_block').fadeIn();
-				});
+				// //logデータを入力するブロックを表示する処理
+				// $('#button_to_input_page').click(function(){
+				// 	console.log('input_block fadeIn');
+				// 	$('#input_block').fadeIn();
+				// });
 
-				//Top画面に戻る処理
-				$('#button_back_to_top').click(function(){
-					console.log('input_block fadeOut');
-					$('#input_block').fadeOut();
-				})
+				// //Top画面に戻る処理
+				// $('#button_back_to_top').click(function(){
+				// 	console.log('input_block fadeOut');
+				// 	$('#input_block').fadeOut();
+				// })
 
 				let weather_id;
 				$('#select_weather').change(function(){
@@ -243,13 +253,21 @@
 				})
 
 
-				$('#button_to_dialog').click(function(){
-					$('#test_dialog').fadeIn();
+				$('#button_to_input_dialog').click(function(){
+					$('#input_dialog').fadeIn('slow');
 				})
 
 				$('#button_back').click(function(){
-					$('#test_dialog').fadeOut();
+					$('#input_dialog').fadeOut('slow');
 				})
+
+				$('#button_to_chart_dialog').click(function(){
+					$('#input_dialog').fadeIn('slow');
+				})
+
+				// $('#button_back').click(function(){
+				// 	$('#input_dialog').fadeOut('slow');
+				// })
 			});
 		</script>
 
