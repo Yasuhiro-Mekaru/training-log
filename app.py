@@ -84,15 +84,15 @@ def bicycle_contents():
 
 @app.route('/get_data', methods=['GET'])
 def get_data():
-    # posted_data = request.get_data()
-    # loaded_data = json.loads(posted_data)
+    posted_data = request.get_data()
+    loaded_data = json.loads(posted_data)
 
-    # logger.info({
-    #     'action': 'insert_data',
-    #     'loaded_data': loaded_data
-    #     })
-    # return jsonify(loaded_data)
-    return 'Successfully'
+    logger.info({
+        'action': 'insert_data',
+        'loaded_data': loaded_data
+        })
+    return jsonify(loaded_data)
+    # return 'Successfully'
 
 
 
