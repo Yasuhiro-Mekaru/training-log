@@ -76,6 +76,9 @@ def get_data():
         "loaded_data['button_id']": loaded_data['button_id'],
         "loaded_data['button_id'] type": type(loaded_data['button_id'])
         })
+    data = {
+        'today': today
+    }
 
     # クライアントから送られてきた button_id の値に応じて処理を分岐
     if loaded_data['button_id'] == 'button_to_input_dialog':
@@ -83,8 +86,7 @@ def get_data():
             'action': 'get_data',
             "if ": today
             })
-
-        return today
+        return jsonify(data)
     else:
         return 'Why ?'
 
