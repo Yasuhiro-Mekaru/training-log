@@ -79,7 +79,14 @@ def get_data():
 
     # クライアントから送られてきた button_id の値に応じて処理を分岐
     if loaded_data['button_id'] == 'button_to_input_dialog':
+        logger.info({
+            'action': 'get_data',
+            "if ": today
+            })
+
         return today
+    else:
+        return 'Why ?'
 
     return 'Successfully'
 
