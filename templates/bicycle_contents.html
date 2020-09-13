@@ -276,9 +276,11 @@
 						console.log('get_data response type: ' + (typeof response));
 						$('#input_dialog').fadeIn('slow');
 						$('#input_date').val(response);
+					},function(error){
+						console.log('get_data error: ' + error);
 					});	
 				});
-				
+
 
 				$('#button_back').click(function(){
 					$('#input_dialog').fadeOut('slow');

@@ -84,19 +84,24 @@ def bicycle_contents():
 
 @app.route('/get_data', methods=['POST'])
 def get_data():
+    logger.info({
+        'action': 'get_data',
+        'TODAY': TODAY,
+        'TODAY type': type(TODAY)
+        })
+
     posted_data = request.get_data()
     loaded_data = json.loads(posted_data)
 
     logger.info({
-        'action': 'insert_data',
+        'action': 'get_data',
         'loaded_data': loaded_data
         })
-
     # クライアントから送られてきた button_id の値に応じて処理を分岐
     if loaded_data['button_id'] == 'button_to_input_dialog':
         return TODAY
-    else:
-        return 'Successfully'
+        
+    return 'Successfully'
 
 
 
