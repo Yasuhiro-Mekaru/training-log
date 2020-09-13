@@ -38,6 +38,15 @@
 			<p>Welcome To Training Log Application</p>
 			<p>push the under button to input your training log.</p>
 		</div>
+		<input type="button" value="dialog" id="button_to_dialog">
+
+		<div>
+			<dialog id="test_dialog">
+				<p>This is test</p>
+				<input type="button" value="back" id="button_back">
+			</dialog>
+		</div>
+
 		<div>
 			<input type="button" value="Login" id="button_to_login">
 			<input type="button" value="To Input Menu" id="button_to_input_page">
@@ -203,6 +212,15 @@
 				$('#button_to_login').click(function(){
 					window.location.href = 'https://training-logs.herokuapp.com/login'
 				})
+
+
+				$('#button_to_dialog').click(function(){
+					$('#test_dialog').show();
+				})
+
+				$('#button_back').click(function(){
+					$('#test_dialog').close();
+				})
 			});
 		</script>
 
@@ -213,6 +231,6 @@
     	<script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-tables-2.2.0.min.js"></script>
 
     	{{ script | safe }}
-		
+
 	</body>
 </html>
