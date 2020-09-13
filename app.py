@@ -78,6 +78,11 @@ def hello():
 
 @app.route('/bicycle_contents', methods=['GET'])
 def bicycle_contents():
+    logger.info({
+        'action': 'bicycle_contents',
+        'TODAY': TODAY,
+        'TODAY type': type(TODAY)
+        })
     return render_template('bicycle_contents.html')
 
 
@@ -100,7 +105,7 @@ def get_data():
     # クライアントから送られてきた button_id の値に応じて処理を分岐
     if loaded_data['button_id'] == 'button_to_input_dialog':
         return TODAY
-        
+
     return 'Successfully'
 
 
