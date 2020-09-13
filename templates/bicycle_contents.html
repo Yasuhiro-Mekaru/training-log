@@ -258,6 +258,9 @@
 				// })
 
 
+				// Input Dialog ボタンを押下した際の処理
+				// モーダルダイアログを表示する前にサーバーから当日の日付を取得する
+				// サーバーにボタンのidを渡してサーバー側でボタンの判定ができるようにする
 				$('#button_to_input_dialog').click(function(){
 					data = {
 						'button_id': 'button_to_input_dialog'
@@ -270,11 +273,12 @@
 						dataType: 'json'
 					}).then(function(response){
 						console.log('get_data response: ' + response);
+						console.log('get_data response type: ' + (typeof response));
 						$('#input_dialog').fadeIn('slow');
 						$('#input_date').val(response);
-					})
-					
-				})
+					});	
+				});
+				
 
 				$('#button_back').click(function(){
 					$('#input_dialog').fadeOut('slow');

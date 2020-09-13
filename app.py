@@ -91,8 +91,12 @@ def get_data():
         'action': 'insert_data',
         'loaded_data': loaded_data
         })
-    return jsonify(loaded_data)
-    # return 'Successfully'
+
+    # クライアントから送られてきた button_id の値に応じて処理を分岐
+    if loaded_data['button_id'] == 'button_to_input_dialog':
+        return TODAY
+    else:
+        return 'Successfully'
 
 
 
