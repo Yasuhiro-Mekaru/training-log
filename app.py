@@ -35,6 +35,8 @@ logging.info({
     })
 
 TARGET_DISTANCE = []
+TODAY = ''
+
 
 
 @app.route("/", methods=['GET'])
@@ -42,11 +44,11 @@ def hello():
     data = {'table': 'target_distance'}
     database = db.My_log_database(data)
     response = database.select_data()
-    logger.info({
-        'action': 'root',
-        'response': response,
-        'response type': type(response)
-        })
+    # logger.info({
+    #     'action': 'root',
+    #     'response': response,
+    #     'response type': type(response)
+    #     })
     for datas in response:
         listed_data = list(datas)
         TARGET_DISTANCE.append(listed_data)
@@ -62,19 +64,35 @@ def hello():
         'today': today,
         'today type': type(today)
         })
+    TODAY = today
 
-    return render_template('index.html', datas=TARGET_DISTANCE)
+    return render_template('index.html')
 
 
-@app.route('/login', methods=['GET'])
-def login():
-    return render_template('login.html')
+
+# @app.route('/login', methods=['GET'])
+# def login():
+#     return render_template('login.html')
 
 
 
 @app.route('/bicycle_contents', methods=['GET'])
 def bicycle_contents():
     return render_template('bicycle_contents.html')
+
+
+
+@app.route('/get_data', methods=['GET'])
+def get_data():
+    # posted_data = request.get_data()
+    # loaded_data = json.loads(posted_data)
+
+    # logger.info({
+    #     'action': 'insert_data',
+    #     'loaded_data': loaded_data
+    #     })
+    # return jsonify(loaded_data)
+    return 'Successfully'
 
 
 
