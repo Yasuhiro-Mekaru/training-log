@@ -34,38 +34,10 @@ logging.info({
     'version': bokeh.__version__
     })
 
-TARGET_DISTANCE = []
-TODAY = ''
-
 
 
 @app.route("/", methods=['GET'])
 def hello():
-    data = {'table': 'target_distance'}
-    database = db.My_log_database(data)
-    response = database.select_data()
-    # logger.info({
-    #     'action': 'root',
-    #     'response': response,
-    #     'response type': type(response)
-    #     })
-    for datas in response:
-        listed_data = list(datas)
-        TARGET_DISTANCE.append(listed_data)
-
-    logger.info({
-        'action': 'root',
-        'TARGET_DISTANCE ': TARGET_DISTANCE 
-        })
-    date_instance = date.My_date()
-    today = date_instance.today_date()
-    logger.info({
-        'action': 'root',
-        'today': today,
-        'today type': type(today)
-        })
-    TODAY = today
-
     return render_template('index.html')
 
 
@@ -78,23 +50,12 @@ def hello():
 
 @app.route('/bicycle_contents', methods=['GET'])
 def bicycle_contents():
-    logger.info({
-        'action': 'bicycle_contents',
-        'TODAY': TODAY,
-        'TODAY type': type(TODAY)
-        })
     return render_template('bicycle_contents.html')
 
 
 
 @app.route('/get_data', methods=['POST'])
 def get_data():
-    logger.info({
-        'action': 'get_data',
-        'TODAY': TODAY,
-        'TODAY type': type(TODAY)
-        })
-
     posted_data = request.get_data()
     loaded_data = json.loads(posted_data)
 
@@ -102,9 +63,18 @@ def get_data():
         'action': 'get_data',
         'loaded_data': loaded_data
         })
+
+    date_instance = date.My_date()
+    today = date_instance.today_date()
+    logger.info({
+        'action': 'root',
+        'today': today,
+        'today type': type(today)
+        })
+
     # クライアントから送られてきた button_id の値に応じて処理を分岐
     if loaded_data['button_id'] == 'button_to_input_dialog':
-        return TODAY
+        return today
 
     return 'Successfully'
 
