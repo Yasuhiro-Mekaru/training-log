@@ -67,9 +67,14 @@ def get_data():
     date_instance = date.My_date()
     today = date_instance.today_date()
     logger.info({
-        'action': 'root',
+        'action': 'get_data',
         'today': today,
         'today type': type(today)
+        })
+    logger.info({
+        'action': 'get_data',
+        "loaded_data['button_id']": loaded_data['button_id'],
+        "loaded_data['button_id'] type": type(loaded_data['button_id'])
         })
 
     # クライアントから送られてきた button_id の値に応じて処理を分岐
