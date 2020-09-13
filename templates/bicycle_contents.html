@@ -263,11 +263,11 @@
 						'button_id': 'button_to_input_dialog'
 					}
 					$.ajax({
-						type: 'POST',
+						type: 'GET',
 						contentType: 'application/json',
 						url: 'https://training-logs.herokuapp.com/get_data',
-						data: JSON.stringify(data),
-						dataType: 'json'
+						// data: JSON.stringify(data),
+						// dataType: 'json'
 					}).then(function(response){
 						console.log('get_data response: ' + response);
 						$('#input_dialog').fadeIn('slow');
