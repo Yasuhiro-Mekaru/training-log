@@ -82,7 +82,7 @@ def bicycle_contents():
 
 
 
-@app.route('/get_data', methods=['GET'])
+@app.route('/get_data', methods=['POST'])
 def get_data():
     posted_data = request.get_data()
     loaded_data = json.loads(posted_data)
