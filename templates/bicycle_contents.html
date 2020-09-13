@@ -274,8 +274,9 @@
 					}).then(function(response){
 						console.log('get_data response: ' + response);
 						console.log('get_data response type: ' + (typeof response));
+						let today = response['today'];
 						$('#input_dialog').fadeIn('slow');
-						$('#input_date').val(response);
+						$('#input_date').val(today);
 					},function(error){
 						console.log('get_data error: ' + error);
 					});	
