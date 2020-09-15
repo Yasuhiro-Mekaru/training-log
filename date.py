@@ -46,7 +46,7 @@ class My_date(object):
 			datetime_instance = datetime.datetime.strptime(data[0], date_format)
 			#datetimeインスタンスをdateインスタンスに変更する
 			changed_to_date = datetime_instance.date()
-			# #dateインスタンスをstrftimeメソッドで文字列に変換する
+			#dateインスタンスをstrftimeメソッドで文字列に変換する
 			changed_to_str = changed_to_date.strftime(changed_date_format)
 			#リストに代入
 			data[0] = changed_to_str
@@ -61,12 +61,20 @@ class My_date(object):
 
 
 	def get_first_day(self):
+		changed_date_format = '%Y-%m-%d'
 		logger.info({
 			'action': 'date.py get_first_day',
 			'self.today': self.today,
 			'self.today type': type(self.today)
 			})
-		return self.today.replace(day=1)
+		firstday = self.today.replace(day=1)
+		changed_to_str = firstday.strftime(changed_date_format)
+		logger.info({
+			'action': 'date.py get_first_day',
+			'changed_to_str': changed_to_str,
+			'changed_to_str type': type(changed_to_str)
+			})
+		return changed_to_str
 
 
 	
