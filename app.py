@@ -62,12 +62,30 @@ def get_data():
     # date.pyのMy_dateクラスのインスタンスを作成し、今日の日付を取得する処理
     date_instance = date.My_date()
     today = date_instance.today_date()
-
+    # 今日の日付から今月1日を取得する処理
     firstday = date_instance.get_first_day()
     logger.info({
         'action': 'get_data',
         'firstday': firstday,
         'firstday type': type(firstday)
+        })
+
+    database = db.My_log_database(loaded_data)
+    response = database.select_data()
+    # logger.info({
+    #     'action': 'select_data',
+    #     'response': response,
+    #     'response type': type(response)
+    #     })
+    listed_response = []
+    for data in response:
+        listed_data = list(data)
+        listed_response.append(listed_data)
+
+    logger.info({
+        'action': 'get_data',
+        'listed_response': listed_response,
+        'listed_response type': type(listed_response)
         })
 
     # クライアントから送られてきた button_id の値に応じて処理を分岐

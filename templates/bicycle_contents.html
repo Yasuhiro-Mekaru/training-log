@@ -263,7 +263,8 @@
 				// サーバーにボタンのidを渡してサーバー側でボタンの判定ができるようにする
 				$('#button_to_input_dialog').click(function(){
 					data = {
-						'button_id': 'button_to_input_dialog'
+						'button_id': 'button_to_input_dialog',
+						'table': 'target_distance'
 					}
 					$.ajax({
 						type: 'POST',
