@@ -276,9 +276,13 @@
 						console.log('get_data response: ' + response);
 						console.log('get_data response type: ' + (typeof response));
 						let today = response['today'];
+						let target_id = response['target_id'];
 						console.log('get_data today: ' + today);
+						console.log('get_data target_id' + target_id);
+
 						$('#input_dialog').fadeIn('slow');
 						$('#input_date').val(today);
+						$('#input_target_id').val(target_id);
 					},function(error){
 						console.log('get_data error: ' + error);
 					});	
