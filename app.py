@@ -91,6 +91,10 @@ def get_data():
     target_id = 0
     for data in listed_response:
         if data[1] == firstday:
+            logger.info({
+                'action': 'get_data',
+                'for if ': data[0]
+                })
             target_id = data[0]
     logger.info({
         'action': 'get_data',
