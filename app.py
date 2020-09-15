@@ -88,10 +88,22 @@ def get_data():
         'listed_response type': type(listed_response)
         })
 
+    target_id = 0
+    for data in listed_response:
+        if data[1] == firstday:
+            target_id = data[0]
+    logger.info({
+        'action': 'get_data',
+        'target_id': target_id,
+        'target_id type': type(target_id)
+        })
+
+
     # クライアントから送られてきた button_id の値に応じて処理を分岐
     if loaded_data['button_id'] == 'button_to_input_dialog':
         data = {
-            'today': today
+            'today': today,
+            'target_id': target_id
             }
         return jsonify(data)
     else:
