@@ -59,49 +59,25 @@ def get_data():
     posted_data = request.get_data()
     loaded_data = json.loads(posted_data)
 
-    logger.info({
-        'action': 'get_data',
-        'loaded_data': loaded_data
-        })
-
+    # date.pyのMy_dateクラスのインスタンスを作成し、今日の日付を取得する処理
     date_instance = date.My_date()
     today = date_instance.today_date()
+
+    firstday = date_instance.get_first_day()
     logger.info({
         'action': 'get_data',
-        'today': today,
-        'today type': type(today)
+        'firstday': firstday,
+        'firstday type': type(firstday)
         })
-    logger.info({
-        'action': 'get_data',
-        "loaded_data['button_id']": loaded_data['button_id'],
-        "loaded_data['button_id'] type": type(loaded_data['button_id'])
-        })
-    data = {
-        'today': today
-    }
 
     # クライアントから送られてきた button_id の値に応じて処理を分岐
     if loaded_data['button_id'] == 'button_to_input_dialog':
-        logger.info({
-            'action': 'get_data',
-            "if ": today
-            })
+        data = {
+            'today': today
+            }
         return jsonify(data)
     else:
         return 'Why ?'
-
-    return 'Successfully'
-
-
-
-@app.route('/reply', methods=['POST'])
-def reply():
-    data = json.loads(request.data)
-    answer = "Yes, it is %s!\n" % data["keyword"]
-    result = {
-      "Answer":{"Text": answer}
-    }
-    return jsonify(result)
 
 
 

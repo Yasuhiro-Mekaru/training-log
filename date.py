@@ -13,13 +13,15 @@ logger.info({
 
 class My_date(object):
 	"""docstring for My_date"""
-	def __init__(self, datas=None):
+	def __init__(self, datas=None, today=None):
 		self.datas = datas
+		self.today = today
 
 
 	def today_date(self):
 		# datetime で今日の日付け情報をdateオブジェクトとして取得
 		today = datetime.date.today()
+		self.today = today
 		# dateオブジェクトを文字列に変更
 		date_format = '%Y-%m-%d'
 		changed_to_str = today.strftime(date_format)
@@ -58,52 +60,16 @@ class My_date(object):
 		return self.datas
 
 
-	def compare_date(self):
+	def get_first_day(self):
 		logger.info({
-			'action': 'date.py compare_date',
-			'self.datas': self.datas,
-			'self. type': type(self.datas[0][0])
+			'action': 'date.py get_first_day',
+			'self.today': self.today,
+			'self.today type': type(self.today)
 			})
-
-		result1 = self.datas[0][0] == self.datas[1][0]
-		result2 = self.datas[1][0] == self.datas[2][0]
-		result3 = self.datas[2][0] == self.datas[3][0]
-		result4 = self.datas[3][0] == self.datas[4][0]
-		result5 = self.datas[4][0] == self.datas[5][0]
-
-		logger.info({
-			'action': 'date.py compare_date',
-			'result1': result1,
-			'result2': result2,
-			'result3': result3,
-			'result4': result4,
-			'result5': result5
-			})
-
-		return (result1, result2, result3, result4, result5)
+		return self.today.replace(day=1)
 
 
-	def set_datas(self):
-		new_lists = []
-		lists = []
-		for data in self.datas:
-			if not new_lists:
-				lists.append(data)
-				new_lists.append(lists)
-			else:
-				for new_list in new_lists:
-					for l in new_list:
-						if data[0] == l[0]:
-							lists.append(data)
-						else:
-							lists = []
-							lists.append(data)
-							new_lists.append(lists)
-		logger.info({
-			'action': 'date.py set_datas',
-			'new_lists': new_lists 
-			})
-
+	
 
 		
 
