@@ -269,8 +269,11 @@
 						dataType: 'json'
 					}).then(function(response){
 						console.log('get_data response: ' + response);
+						console.log('get_data response type: ' + (typeof response));
 						console.log('get_data response[0]: ' + response[0]);
+						console.log('get_data response[0] type: ' + (typeof response[0]));
 						console.log('get_data response[0][0]: ' + response[0][0]);
+						console.log('get_data response.length: ' + response.length);
 
 						for(let i=0; i<response.length; i++){
 							$('#select_period').append('<option value="' + response[i][0] + '">' + response[i][1] + '</option>');
