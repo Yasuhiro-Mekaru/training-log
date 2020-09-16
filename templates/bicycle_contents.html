@@ -65,7 +65,6 @@
 				</p>
 				<p>
 					<label>weather_id: </label>
-					<!-- <input type="text" name="date" id="input_weather_id"> -->
 					<select id="select_weather"></select>
 				</p>
 				<p>
@@ -133,7 +132,7 @@
 					console.log('weather_id: ' + weather_id);
 					console.log('weather_id type: ' + (typeof weather_id));
 				})
-				// let weather_id = $('#input_weather_id').val();
+				
 
 				//logデータをDBへ送信する処理
 				$('#button_input_to_db').click(function(){
@@ -272,6 +271,17 @@
 						console.log('get_data response: ' + response);
 						console.log('get_data response[0]: ' + response[0]);
 						console.log('get_data response[0][0]: ' + response[0][0]);
+
+						for(let i=0; i<response.length; i++){
+							$('#select_period').append('<option value="' + response[i][0] + '">' + response[i][1] + '</option>');
+						}
+						let target_id;
+						$('#select_period').change(function(){
+							target_id = $('option:selected').val();
+							console.log('target_id: ' + target_id);
+							console.log('target_id type: ' + (typeof target_id));
+						})
+
 					})
 
 					$('#chart_dialog').fadeIn('slow');
