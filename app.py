@@ -64,54 +64,40 @@ def get_data():
     today = date_instance.today_date()
     # 今日の日付から今月1日を取得する処理
     firstday = date_instance.get_first_day()
-    logger.info({
-        'action': 'get_data',
-        'firstday': firstday,
-        'firstday type': type(firstday)
-        })
 
     database = db.My_log_database(loaded_data)
     response = database.select_data()
-    # logger.info({
-    #     'action': 'select_data',
-    #     'response': response,
-    #     'response type': type(response)
-    #     })
+
     listed_response = []
     for data in response:
         listed_data = list(data)
         listed_response.append(listed_data)
 
-    logger.info({
-        'action': 'get_data',
-        'listed_response': listed_response,
-        'listed_response type': type(listed_response)
-        })
-
-    target_id = 0
-    for data in listed_response:
-        if data[1] == firstday:
-            logger.info({
-                'action': 'get_data',
-                'for if ': data[0]
-                })
-            target_id = data[0]
-    logger.info({
-        'action': 'get_data',
-        'target_id': target_id,
-        'target_id type': type(target_id)
-        })
-
-
     # クライアントから送られてきた button_id の値に応じて処理を分岐
     if loaded_data['button_id'] == 'button_to_input_dialog':
+        target_id = 0
+        for data in listed_response:
+            if data[1] == firstday:
+                target_id = data[0]
+
         data = {
             'today': today,
             'target_id': target_id
             }
         return jsonify(data)
-    else:
-        return 'Why ?'
+
+    elif loaded_data['button_id'] == 'button_to_chart_dialog':
+        datas = []
+        for data in listed_response:
+            dict_data = {}
+            dict_data['target_id'] = data[0]
+            dict_data['month'] = data[1]
+            datas.append(dict_data)
+        logger.info({
+            'action': 'get_data elif',
+            'datas': datas
+            })
+        return jsonify(datas)
 
 
 
