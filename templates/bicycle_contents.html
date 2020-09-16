@@ -127,18 +127,6 @@
 					$('#select_weather').append('<option value="' + options[i][1] + '">' + options[i][0] + '</option>');
 				}
 
-				// //logデータを入力するブロックを表示する処理
-				// $('#button_to_input_page').click(function(){
-				// 	console.log('input_block fadeIn');
-				// 	$('#input_block').fadeIn();
-				// });
-
-				// //Top画面に戻る処理
-				// $('#button_back_to_top').click(function(){
-				// 	console.log('input_block fadeOut');
-				// 	$('#input_block').fadeOut();
-				// })
-
 				let weather_id;
 				$('#select_weather').change(function(){
 					weather_id = $('option:selected').val();
@@ -262,7 +250,7 @@
 				$('#button_back').click(function(){
 					$('#input_dialog').fadeOut('slow');
 				})
-				
+
 
 				// Chart Dialog ボタンを押下した際の処理
 				// モーダルダイアログを表示する前にサーバーから登録月データを取得する
@@ -282,6 +270,8 @@
 						dataType: 'json'
 					}).then(function(response){
 						console.log('get_data response: ' + response);
+						console.log('get_data response[0]: ' + response[0]);
+						console.log('get_data response[0][0]: ' + response[0][0]);
 					})
 
 					$('#chart_dialog').fadeIn('slow');

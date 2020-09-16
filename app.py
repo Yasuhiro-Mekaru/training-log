@@ -89,10 +89,8 @@ def get_data():
     elif loaded_data['button_id'] == 'button_to_chart_dialog':
         datas = []
         for data in listed_response:
-            dict_data = {}
-            dict_data['target_id'] = data[0]
-            dict_data['month'] = data[1]
-            datas.append(dict_data)
+            data.pop(2)
+            datas.append(data)
         logger.info({
             'action': 'get_data elif',
             'datas': datas
