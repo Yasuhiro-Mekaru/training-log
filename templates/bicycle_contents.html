@@ -278,20 +278,21 @@
 						for(let i=0; i<response.length; i++){
 							$('#select_period').append('<option value="' + response[i][0] + '">' + response[i][1] + '</option>');
 						}
-						let target_id;
-						$('#select_period').change(function(){
-							target_id = $('option:selected').val();
-							console.log('target_id: ' + target_id);
-							if(target_id != Number){
-								target_id = Number(target_id);
-							}
-							console.log('target_id: ' + target_id);
-							console.log('target_id type: ' + (typeof target_id));
-						})
 
 					})
 
 					$('#chart_dialog').fadeIn('slow');
+				})
+
+				let id;
+				$('#select_period').change(function(){
+					id = $('option:selected').val();
+					console.log('id: ' + id);
+					if(id != Number){
+						id = Number(id);
+					}
+					console.log('id: ' + id);
+					console.log('id type: ' + (typeof id));
 				})
 
 				// $('#button_back').click(function(){
