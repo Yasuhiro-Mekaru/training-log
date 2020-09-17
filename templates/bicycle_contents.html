@@ -287,7 +287,8 @@
 
 				let id;
 				$('#select_period').change(function(){
-					id = $('option:selected').val();
+					// id = $('option:selected').val();
+					id = $('#select_period').val();
 					console.log('id: ' + id);
 					if(id != Number){
 						id = Number(id);
