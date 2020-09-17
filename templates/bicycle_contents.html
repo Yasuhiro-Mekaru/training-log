@@ -128,7 +128,8 @@
 
 				let weather_id;
 				$('#select_weather').change(function(){
-					weather_id = $('option:selected').val();
+					// weather_id = $('option:selected').val();
+					weather_id = $('#select_weather').val();
 					console.log('weather_id: ' + weather_id);
 					console.log('weather_id type: ' + (typeof weather_id));
 				})
