@@ -47,6 +47,7 @@
 			<input type="button" value="Chart Dialog" id="button_to_chart_dialog">
 		</div>
 
+		<!-- ログを入力するダイアログ -->
 		<div>
 			<dialog id="input_dialog">
 				<h3>Input Your Logs of Training</h3>
@@ -76,10 +77,11 @@
 					<input type="button" value="INPUT" id="button_input_to_db">
 				</p>
 				<br/>
-				<input type="button" value="back" id="button_back">
+				<input type="button" value="Back" class="button_back">
 			</dialog>
 		</div>
 
+		<!-- チャートを表示するダイアログ -->
 		<div>
 			<dialog id="chart_dialog">
 				<h3>Choose the period</h3>
@@ -87,7 +89,10 @@
 				<p>Choose an period you want to watch chart in below selecter. </p>
 				<br/>
 				<select id="select_period"></select>
+				<br/>
 				<input type="button" value="To Chart Menu" id="button_to_chart_page">
+				<br/>
+				<input type="button" value="Back" name="">
 			</dialog>
 		</div>
 
@@ -247,8 +252,11 @@
 				});
 
 
-				$('#button_back').click(function(){
-					$('#input_dialog').fadeOut('slow');
+				$('.button_back').click(function(){
+					if($('#input_dialog').css('display')=='block'){
+						console.log('button_back input_dialog');
+						$('#input_dialog').fadeOut('slow');
+					}
 				})
 
 
