@@ -286,24 +286,37 @@
 							$('#select_period').append('<option value="' + response[i][0] + '">' + response[i][1] + '</option>');
 						}
 
+						//Chart Dialog 内のセレクトボックスの値を取得する処理
+						//gloal変数 id に取得した値を格納する
+						$('#select_period').change(function(){
+							// id = $('option:selected').val();
+							id = $('#select_period').val();
+							console.log('id: ' + id);
+							if(id != Number){
+								id = Number(id);
+							}
+							console.log('id: ' + id);
+							console.log('id type: ' + (typeof id));
+						})
+
 					})
 
 					$('#chart_dialog').fadeIn('slow');
 					$('#button_to_chart_page').prop('disabled', true);
 				})
 
-				//Chart Dialog 内のセレクトボックスの値を取得する処理
-				//gloal変数 id に取得した値を格納する
-				$('#select_period').change(function(){
-					// id = $('option:selected').val();
-					id = $('#select_period').val();
-					console.log('id: ' + id);
-					if(id != Number){
-						id = Number(id);
-					}
-					console.log('id: ' + id);
-					console.log('id type: ' + (typeof id));
-				})
+				// //Chart Dialog 内のセレクトボックスの値を取得する処理
+				// //gloal変数 id に取得した値を格納する
+				// $('#select_period').change(function(){
+				// 	// id = $('option:selected').val();
+				// 	id = $('#select_period').val();
+				// 	console.log('id: ' + id);
+				// 	if(id != Number){
+				// 		id = Number(id);
+				// 	}
+				// 	console.log('id: ' + id);
+				// 	console.log('id type: ' + (typeof id));
+				// })
 
 
 				// dialogのBackボタン押下の際の処理
