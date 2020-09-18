@@ -114,6 +114,9 @@
 		<script type="text/javascript">
 			$(function(){
 				console.log('bicycle_contents: jquery Start');
+
+				let id;
+				let distance;
 		
 				//読み込みが完了した時点でメモリにselect要素を入れる処理
 				let options = [['Select Weather Condition', 0],
@@ -186,6 +189,7 @@
 						});
 				})
 
+
 				//チャートを表示する処理
 				$('#button_to_chart_page').click(function(){
 					let table = 'milage_log';
@@ -252,18 +256,6 @@
 				});
 
 
-				$('.button_back').click(function(){
-					if($('#input_dialog').css('display')=='block'){
-						console.log('button_back: input_dialog');
-						$('#input_dialog').fadeOut('slow');
-					}
-					else if($('#chart_dialog').css('display')=='block'){
-						console.log('button_back: chart_dialog');
-						$('#chart_dialog').fadeOut('slow');
-					}
-				})
-
-
 				// Chart Dialog ボタンを押下した際の処理
 				// モーダルダイアログを表示する前にサーバーから登録月データを取得する
 				// サーバーにボタンのidを渡してサーバー側でボタンの判定ができるようにする
@@ -287,7 +279,8 @@
 						console.log('get_data response[0] type: ' + (typeof response[0]));
 						console.log('get_data response[0][0]: ' + response[0][0]);
 						console.log('get_data response[0][0] type: ' + (typeof response[0][0]));
-						console.log('get_data response.length: ' + response.length);
+						console.log('get_data response[0][2]: ' + response[0][2]);
+						console.log('get_data response[0][2] type: ' + (typeof response[0][2]));
 
 						for(let i=0; i<response.length; i++){
 							$('#select_period').append('<option value="' + response[i][0] + '">' + response[i][1] + '</option>');
@@ -296,9 +289,11 @@
 					})
 
 					$('#chart_dialog').fadeIn('slow');
+					$('#button_to_chart_page').prop('disabled', true);
 				})
 
-				let id;
+				//Chart Dialog 内のセレクトボックスの値を取得する処理
+				//gloal変数 id に取得した値を格納する
 				$('#select_period').change(function(){
 					// id = $('option:selected').val();
 					id = $('#select_period').val();
@@ -310,9 +305,19 @@
 					console.log('id type: ' + (typeof id));
 				})
 
-				// $('#button_back').click(function(){
-				// 	$('#input_dialog').fadeOut('slow');
-				// })
+
+				// dialogのBackボタン押下の際の処理
+				// どのdialogが表示されているかを判定し条件分岐
+				$('.button_back').click(function(){
+					if($('#input_dialog').css('display')=='block'){
+						console.log('button_back: input_dialog');
+						$('#input_dialog').fadeOut('slow');
+					}
+					else if($('#chart_dialog').css('display')=='block'){
+						console.log('button_back: chart_dialog');
+						$('#chart_dialog').fadeOut('slow');
+					}
+				})
 			});
 		</script>
 

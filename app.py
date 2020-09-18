@@ -87,15 +87,17 @@ def get_data():
         return jsonify(data)
 
     elif loaded_data['button_id'] == 'button_to_chart_dialog':
-        datas = []
-        for data in listed_response:
-            data.pop(2)
-            datas.append(data)
+        # datas = []
+        # for data in listed_response:
+        #     data.pop(2)
+        #     datas.append(data)
         logger.info({
             'action': 'get_data elif',
-            'datas': datas
+            # 'datas': datas
+            'listed_response': listed_response
             })
-        return jsonify(datas)
+        # return jsonify(datas)
+        return jsonify(listed_response)
 
 
 
