@@ -292,11 +292,25 @@
 							// id = $('option:selected').val();
 							id = $('#select_period').val();
 							console.log('id: ' + id);
+
+							for(let i=0; i<response.length; i++){
+								if(id == response[i][0]){
+									distance = response[i][2];
+									if(distance != Number){
+										distance = Number(distance);
+									}
+								}
+							}
+							console.log('distance: ' + distance);
+							console.log('distance type: ' + (typeof distance));
+
 							if(id != Number){
 								id = Number(id);
 							}
 							console.log('id: ' + id);
 							console.log('id type: ' + (typeof id));
+
+							$('#button_to_chart_page').prop('disabled', false);
 						})
 
 					})
