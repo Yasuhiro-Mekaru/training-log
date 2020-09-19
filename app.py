@@ -82,42 +82,49 @@ def get_diff_data():
         'target_distance': target_distance
     }
 
-    milage_database = db.My_log_database(datas)
-    milage_response = milage_database.select_data()
+    logger.info({
+        'action': 'get_diff_data',
+        'datas': datas
+        })
+
+    # Milage_log テーブルに9月のデータが入っていないため、下記はコメントアウトする
+    
+    # milage_database = db.My_log_database(datas)
+    # milage_response = milage_database.select_data()
+    # # logger.info({
+    # #     'action': 'select_data',
+    # #     'response': response,
+    # #     'response type': type(response)
+    # #     })
+    # listed_response = []
+    # for data in milage_response:
+    #     listed_data = list(data)
+    #     listed_response.append(listed_data)
+
     # logger.info({
     #     'action': 'select_data',
-    #     'response': response,
-    #     'response type': type(response)
+    #     'listed_response': listed_response,
+    #     'listed_response type': type(listed_response)
     #     })
-    listed_response = []
-    for data in milage_response:
-        listed_data = list(data)
-        listed_response.append(listed_data)
 
-    logger.info({
-        'action': 'select_data',
-        'listed_response': listed_response,
-        'listed_response type': type(listed_response)
-        })
+    # #ここにdate関係を書く
+    # milage_date_instance = date.My_date(listed_response)
+    # changed_listed_response = milage_date_instance.change_to_date()
 
-    #ここにdate関係を書く
-    milage_date_instance = date.My_date(listed_response)
-    changed_listed_response = milage_date_instance.change_to_date()
+    # logger.info({
+    #     'action': 'select_data',
+    #     'changed_listed_response': changed_listed_response,
+    #     'changed_listed_response length': len(changed_listed_response)
+    #     })
 
-    logger.info({
-        'action': 'select_data',
-        'changed_listed_response': changed_listed_response,
-        'changed_listed_response length': len(changed_listed_response)
-        })
+    # pandas_instance = util.My_pandas_data(changed_listed_response, target_distance)
+    # df = pandas_instance.create_data_frame()
 
-    pandas_instance = util.My_pandas_data(changed_listed_response, target_distance)
-    df = pandas_instance.create_data_frame()
-
-    logger.info({
-        'action': 'select_data',
-        'df': df,
-        'df type': type(df)
-        })
+    # logger.info({
+    #     'action': 'select_data',
+    #     'df': df,
+    #     'df type': type(df)
+    #     })
 
     return jsonify('Success')
 
