@@ -319,19 +319,6 @@
 					$('#button_to_chart_page').prop('disabled', true);
 				})
 
-				// //Chart Dialog 内のセレクトボックスの値を取得する処理
-				// //gloal変数 id に取得した値を格納する
-				// $('#select_period').change(function(){
-				// 	// id = $('option:selected').val();
-				// 	id = $('#select_period').val();
-				// 	console.log('id: ' + id);
-				// 	if(id != Number){
-				// 		id = Number(id);
-				// 	}
-				// 	console.log('id: ' + id);
-				// 	console.log('id type: ' + (typeof id));
-				// })
-
 
 				// dialogのBackボタン押下の際の処理
 				// どのdialogが表示されているかを判定し条件分岐
@@ -342,6 +329,19 @@
 					}
 					else if($('#chart_dialog').css('display')=='block'){
 						console.log('button_back: chart_dialog');
+						//セレクトボックスの値をクリア
+						$('#select_period').val('');
+						console.log('button_back id: ' + id);
+						if(id){
+							id = '';
+						}
+						console.log('button_back id: ' + id);
+						console.log('button_back distance: ' + distance);
+						if(distance){
+							distance = '';
+						}
+						console.log('button_back distance: ' + distance);
+						//Chart Dialog を閉じる
 						$('#chart_dialog').fadeOut('slow');
 					}
 				})
