@@ -37,11 +37,12 @@
 <!-- Body Section -->
 	<body>
 		<div id="top_block">
-			<h1>Hello Training</h1>
+			<h1>Bicycle Logs</h1>
 
-			<p>Welcome To Training Log Application</p>
+			<p>Hello. This page has your bicycle training logs. \n You can input your riding logs and wathch 2 types of chart whitch is your riding data.</p>
 			<p>push the under button to input your training log.</p>
 		</div>
+		<br/>
 		<div>
 			<input type="button" value="Input Dialog" id="button_to_input_dialog">
 			<input type="button" value="Chart Dialog" id="button_to_chart_dialog">
@@ -114,6 +115,25 @@
 
 				let id;
 				let distance;
+
+				let datas = {
+					'table': 'target_distance'
+				};
+				$.ajax({
+						type: 'POST',
+						contentType: 'application/json',
+						url: 'https://training-logs.herokuapp.com/get_diff_data',
+						data: JSON.stringify(datas),
+						dataType: 'json'
+					}).then(function(response){
+						console.log('get_diff_data response: ' + response);
+						console.log('get_diff_data response type: ' + (typeof response));
+						
+					},function(error){
+						console.log('get_diff_data error: ' + error);
+					});
+
+
 		
 				//読み込みが完了した時点でメモリにselect要素を入れる処理
 				let options = [['Select Weather Condition', 0],

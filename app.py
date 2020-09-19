@@ -54,8 +54,79 @@ def bicycle_contents():
 
 
 
+@app.route('/get_diff_data', methods=['POST'])
+def get_diff_data():
+    # クライアントから送られてきたデータを受け取り、jsonからロードする処理
+    posted_data = request.get_data()
+    loaded_data = json.loads(posted_data)
+
+    # date.pyのMy_dateクラスのインスタンスを作成し、今日の日付を取得する処理
+    date_instance = date.My_date()
+    today = date_instance.today_date()
+    # 今日の日付から今月1日を取得する処理
+    firstday = date_instance.get_first_day()
+    # target_distanceテーブルから全行のデータを取得する処理
+    database = db.My_log_database(loaded_data)
+    response = database.select_data()
+
+    listed_data = []
+    for data in response:
+        if data[1] == firstday:
+            listed_data = list(data)
+
+    target_id = listed_data[0]
+    target_distance = listed_data[2]
+
+    datas = {
+        'table': 'milage_log',
+        'target_id': target_id,
+        'target_distance': target_distance
+    }
+
+    milage_database = db.My_log_database(datas)
+    milage_response = milage_database.select_data()
+    # logger.info({
+    #     'action': 'select_data',
+    #     'response': response,
+    #     'response type': type(response)
+    #     })
+    listed_response = []
+    for data in milage_response:
+        listed_data = list(data)
+        listed_response.append(listed_data)
+
+    logger.info({
+        'action': 'select_data',
+        'listed_response': listed_response,
+        'listed_response type': type(listed_response)
+        })
+
+    #ここにdate関係を書く
+    milage_date_instance = date.My_date(listed_response)
+    changed_listed_response = milage_date_instance.change_to_date()
+
+    logger.info({
+        'action': 'select_data',
+        'changed_listed_response': changed_listed_response,
+        'changed_listed_response length': len(changed_listed_response)
+        })
+
+    pandas_instance = util.My_pandas_data(changed_listed_response, target_distance)
+    df = pandas_instance.create_data_frame()
+
+    logger.info({
+        'action': 'select_data',
+        'df': df,
+        'df type': type(df)
+        })
+
+    return jsonify('Success')
+
+
+
 @app.route('/get_data', methods=['POST'])
 def get_data():
+    # クライアントから送られてきたデータを受け取り、jsonからロードする処理
     posted_data = request.get_data()
     loaded_data = json.loads(posted_data)
 
@@ -65,9 +136,10 @@ def get_data():
     # 今日の日付から今月1日を取得する処理
     firstday = date_instance.get_first_day()
 
+    # target_distanceテーブルから全行のデータを取得する処理
     database = db.My_log_database(loaded_data)
     response = database.select_data()
-
+    #tuple型で返却された値をlist型に変換する処理
     listed_response = []
     for data in response:
         listed_data = list(data)
