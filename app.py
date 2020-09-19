@@ -76,7 +76,6 @@ def get_diff_data():
 
     target_id = listed_data[0]
     target_distance = listed_data[2]
-
     datas = {
         'table': 'milage_log',
         'target_id': target_id,
