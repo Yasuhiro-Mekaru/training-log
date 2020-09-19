@@ -96,9 +96,12 @@
 			</dialog>
 		</div>
 
-		<div id="display_chart">
+		<div id="display_chart" style="display: none;">
+			<h3>Hello Bokeh</h3>
 			<div id="test1"></div>
 			<div id="test2"></div>
+			<br/>
+			<input type="button" value="Back" class="button_back">
 		</div>
 
 
@@ -168,7 +171,6 @@
 						"target_id": target_id
 					}
 					console.log('data: ' + data);
-
 					//Ajax通信
 					$.ajax({
 						type: 'POST',
@@ -184,7 +186,9 @@
 				})
 
 
+
 				//チャートを表示する処理
+				// idとdistanceの値をサーバーに渡し、script と divを受け取る
 				$('#button_to_chart_page').click(function(){
 					console.log('id: ' + id);
 					console.log('distance: ' + distance);
@@ -214,13 +218,10 @@
 						console.log('r.div: ' + response_data.div);
 						$('#test1').html(response_data.script);
 						$('#test2').html(response_data.div);
-						})
-				})
 
-				//ログインページを表示する処理
-				// $('#button_to_login').click(function(){
-				// 	window.location.href = 'https://training-logs.herokuapp.com/login'
-				// })
+						$('#display_chart').show();
+					})
+				})
 
 
 				// Input Dialog ボタンを押下した際の処理
@@ -346,6 +347,11 @@
 						}
 						//Chart Dialog を閉じる
 						$('#chart_dialog').fadeOut('slow');
+					}
+
+					//Chart Displayが表示されている際の分岐
+					else if($('#display_chart').css('displays')=='block'){
+						$('#display_chart').hide();
 					}
 				})
 			});
