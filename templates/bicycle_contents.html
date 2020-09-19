@@ -96,13 +96,7 @@
 			</dialog>
 		</div>
 
-		<div>
-			<!-- <input type="button" value="To Input Menu" id="button_to_input_page"> -->
-			<!-- <input type="button" value="To Chart Menu" id="button_to_chart_page"> -->
-		</div>
-
-		<div>
-			<h3>Hello Bokeh</h3>
+		<div id="display_chart">
 			<div id="test1"></div>
 			<div id="test2"></div>
 		</div>
@@ -212,6 +206,9 @@
 						data: JSON.stringify(data),
 						dataType: 'json'
 					}).then(function(response){
+						// Chart Dialogを閉じる処理 
+						$('#chart_dialog').fadeOut('fast');
+
 						let response_data = JSON.parse(response);
 						console.log('r.script: ' + response_data.script);
 						console.log('r.div: ' + response_data.div);
