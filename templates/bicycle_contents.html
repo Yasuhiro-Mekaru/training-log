@@ -38,8 +38,7 @@
 	<body>
 		<div id="top_block">
 			<h1>Bicycle Logs</h1>
-
-			<p>Hello. This page has your bicycle training logs. \n You can input your riding logs and wathch 2 types of chart whitch is your riding data.</p>
+			<p>This page has your bicycle training logs.You can input your riding logs and wathch 2 types of chart whitch is your riding data.</p>
 			<p>push the under button to input your training log.</p>
 		</div>
 		<br/>
@@ -266,6 +265,9 @@
 						$('#test2').html(response_data.div);
 
 						$('#display_chart').show();
+
+						$('#button_to_input_dialog').prop('disabled', true);
+						$('#button_to_chart_dialog').prop('disabled', true);
 					})
 				})
 
@@ -456,6 +458,9 @@
 
 						//Chart displayを非表示にする
 						$('#display_chart').hide();
+
+						$('#button_to_input_dialog').prop('disabled', false);
+						$('#button_to_chart_dialog').prop('disabled', false);
 					}
 				})
 			});
