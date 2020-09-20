@@ -165,3 +165,45 @@ class My_bokeh_chart(object):
 			)
 
 		return milage_plot
+
+
+	def create_elevation_chart(self):
+		# DataFrameの値を Bokeh用セット
+		source = ColumnDataSource(self.df)
+		source.add(self.df.index, 'index')
+		
+		# チャートのツールを設定
+		tools = "pan,box_zoom,reset,save"
+
+		# チャート内のツールチップのツールチップを設定
+		elevation_hover_tool = HoverTool(
+				tooltips=[
+					('日付', "@index{%F}"),
+					('当日獲得標高', "@Elevation"+' (m)'),
+					('合計獲得標高', '@Sum_elevation'+' (m)')],
+				formatters={
+					'index': 'datetime',
+					},
+				mode='mouse')
+
+		# figureオブジェクトを生成
+		# figureオブジェクトのlineプロパティに値を追加する
+		elevation_plot = figure(
+				plot_width=300,
+				plot_height=300,
+				x_axis_type="datetime",
+				x_axis_label = "date",
+				y_axis_label = "height(m)",
+				title='Elevation Line_Chart',
+				tools=[elevation_hover_tool, tools]
+			)
+		elevation_plot.line(
+				x = "index",
+				y = "Sum_elevation",
+				source = source,
+					legend = "獲得標高",
+				color = "blue",
+				line_width = 2
+			)
+
+		return elevation_plot

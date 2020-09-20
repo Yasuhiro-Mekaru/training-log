@@ -266,7 +266,7 @@ def select_data():
 
     bokeh_instance = bokeh_chart.My_bokeh_chart(df)
     # bokeh_response = bokeh_instance.create_chart()
-    bokeh_response = bokeh_instance.create_milage_chart()
+    bokeh_response = bokeh_instance.create_elevation_chart()
 
     script, div = components(bokeh_response)
 
