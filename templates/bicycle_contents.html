@@ -126,6 +126,7 @@
 
 				let id;
 				let distance;
+				let type;
 				let response_target_distance = [];
 
 				let datas = {
@@ -224,6 +225,7 @@
 				$('#button_to_chart_page').click(function(){
 					console.log('id: ' + id);
 					console.log('distance: ' + distance);
+					console.log('type: ' + type);
 
 					let table = 'milage_log';
 					let target_id = id;
@@ -357,8 +359,9 @@
 				})
 
 
-				//Chart Dialog 内のセレクトボックスの値を取得する処理
-				//gloal変数 id に取得した値を格納する
+				//Chart Dialog 内のPeriodセレクトボックスの値を取得する処理
+				//gloal変数 idとdistanceに取得した値を格納する
+				//global変数response_target_distanceの値を初期化する
 				$('#select_period').change(function(){
 					// id = $('option:selected').val();
 					id = $('#select_period').val();
@@ -385,6 +388,15 @@
 					console.log('id type: ' + (typeof id));
 
 					$('#button_to_chart_page').prop('disabled', false);
+
+					//global変数の値を初期化
+					response_target_distance = [];
+				})
+
+
+				$('[name=select_type]').change(function(){
+					type = $('[name=select_type]').val();
+					console.log('type: ' + type);
 				})
 
 
