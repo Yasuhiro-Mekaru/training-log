@@ -125,10 +125,10 @@
 				console.log('bicycle_contents: jquery Start');
 
 				//Windowサイズを取得する処理
-				let w = $(window).width();
-				let h = $(window).height();
-				console.log('width: ' + w);
-				console.log('height: ' + h);
+				let width = $(window).width();
+				let height = $(window).height();
+				console.log('width: ' + width);
+				console.log('height: ' + height);
 
 				let id;
 				let distance;
@@ -240,7 +240,9 @@
 						'table': table,
 						'target_id': target_id,
 						'target_distance': target_distance,
-						'chart_type': chart_type
+						'chart_type': chart_type,
+						'width': width,
+						'height': height
 					}
 					console.log('chart button clicked');
 					//Ajax

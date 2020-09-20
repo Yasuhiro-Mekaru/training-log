@@ -221,6 +221,8 @@ def select_data():
 
     target_distance = loaded_data['target_distance']
     chart_type = loaded_data['chart_type']
+    width = loaded_data['width']
+    height = loaded_data['height']
 
     logger.info({
         'action': 'select_data',
@@ -269,7 +271,7 @@ def select_data():
     # クライアントから送られてきたchart typeに応じて分岐する
     # milage chart の際の処理
     if chart_type == 1:
-        bokeh_instance = bokeh_chart.My_bokeh_chart(df)
+        bokeh_instance = bokeh_chart.My_bokeh_chart(df, width=width, height=height)
         bokeh_response = bokeh_instance.create_milage_chart()
         script, div = components(bokeh_response)
         response_datas = {

@@ -18,8 +18,10 @@ logger.info({
 
 class My_bokeh_chart(object):
 	"""docstring for My_bokeh_chart"""
-	def __init__(self, df=None):
+	def __init__(self, df=None, width=None, height=None):
 		self.df = df
+		self.width = width
+		self.height = height
 
 
 	def create_chart(self):
@@ -139,8 +141,8 @@ class My_bokeh_chart(object):
 		# figureオブジェクトを生成
 		# figureオブジェクトのlineプロパティに値を追加する
 		milage_plot = figure(
-				plot_width=400,
-				plot_height=400,
+				plot_width=self.width,
+				plot_height=self.height,
 				x_axis_type="datetime",
 				x_axis_label = "date",
 				y_axis_label = "distance(km)",
