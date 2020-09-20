@@ -277,7 +277,7 @@ def select_data():
         return jsonify(response_datas)
 
     elif chart_type == 2:
-        bokeh_instance = bokeh_chart.My_bokeh_milagechart(df)
+        bokeh_instance = bokeh_chart.My_bokeh_chart(df)
         bokeh_response = bokeh_instance.create_elevation_chart()
         script, div = components(bokeh_response)
         response_datas = {
