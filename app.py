@@ -256,6 +256,7 @@ def select_data():
         'changed_listed_response length': len(changed_listed_response)
         })
 
+    # util.pyのMy_pandas_dataクラスのインスタンスを作成し、Pandasのdfオブジェクトを作成する
     pandas_instance = util.My_pandas_data(changed_listed_response, target_distance)
     df = pandas_instance.create_data_frame()
 
@@ -265,6 +266,8 @@ def select_data():
         'df type': type(df)
         })
 
+    # クライアントから送られてきたchart typeに応じて分岐する
+    # milage chart の際の処理
     if chart_type == 1:
         bokeh_instance = bokeh_chart.My_bokeh_chart(df)
         bokeh_response = bokeh_instance.create_milage_chart()
@@ -276,6 +279,7 @@ def select_data():
         response_datas = json.dumps(response_datas)
         return jsonify(response_datas)
 
+    # elevation chart の際の処理
     elif chart_type == 2:
         bokeh_instance = bokeh_chart.My_bokeh_chart(df)
         bokeh_response = bokeh_instance.create_elevation_chart()
@@ -287,38 +291,6 @@ def select_data():
         response_datas = json.dumps(response_datas)
         return jsonify(response_datas)
 
-
-
-    # bokeh_instance = bokeh_chart.My_bokeh_milagechart(df)
-    # # bokeh_response = bokeh_instance.create_chart()
-    # bokeh_response = bokeh_instance.create_elevation_chart()
-
-    # script, div = components(bokeh_response)
-
-    # logger.info({
-    #     'action': 'select_data',
-    #     'script type': type(script),
-    #     })
-
-    # response_datas = {
-    #     'script': script,
-    #     'div': div
-    # }
-
-    # # logger.info({
-    # #     'action': 'select_data',
-    # #     'response_datas type': type(response_datas),
-    # #     })
-
-    # response_datas = json.dumps(response_datas)
-
-    # # logger.info({
-    # #     'action': 'select_data',
-    # #     'response_datas changed type': type(response_datas),
-    # #     })
-
-
-    # return jsonify(response_datas)
 
 
 # if __name__ == "__main__":

@@ -408,6 +408,21 @@
 				// dialogのBackボタン押下の際の処理
 				// どのdialogが表示されているかを判定し条件分岐
 				$('.button_back').click(function(){
+					//id, diatance, chart_typeに値が入っていればクリアする
+					if(id){
+						id = '';
+						console.log('button_back id: ' + id);
+					}
+					console.log('button_back if distance: ' + distance);
+					if(distance){
+						distance = '';
+						console.log('button_back if distance: ' + distance);
+					}
+					if(chart_type){
+						chart_type = '';
+						console.log('button_back if chart_type: ' + chart_type);
+					}
+
 					//Input Dialogが表示されている際の分岐
 					if($('#input_dialog').css('display')=='block'){
 						console.log('button_back: input_dialog');
@@ -418,23 +433,17 @@
 						console.log('button_back: chart_dialog');
 						//セレクトボックスの中身をクリアする
 						$('#select_period').children().remove();
-						//id, diatanceに値が入っていればクリアする
-						console.log('button_back id: ' + id);
-						if(id){
-							id = '';
-							console.log('button_back id: ' + id);
-						}
-						console.log('button_back if distance: ' + distance);
-						if(distance){
-							distance = '';
-							console.log('button_back if distance: ' + distance);
-						}
+						
 						//Chart Dialog を閉じる
 						$('#chart_dialog').fadeOut('slow');
 					}
 
 					//Chart Displayが表示されている際の分岐
 					else if($('#display_chart').css('display')=='block'){
+						//セレクトボックスの中身をクリアする
+						$('#select_period').children().remove();
+
+						//Chart displayを非表示にする
 						$('#display_chart').hide();
 					}
 				})
