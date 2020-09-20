@@ -164,4 +164,4 @@ class My_bokeh_chart(object):
 				line_width = 2
 			)
 
-		return p
+		return milage_plot
