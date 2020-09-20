@@ -26,8 +26,6 @@ class My_bokeh_chart(object):
 		# DataFrameの値を Bokeh用セット
 		source = ColumnDataSource(self.df)
 		source.add(self.df.index, 'index')
-
-		# output_file("milage_log.html")
 		
 		# チャートのツールを設定
 		tools = "pan,box_zoom,reset,save"
@@ -54,6 +52,8 @@ class My_bokeh_chart(object):
 					},
 				mode='mouse')
 		left_plot = figure(
+				plot_width=300,
+				plot_height=300,
 				x_axis_type="datetime",
 				x_axis_label = "date",
 				y_axis_label = "distance(km)",
@@ -78,6 +78,8 @@ class My_bokeh_chart(object):
 			)
 
 		right_plot = figure(
+				plot_width=300,
+				plot_height=300,
 				x_axis_type="datetime",
 				x_axis_label = "date",
 				y_axis_label = "height(m)",
