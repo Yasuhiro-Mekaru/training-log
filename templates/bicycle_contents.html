@@ -90,11 +90,11 @@
 				<br/>
 				<p>
 					<label>Period: </label>
-					<select id="select_period" name="period"></select>
+					<select id="select_period" name="select_period"></select>
 				</p>
 				<p>
 					<label>Chart Type: </label>
-					<select id="select_type" name="type">
+					<select id="select_type" name="select_type">
 						<option value="1">Milage Datas</option>
 						<option value="2" selected>Elevation Datas</option>
 					</select>
@@ -126,6 +126,7 @@
 
 				let id;
 				let distance;
+				let response_target_distance = [];
 
 				let datas = {
 					'table': 'target_distance'
@@ -318,38 +319,72 @@
 							$('#select_period').append('<option value="' + response[i][0] + '">' + response[i][1] + '</option>');
 						}
 
-						//Chart Dialog 内のセレクトボックスの値を取得する処理
-						//gloal変数 id に取得した値を格納する
-						$('#select_period').change(function(){
-							// id = $('option:selected').val();
-							id = $('#select_period').val();
-							console.log('id: ' + id);
+						response_target_distance = response
+						console.log('response_target_distance: ' + response_target_distance);
 
-							for(let i=0; i<response.length; i++){
-								if(id == response[i][0]){
-									distance = response[i][2];
-									if(distance != Number){
-										distance = Number(distance);
-									}
-								}
-							}
-							console.log('distance: ' + distance);
-							console.log('distance type: ' + (typeof distance));
+						// //Chart Dialog 内のセレクトボックスの値を取得する処理
+						// //gloal変数 id に取得した値を格納する
+						// $('#select_period').change(function(){
+						// 	// id = $('option:selected').val();
+						// 	id = $('#select_period').val();
+						// 	console.log('id: ' + id);
 
-							if(id != Number){
-								console.log('id if not Number: ' + id);
-								id = Number(id);
-							}
-							console.log('id: ' + id);
-							console.log('id type: ' + (typeof id));
+						// 	for(let i=0; i<response.length; i++){
+						// 		if(id == response[i][0]){
+						// 			distance = response[i][2];
+						// 			if(distance != Number){
+						// 				distance = Number(distance);
+						// 			}
+						// 		}
+						// 	}
+						// 	console.log('distance: ' + distance);
+						// 	console.log('distance type: ' + (typeof distance));
 
-							$('#button_to_chart_page').prop('disabled', false);
-						})
+						// 	if(id != Number){
+						// 		console.log('id if not Number: ' + id);
+						// 		id = Number(id);
+						// 	}
+						// 	console.log('id: ' + id);
+						// 	console.log('id type: ' + (typeof id));
+
+						// 	$('#button_to_chart_page').prop('disabled', false);
+						// })
 
 					})
 
 					$('#chart_dialog').fadeIn('slow');
 					$('#button_to_chart_page').prop('disabled', true);
+				})
+
+
+				//Chart Dialog 内のセレクトボックスの値を取得する処理
+				//gloal変数 id に取得した値を格納する
+				$('#select_period').change(function(){
+					// id = $('option:selected').val();
+					id = $('#select_period').val();
+					console.log('id: ' + id);
+
+					let response = response_target_distance;
+					console.log('response: ' + response);
+					for(let i=0; i<response.length; i++){
+						if(id == response[i][0]){
+							distance = response[i][2];
+							if(distance != Number){
+								distance = Number(distance);
+							}
+						}
+					}
+					console.log('distance: ' + distance);
+					console.log('distance type: ' + (typeof distance));
+
+					if(id != Number){
+						console.log('id if not Number: ' + id);
+						id = Number(id);
+					}
+					console.log('id: ' + id);
+					console.log('id type: ' + (typeof id));
+
+					$('#button_to_chart_page').prop('disabled', false);
 				})
 
 
