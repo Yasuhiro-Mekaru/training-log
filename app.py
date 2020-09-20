@@ -220,6 +220,7 @@ def select_data():
     loaded_data = json.loads(posted_data)
 
     target_distance = loaded_data['target_distance']
+    chart_type = loaded_data['chart_type']
 
     logger.info({
         'action': 'select_data',
@@ -264,36 +265,60 @@ def select_data():
         'df type': type(df)
         })
 
-    bokeh_instance = bokeh_chart.My_bokeh_chart(df)
-    # bokeh_response = bokeh_instance.create_chart()
-    bokeh_response = bokeh_instance.create_elevation_chart()
+    if chart_type == 1:
+        bokeh_instance = bokeh_chart.My_bokeh_chart(df)
+        bokeh_response = bokeh_instance.create_milage_chart()
+        script, div = components(bokeh_response)
+        response_datas = {
+            'script': script,
+            'div': div
+        }
+        response_datas = json.dumps(response_datas)
+        return jsonify(response_datas)
 
-    script, div = components(bokeh_response)
+    elif chart_type == 2:
+        bokeh_instance = bokeh_chart.My_bokeh_milagechart(df)
+        bokeh_response = bokeh_instance.create_elevation_chart()
+        script, div = components(bokeh_response)
+        response_datas = {
+            'script': script,
+            'div': div
+        }
+        response_datas = json.dumps(response_datas)
+        return jsonify(response_datas)
 
-    logger.info({
-        'action': 'select_data',
-        'script type': type(script),
-        })
 
-    response_datas = {
-        'script': script,
-        'div': div
-    }
+
+    # bokeh_instance = bokeh_chart.My_bokeh_milagechart(df)
+    # # bokeh_response = bokeh_instance.create_chart()
+    # bokeh_response = bokeh_instance.create_elevation_chart()
+
+    # script, div = components(bokeh_response)
 
     # logger.info({
     #     'action': 'select_data',
-    #     'response_datas type': type(response_datas),
+    #     'script type': type(script),
     #     })
 
-    response_datas = json.dumps(response_datas)
+    # response_datas = {
+    #     'script': script,
+    #     'div': div
+    # }
 
-    # logger.info({
-    #     'action': 'select_data',
-    #     'response_datas changed type': type(response_datas),
-    #     })
+    # # logger.info({
+    # #     'action': 'select_data',
+    # #     'response_datas type': type(response_datas),
+    # #     })
+
+    # response_datas = json.dumps(response_datas)
+
+    # # logger.info({
+    # #     'action': 'select_data',
+    # #     'response_datas changed type': type(response_datas),
+    # #     })
 
 
-    return jsonify(response_datas)
+    # return jsonify(response_datas)
 
 
 # if __name__ == "__main__":

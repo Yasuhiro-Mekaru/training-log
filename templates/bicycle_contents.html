@@ -126,7 +126,7 @@
 
 				let id;
 				let distance;
-				let type;
+				let chart_type;
 				let response_target_distance = [];
 
 				let datas = {
@@ -225,7 +225,7 @@
 				$('#button_to_chart_page').click(function(){
 					console.log('id: ' + id);
 					console.log('distance: ' + distance);
-					console.log('type: ' + type);
+					console.log('chart_type: ' + chart_type);
 
 					let table = 'milage_log';
 					let target_id = id;
@@ -233,7 +233,8 @@
 					let data = {
 						'table': table,
 						'target_id': target_id,
-						'target_distance': target_distance
+						'target_distance': target_distance,
+						'chart_type': chart_type
 					}
 					console.log('chart button clicked');
 					//Ajax
@@ -395,8 +396,12 @@
 
 
 				$('[name=select_type]').change(function(){
-					type = $('[name=select_type]').val();
-					console.log('type: ' + type);
+					chart_type = $('[name=select_type]').val();
+					if(chart_type != Number{
+						chart_type = Number(chart_type);
+					}
+					console.log('chart_type: ' + chart_type);
+					console.log('chart_type type: ' + (typeof chart_type));
 				})
 
 
