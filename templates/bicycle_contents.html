@@ -86,19 +86,17 @@
 		<div>
 			<dialog id="chart_dialog">
 				<h3>Choose the period</h3>
-				<br/>
 				<p>Choose an period you want to watch chart in below selecter. </p>
 				<br/>
 				<p>
 					<label>Period: </label>
-					<select id="select_period"></select>
+					<select id="select_period" name="period"></select>
 				</p>
-				<br/>
 				<p>
 					<label>Chart Type: </label>
-					<select>
-						<option>Milage Datas</option>
-						<option>Elevation Datas</option>
+					<select id="select_type" name="type">
+						<option value="1">Milage Datas</option>
+						<option value="2" selected>Elevation Datas</option>
 					</select>
 				</p>
 				<br/>
@@ -339,6 +337,7 @@
 							console.log('distance type: ' + (typeof distance));
 
 							if(id != Number){
+								console.log('id if not Number: ' + id);
 								id = Number(id);
 							}
 							console.log('id: ' + id);
