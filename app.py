@@ -88,7 +88,7 @@ def get_diff_data():
         })
 
     # Milage_log テーブルに9月のデータが入っていないため、下記はコメントアウトする
-    
+
     # milage_database = db.My_log_database(datas)
     # milage_response = milage_database.select_data()
     # # logger.info({
@@ -255,8 +255,6 @@ def select_data():
         'changed_listed_response length': len(changed_listed_response)
         })
 
-    # date_instance.set_datas()
-
     pandas_instance = util.My_pandas_data(changed_listed_response, target_distance)
     df = pandas_instance.create_data_frame()
 
@@ -267,7 +265,8 @@ def select_data():
         })
 
     bokeh_instance = bokeh_chart.My_bokeh_chart(df)
-    bokeh_response = bokeh_instance.create_chart()
+    # bokeh_response = bokeh_instance.create_chart()
+    bokeh_response = bokeh_instance.create_milage_chart()
 
     script, div = components(bokeh_response)
 

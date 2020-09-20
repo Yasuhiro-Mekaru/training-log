@@ -115,3 +115,53 @@ class My_bokeh_chart(object):
 
 		return p
 
+
+	def create_milage_chart(self):
+		# DataFrameの値を Bokeh用セット
+		source = ColumnDataSource(self.df)
+		source.add(self.df.index, 'index')
+		
+		# チャートのツールを設定
+		tools = "pan,box_zoom,reset,save"
+
+		# チャート内のツールチップのツールチップを設定
+		milage_hover_tool = HoverTool(
+				tooltips=[
+					('日付', "@index{%F}"),
+					('当日走行距離', '@Milage'+' (km)'),
+					('合計走行距離', '@Sum_milage'+'( km)'),
+					('目標距離', '@Sum_target'+' (km)')],
+				formatters={
+					'index': 'datetime',
+					},
+				mode='mouse')
+
+		# figureオブジェクトを生成
+		# figureオブジェクトのlineプロパティに値を追加する
+		milage_plot = figure(
+				plot_width=400,
+				plot_height=400,
+				x_axis_type="datetime",
+				x_axis_label = "date",
+				y_axis_label = "distance(km)",
+				title='Milage Line_Chart',
+				tools=[milage_hover_tool, tools]
+			)
+		milage_plot.line(
+				x = "index",
+				y = "Sum_milage",
+				source = source,
+				legend = "走行距離",
+				color = "blue",
+				line_width = 2
+			)
+		milage_plot.line(
+				x = "index",
+				y = "Sum_target",
+				source = source,
+				legend = "目標値",
+				color = "red",
+				line_width = 2
+			)
+
+		return p
