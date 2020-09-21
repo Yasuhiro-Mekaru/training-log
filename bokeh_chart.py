@@ -165,6 +165,7 @@ class My_bokeh_chart(object):
 				color = "red",
 				line_width = 2
 			)
+		milage_plot.add_layout(milage_plot.legend[0], 'below')
 
 		return milage_plot
 
