@@ -208,5 +208,6 @@ class My_bokeh_chart(object):
 				color = "blue",
 				line_width = 2
 			)
+		elevation_plot.add_layout(elevation_plot.legend[0], 'below')
 
 		return elevation_plot
