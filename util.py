@@ -19,6 +19,7 @@ class My_pandas_data(object):
 	def __init__(self, datas=None, target_distance=None):
 		self.datas = datas
 		self.target_distance = target_distance
+		self.df = None
 
 
 	def create_data_frame(self):
@@ -76,4 +77,19 @@ class My_pandas_data(object):
 		df['Sum_diff'] = df['Sum_milage'] - df['Sum_target']
 		df['Target_diff'] = self.target_distance - df['Sum_milage']
 
+		self.df = df
+
 		return df
+
+
+	def get_sum_diff(self):
+		logger.info({
+			'action': 'get_sum_diff',
+			'self.df': self.df
+			})
+
+		return 'get_sum_diff'
+
+
+
+
