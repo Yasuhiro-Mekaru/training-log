@@ -16,7 +16,7 @@ logger.info({
 
 
 class My_pandas_data(object):
-	def __init__(self, datas=None, target_distance=None, self.today=None):
+	def __init__(self, datas=None, target_distance=None, today=None):
 		self.datas = datas
 		self.target_distance = target_distance
 		self.df = None
