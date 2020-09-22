@@ -101,29 +101,29 @@ def get_diff_data():
         listed_data = list(data)
         listed_response.append(listed_data)
 
-    logger.info({
-        'action': 'get_diff_data',
-        'listed_response': listed_response,
-        'listed_response type': type(listed_response)
-        })
+    # logger.info({
+    #     'action': 'get_diff_data',
+    #     'listed_response': listed_response,
+    #     'listed_response type': type(listed_response)
+    #     })
 
     #ここにdate関係を書く
     milage_date_instance = date.My_date(listed_response)
     changed_listed_response = milage_date_instance.change_to_date()
 
-    logger.info({
-        'action': 'get_diff_data',
-        'changed_listed_response': changed_listed_response,
-        'changed_listed_response length': len(changed_listed_response)
-        })
+    # logger.info({
+    #     'action': 'get_diff_data',
+    #     'changed_listed_response': changed_listed_response,
+    #     'changed_listed_response length': len(changed_listed_response)
+    #     })
 
     pandas_instance = util.My_pandas_data(changed_listed_response, target_distance)
     df = pandas_instance.create_data_frame()
 
-    logger.info({
-        'action': 'get_diff_data',
-        'df': df
-        })
+    # logger.info({
+    #     'action': 'get_diff_data',
+    #     'df': df
+    #     })
 
     sum_diff_result = pandas_instance.get_sum_diff()
     logger.info({
