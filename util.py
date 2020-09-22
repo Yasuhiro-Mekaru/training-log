@@ -79,6 +79,11 @@ class My_pandas_data(object):
 		df['Target_diff'] = self.target_distance - df['Sum_milage']
 
 		self.df = df
+		logger.info({
+			'action': 'create_data_frame',
+			"df['Daily_target']": df['Daily_target'],
+			"df['Daily_diff']": df['Daily_diff']
+			})
 
 		return df
 
