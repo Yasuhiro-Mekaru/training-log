@@ -125,13 +125,13 @@ def get_diff_data():
         'df': df
         })
 
-    result = pandas_instance.get_sum_diff(today=today)
+    result = pandas_instance.get_sum_diff()
     logger.info({
         'action': 'get_diff_data',
         'result': result
         })
 
-    return jsonify('Success')
+    return jsonify(result)
 
 
 

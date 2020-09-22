@@ -82,16 +82,18 @@ class My_pandas_data(object):
 		return df
 
 
-	def get_sum_diff(self, today):
+	def get_sum_diff(self):
 		logger.info({
 			'action': 'get_sum_diff',
 			'self.df': self.df
 			})
-		
+		result = self.df.iloc[-1]['Sum_diff']
+		logger.info({
+			'action': 'get_sum_diff',
+			'result': result
+			})
 
-
-
-		return 'get_sum_diff'
+		return result
 
 
 
