@@ -82,6 +82,7 @@ class My_pandas_data(object):
 		logger.info({
 			'action': 'create_data_frame',
 			"df['Daily_target']": df['Daily_target'],
+			"df['Sum_diff']": df['Sum_diff'],
 			"df['Daily_diff']": df['Daily_diff']
 			})
 
@@ -89,10 +90,10 @@ class My_pandas_data(object):
 
 
 	def get_sum_diff(self):
-		logger.info({
-			'action': 'get_sum_diff',
-			'self.df': self.df
-			})
+		# logger.info({
+		# 	'action': 'get_sum_diff',
+		# 	'self.df': self.df
+		# 	})
 		result = self.df.iloc[-1]['Sum_diff']
 		logger.info({
 			'action': 'get_sum_diff',
