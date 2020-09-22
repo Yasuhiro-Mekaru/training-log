@@ -106,7 +106,8 @@ class My_pandas_data(object):
 		today_df = self.df.query('Date == @self.today')
 
 		if not today_df.empty:
-			result = today_df['Daily_diff']
+			today_sr = today_df['Daily_diff']
+			result = today_sr.iloc[0]['Daily_diff']
 			logger.info({
 				'action': 'get_daily_diff',
 				'today_df': today_df,
