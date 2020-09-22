@@ -125,7 +125,7 @@ def get_diff_data():
         'df': df
         })
 
-    result = pandas_instance.get_sum_diff()
+    result = pandas_instance.get_sum_diff(today=today)
     logger.info({
         'action': 'get_diff_data',
         'result': result
@@ -198,7 +198,7 @@ def  insert_data():
     database = db.My_log_database(loaded_data)
     database.insert_data()
 
-    return 'Success', 201
+    return jsonify('Success')
 
 
 # DBのテーブルのデータをDELETEする際の処理

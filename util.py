@@ -82,11 +82,14 @@ class My_pandas_data(object):
 		return df
 
 
-	def get_sum_diff(self):
+	def get_sum_diff(self, today):
 		logger.info({
 			'action': 'get_sum_diff',
 			'self.df': self.df
 			})
+		
+
+
 
 		return 'get_sum_diff'
 

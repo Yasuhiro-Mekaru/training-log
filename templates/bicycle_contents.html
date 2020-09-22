@@ -217,9 +217,11 @@
 	                    data: JSON.stringify(data),
 	                    dataType: 'json'
 					}).then(function(response){
-						console.log('Ajax response: ' + response);
+						console.log('insert_data response: ' + response);
+						alert('Input Success')
 						}, function(error){
-							console.log('Ajax error: ' + error);
+							console.log('insert_data error: ' + error);
+							alert('Failed to regist')
 						});
 				})
 
