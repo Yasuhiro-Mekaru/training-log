@@ -16,10 +16,11 @@ logger.info({
 
 
 class My_pandas_data(object):
-	def __init__(self, datas=None, target_distance=None):
+	def __init__(self, datas=None, target_distance=None, self.today=None):
 		self.datas = datas
 		self.target_distance = target_distance
 		self.df = None
+		self.today = None
 
 
 	def create_data_frame(self):
@@ -95,6 +96,25 @@ class My_pandas_data(object):
 
 		return result
 
+
+	def get_daily_diff(self, today):
+		self.today = today
+		logger.info({
+			'action': 'get_daily_diff',
+			'self.today': self.today
+			})
+		today_df = self.df.query('Date == @self.today')
+
+		if !(today_df.empty):
+			result = today_df['Daily_diff']
+			logger.info({
+				'action': 'get_daily_diff',
+				'today_df': today_df,
+				'result': result
+				})
+			return result
+		else:
+			return 0
 
 
 
