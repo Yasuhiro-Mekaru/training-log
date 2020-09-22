@@ -131,7 +131,7 @@ def get_diff_data():
         'sum_diff_result': sum_diff_result
         })
 
-    daily_diff_result = pandas_instance.get_daily_diff()
+    daily_diff_result = pandas_instance.get_daily_diff(today)
     logger.info({
         'action': 'get_diff_data',
         'daily_diff_result': daily_diff_result
