@@ -107,10 +107,10 @@ class My_pandas_data(object):
 
 		if not today_df.empty:
 			today_sr = today_df['Daily_diff']
-			result = today_sr.iloc[0]['Daily_diff']
+			result = today_sr[0]
 			logger.info({
 				'action': 'get_daily_diff',
-				'today_df': today_df,
+				'today_df': today_sr,
 				'result': result
 				})
 			return result
