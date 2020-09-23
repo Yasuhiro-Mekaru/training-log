@@ -76,6 +76,8 @@ def get_diff_data():
 
     target_id = listed_data[0]
     target_distance = listed_data[2]
+
+
     datas = {
         'table': 'milage_log',
         'target_id': target_id,
@@ -111,13 +113,15 @@ def get_diff_data():
     milage_date_instance = date.My_date(listed_response)
     changed_listed_response = milage_date_instance.change_to_date()
 
-    # logger.info({
-    #     'action': 'get_diff_data',
-    #     'changed_listed_response': changed_listed_response,
-    #     'changed_listed_response length': len(changed_listed_response)
-    #     })
+    logger.info({
+        'action': 'get_diff_data',
+        'changed_listed_response': changed_listed_response,
+        'changed_listed_response length': len(changed_listed_response),
+        'target_distance': target_distance,
+        'target_distance type': type(target_distance)
+        })
 
-    pandas_instance = util.My_pandas_data(changed_listed_response, target_distance)
+    pandas_instance = util.My_pandas_data(datas=changed_listed_response, target_distance=target_distance)
     df = pandas_instance.create_data_frame()
 
     # logger.info({
