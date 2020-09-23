@@ -1,4 +1,5 @@
 import calendar
+import copy
 import logging
 
 import pandas as pd
@@ -88,6 +89,9 @@ class My_pandas_data(object):
 			'daily_list[-1]': daily_list[-1]
 			})
 
+		copied_daily_list = copy.copy(daily_list)
+
+
 		added_daily_target_data = []
 		for i in range(length):
 			if i == 0:
@@ -98,12 +102,13 @@ class My_pandas_data(object):
 
 		logger.info({
 			'action': 'create_data_frame',
-			'daily_list': daily_list,
-			'daily_list type': type(daily_list)
+			'copied_daily_list': copied_daily_list,
+			'copied_daily_list[-1]': copied_daily_list[-1],
+			'copied_daily_list': type(copied_daily_list)
 			})
 
 		#dfのカラムに追加
-		df['Daily_target'] = daily_list
+		df['Daily_target'] = copied_daily_list
 		df['Sum_target'] = added_daily_target_data
 
 		df['Daily_diff'] = df['Milage'] - df['Daily_target']
