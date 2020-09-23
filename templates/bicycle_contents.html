@@ -146,6 +146,8 @@
 					}).then(function(response){
 						console.log('get_diff_data response: ' + response);
 						console.log('get_diff_data response type: ' + (typeof response));
+						console.log('get_diff_data response.sum_diff_result: ' + response['sum_diff_result']);
+						console.log('get_diff_data response.daily_diff_result: ' + response['daily_diff_result']);
 						
 					},function(error){
 						console.log('get_diff_data error: ' + error);
