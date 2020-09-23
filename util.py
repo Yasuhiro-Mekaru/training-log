@@ -60,7 +60,7 @@ class My_pandas_data(object):
 
 		logger.info({
 			'action': 'create_data_frame',
-			'self.datas['target_distance']': self.datas['target_distance']
+			"self.datas['target_distance']": self.datas['target_distance']
 			})
 
 		average_in_month = self.datas['target_distance'] / counts_in_month[1]
