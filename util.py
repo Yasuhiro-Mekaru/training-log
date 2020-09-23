@@ -16,9 +16,9 @@ logger.info({
 
 
 class My_pandas_data(object):
-	def __init__(self, datas=None, target_distance=None, today=None):
+	def __init__(self, datas=None, today=None):
 		self.datas = datas
-		self.target_distance = target_distance
+		# self.target_distance = datas['target_distance']
 		self.df = None
 		self.today = None
 
@@ -60,10 +60,10 @@ class My_pandas_data(object):
 
 		logger.info({
 			'action': 'create_data_frame',
-			'target_distance': target_distance
+			'self.datas['target_distance']': self.datas['target_distance']
 			})
 
-		average_in_month = self.target_distance / counts_in_month[1]
+		average_in_month = self.datas['target_distance'] / counts_in_month[1]
 		daily_target = round(average_in_month)
 
 		logger.info({
@@ -102,7 +102,7 @@ class My_pandas_data(object):
 
 		df['Daily_diff'] = df['Milage'] - df['Daily_target']
 		df['Sum_diff'] = df['Sum_milage'] - df['Sum_target']
-		df['Target_diff'] = self.target_distance - df['Sum_milage']
+		df['Target_diff'] = self.datas['target_distance'] - df['Sum_milage']
 
 		self.df = df
 		logger.info({
