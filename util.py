@@ -54,13 +54,33 @@ class My_pandas_data(object):
 		df['Sum_elevation'] = added_elevation_data
 
 		# calendarモジュールで当該月の日数を取得し、日割りの目標値を取得する処理
+
+		#修正予定
 		counts_in_month = calendar.monthrange(2020, 8)
+
+		logger.info({
+			'action': 'create_data_frame',
+			'target_distance': target_distance
+			})
+
 		average_in_month = self.target_distance / counts_in_month[1]
 		daily_target = round(average_in_month)
+
+		logger.info({
+			'action': 'create_data_frame',
+			'daily_target': daily_target,
+			'daily_target type': type(daily_target)
+			})
 
 		daily_list = []
 		for _ in range(length):
 			daily_list.append(daily_target)
+
+		logger.info({
+			'action': 'create_data_frame',
+			'daily_list': daily_list,
+			'daily_list[-1]': daily_list[-1]
+			})
 
 		added_daily_target_data = []
 		for i in range(length):
@@ -69,6 +89,12 @@ class My_pandas_data(object):
 			else:
 				daily_list[i] = daily_list[i] + daily_list[i-1]
 				added_daily_target_data.append(daily_list[i])
+
+		logger.info({
+			'action': 'create_data_frame',
+			'daily_list': daily_list,
+			'daily_list type': type(daily_list)
+			})
 
 		#dfのカラムに追加
 		df['Daily_target'] = daily_list
