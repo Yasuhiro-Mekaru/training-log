@@ -39,6 +39,7 @@
 		<div id="body_block">
 			<div id="top_block">
 				<h1>Bicycle</h1>
+				<input type="text" id="shortfall_distance">
 				<p>This page has your bicycle training logs.</p>
 				<p>push the under button</p>
 			</div>
@@ -151,8 +152,17 @@
 						let sum_diff_result = response['sum_diff_result'];
 						let daily_diff_result = response['daily_diff_result'];
 
-						if(sum_diff_result > 0){
+						// sum_diff_resultの値で条件分岐
+						if(sum_diff_result < 0){
 							$('#body_block').css('background', 'red');
+						}
+
+						// daily_diff_resultの値で条件分岐
+						if(daily_diff_result < 0){
+							$('#shortfall_distance').text('あと ' + daily_diff_result + 'km 足りません');
+						}
+						else if(daily_diff_result > 0){
+							$('#shortfall_distance').text('おめでとう ' + daily_diff_result + ' km 多く走っています');
 						}
 						
 					},function(error){
