@@ -39,7 +39,7 @@
 		<div id="body_block">
 			<div id="top_block">
 				<h1>Bicycle</h1>
-				<input type="text" id="shortfall_distance">
+				<p id="shortfall_distance"></p>
 				<p>This page has your bicycle training logs.</p>
 				<p>push the under button</p>
 			</div>
@@ -159,10 +159,14 @@
 
 						// daily_diff_resultの値で条件分岐
 						if(daily_diff_result < 0){
-							$('#shortfall_distance').text('あと ' + daily_diff_result + 'km 足りません');
+							let word = 'あと ' + daily_diff_result + 'km 足りません';
+							console.log('word: ' + word);
+							$('#shortfall_distance').text(word);
 						}
 						else if(daily_diff_result > 0){
-							$('#shortfall_distance').text('おめでとう ' + daily_diff_result + ' km 多く走っています');
+							let word = 'おめでとう ' + daily_diff_result + ' km 多く走っています';
+							console.log('word: ' + word);
+							$('#shortfall_distance').text(word);
 						}
 						
 					},function(error){
