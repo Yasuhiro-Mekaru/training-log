@@ -127,11 +127,8 @@ class My_pandas_data(object):
 
 
 	def get_sum_diff(self):
-		# logger.info({
-		# 	'action': 'get_sum_diff',
-		# 	'self.df': self.df
-		# 	})
 		result = self.df.iloc[-1]['Sum_diff']
+		result = round(result)
 		logger.info({
 			'action': 'get_sum_diff',
 			'result': result
@@ -151,6 +148,7 @@ class My_pandas_data(object):
 		if not today_df.empty:
 			today_sr = today_df['Daily_diff']
 			result = today_sr[0]
+			result = round(result, 2)
 			logger.info({
 				'action': 'get_daily_diff',
 				'today_df': today_sr,
