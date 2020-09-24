@@ -95,10 +95,10 @@ class My_pandas_data(object):
 		added_daily_target_data = []
 		for i in range(length):
 			if i == 0:
-				added_daily_target_data.append(daily_list[i])
+				added_daily_target_data.append(copied_daily_list[i])
 			else:
-				daily_list[i] = daily_list[i] + daily_list[i-1]
-				added_daily_target_data.append(daily_list[i])
+				copied_daily_list[i] = copied_daily_list[i] + copied_daily_list[i-1]
+				added_daily_target_data.append(copied_daily_list[i])
 
 		logger.info({
 			'action': 'create_data_frame',
@@ -108,7 +108,7 @@ class My_pandas_data(object):
 			})
 
 		#dfのカラムに追加
-		df['Daily_target'] = copied_daily_list
+		df['Daily_target'] = daily_list
 		df['Sum_target'] = added_daily_target_data
 
 		df['Daily_diff'] = df['Milage'] - df['Daily_target']
