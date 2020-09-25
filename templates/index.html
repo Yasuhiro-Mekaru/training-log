@@ -27,6 +27,28 @@
 			<input type="button" value="Coming soon" id="button_xxx">
 		</div>
 
+		<!-- 今月の目標を入力するダイアログ -->
+		<div>
+			<dialog id="input_dialog">
+				<h3>Input Your Target Value</h3>
+				<br/>
+				<p>
+					<label>Month: </label>
+					<input type="text" name="month" id="input_month">
+				</p>
+				<p>
+					<label>Distance: </label>
+					<input type="text" name="distance" id="input_target_distance">
+				</p>
+				<br/>
+				<p>
+					<input type="button" value="INPUT" id="button_input_to_db">
+				</p>
+				<br/>
+				<input type="button" value="Back" class="button_back">
+			</dialog>
+		</div>
+
 		<!-- jQuery CDN-->
 		<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 		<script src="/app/template/index.js"></script> -->
@@ -38,9 +60,20 @@
 
 				// 今日の日付を取得
 				let now = new Date();
+				let year = now.getFullYear();
+				let month = now.getMonth() + 1;
 				let date = now.getDate();
+				let today = year + '-' + month + '-' + date;
 				console.log('now: ' + now);
 				console.log('date: ' + date);
+				console.log('date type: ' + (typeof date));
+				console.log('today: ' + today);
+
+				// 今日の日付が1日だった際の処理
+				if(date == 1){
+					$('#input_dialog').fadeIn('slow');
+					$('#input_month').val(today);
+				}
 
 
 				$('#button_bicycle').click(function(){
