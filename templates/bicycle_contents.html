@@ -167,8 +167,7 @@
 							let word = 'おめでとう ' + daily_diff_result + ' km 多く走っています';
 							console.log('word: ' + word);
 							$('#shortfall_distance').text(word);
-						}
-						
+						}						
 					},function(error){
 						console.log('get_diff_data error: ' + error);
 					});
@@ -361,35 +360,6 @@
 
 						response_target_distance = response
 						console.log('response_target_distance: ' + response_target_distance);
-
-						// //Chart Dialog 内のセレクトボックスの値を取得する処理
-						// //gloal変数 id に取得した値を格納する
-						// $('#select_period').change(function(){
-						// 	// id = $('option:selected').val();
-						// 	id = $('#select_period').val();
-						// 	console.log('id: ' + id);
-
-						// 	for(let i=0; i<response.length; i++){
-						// 		if(id == response[i][0]){
-						// 			distance = response[i][2];
-						// 			if(distance != Number){
-						// 				distance = Number(distance);
-						// 			}
-						// 		}
-						// 	}
-						// 	console.log('distance: ' + distance);
-						// 	console.log('distance type: ' + (typeof distance));
-
-						// 	if(id != Number){
-						// 		console.log('id if not Number: ' + id);
-						// 		id = Number(id);
-						// 	}
-						// 	console.log('id: ' + id);
-						// 	console.log('id type: ' + (typeof id));
-
-						// 	$('#button_to_chart_page').prop('disabled', false);
-						// })
-
 					})
 
 					$('#chart_dialog').fadeIn('slow');

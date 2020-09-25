@@ -36,6 +36,13 @@
 			$(function(){
 				console.log('index.html: jquery Start');
 
+				// 今日の日付を取得
+				let now = new Date();
+				let date = now.getDate();
+				console.log('now: ' + now);
+				console.log('date: ' + date);
+
+
 				$('#button_bicycle').click(function(){
 					window.location.href = 'https://training-logs.herokuapp.com/bicycle_contents'
 				})

@@ -150,7 +150,6 @@ class My_log_database(object):
 		elif self.data['table'] == 'target_distance':
 			month = self.data['month']
 			monthly_value = self.data['monthly_value']
-			dayly_value = self.data['dayly_value']
 			logger.info({
 		        'action': 'insert_data: target_distance',
 		        'month': month,
@@ -160,8 +159,8 @@ class My_log_database(object):
 			conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
 				ssl_disabled=True)
 			cursor = conn.cursor()
-			cursor.execute('INSERT INTO target_distance(month, monthly_value, dayly_value) '
-				'VALUES("{}", "{}", "{}")'.format(month, monthly_value, dayly_value))
+			cursor.execute('INSERT INTO target_distance(month, monthly_value) '
+				'VALUES("{}", "{}")'.format(month, monthly_value))
 			conn.commit()
 			cursor.close()
 			conn.close()
