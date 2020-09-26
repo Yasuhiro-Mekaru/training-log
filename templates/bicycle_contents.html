@@ -161,10 +161,15 @@
 						if(daily_diff_result < 0){
 							let word = 'あと ' + daily_diff_result + 'km 足りません';
 							console.log('word: ' + word);
-							$('#shortfall_distance').text(word);
+							$('#shortfall_distance').text(word).css('color', 'red');
 						}
 						else if(daily_diff_result > 0){
 							let word = 'おめでとう ' + daily_diff_result + ' km 多く走っています';
+							console.log('word: ' + word);
+							$('#shortfall_distance').text(word).css('color', 'blue');
+						}
+						else{
+							let word = '今日はまだデータが登録されていません';
 							console.log('word: ' + word);
 							$('#shortfall_distance').text(word);
 						}						

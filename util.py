@@ -144,6 +144,10 @@ class My_pandas_data(object):
 			'self.today': self.today
 			})
 		today_df = self.df.query('Date == @self.today')
+		logger.info({
+			'action': 'get_daily_diff',
+			'today_df': today_df
+			})
 
 		if not today_df.empty:
 			today_sr = today_df['Daily_diff']
@@ -151,7 +155,7 @@ class My_pandas_data(object):
 			result = round(result, 2)
 			logger.info({
 				'action': 'get_daily_diff',
-				'today_df': today_sr,
+				'today_sr': today_sr,
 				'result': result
 				})
 			return result
