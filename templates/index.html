@@ -105,10 +105,11 @@
 						console.log('response: ' + response);
 						alert('Input Success');
 
-						$('#input_month').val('');
-						$('#input_target_distance').val('');
-						$('#input_dialog').fadeOut();
-						$('.button_to_next').prop('disabled', false);
+						// $('#input_month').val('');
+						// $('#input_target_distance').val('');
+						// $('#input_dialog').fadeOut();
+						// $('.button_to_next').prop('disabled', false);
+						back_from_dialog();
 					}, function(error){
 						console.log('error: ' + error);
 						alert('Input Error. Try again');
@@ -120,11 +121,12 @@
 				// 値をクリアしダイアログを閉じる
 				// ダイアログ表示時に非活性化されたボタンを活性化する
 				$('.button_back').click(function(){
-					$('#input_month').val('');
-					$('#input_target_distance').val('');
-					$('#input_dialog').fadeOut();
+					// $('#input_month').val('');
+					// $('#input_target_distance').val('');
+					// $('#input_dialog').fadeOut();
 
-					$('.button_to_next').prop('disabled', false);
+					// $('.button_to_next').prop('disabled', false);
+					back_from_dialog();
 				})
 
 
@@ -134,9 +136,13 @@
 					window.location.href = 'https://training-logs.herokuapp.com/bicycle_contents'
 				})
 
-				// function back_from_dialog(){
+				function back_from_dialog(){
+					$('#input_month').val('');
+					$('#input_target_distance').val('');
+					$('#input_dialog').fadeOut();
 
-				// }
+					$('.button_to_next').prop('disabled', false);
+				}
 			});
 		</script>
 	</body>
