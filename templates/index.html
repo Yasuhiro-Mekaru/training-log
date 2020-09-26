@@ -22,24 +22,24 @@
 			<p>Select the munu and push under button</p>
 		</div>
 		<div>
-			<input type="button" value="Bicycle" id="button_bicycle">
-			<input type="button" value="Coming soon" id="button_xx">
-			<input type="button" value="Coming soon" id="button_xxx">
-		</div>
+			<input type="button" value="Bicycle" id="button_bicycle" class="button_to_next">
+			<input type="button" value="Coming soon" id="button_xx" class="button_to_next">
+			<input type="button" value="Coming soon" id="button_xxx" class="button_to_next">
+		</div> 
 
 		<!-- 今月の目標を入力するダイアログ -->
 		<div>
 			<dialog id="input_dialog">
 				<h4>New Month is Starting</h4>
-				<p>Input Your Target Values</p>
+				<p>Input your target values of this month</p>
 				<br/>
 				<p>
 					<label>Month: </label>
-					<input type="text" name="month" id="input_month">
+					<input type="text" name="month" id="input_month_data">
 				</p>
 				<p>
 					<label>Distance: </label>
-					<input type="text" name="distance" id="input_target_distance">
+					<input type="text" name="distance" id="input_monthly_value">
 				</p>
 				<br/>
 				<p>
@@ -52,6 +52,7 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script type="text/javascript">
+
 			$(function(){
 				console.log('index.html: jquery Start');
 
@@ -61,28 +62,62 @@
 				let month = now.getMonth() + 1;
 				let date = now.getDate();
 				let today = year + '-' + month + '-' + date;
-				console.log('now: ' + now);
-				console.log('date: ' + date);
-				console.log('date type: ' + (typeof date));
 				console.log('today: ' + today);
 
+
 				// 今日の日付が1日だった際の処理
+				// 1日の場合は target_distanceテーブルに今月の目標を入力するダイアログを開く
+				// 今日の日付はデフォルトで表示する
 				if(date == 26){
 					$('#input_dialog').fadeIn('slow');
-					$('#input_month').val(today);
+					$('#input_month_data').val(today);
+
+					// 他のボタンを非活性化
+					$('.button_to_next').prop('disabled', true);
 				}
 
-				// ここにinputボタンがタップされた際の処理を記述する
 
-				// Backボタンがタップされた際の処理
-				// 値をクリアしダイアログを閉じる
-				$('.button_back').click(function(){
-					$('#input_month').val('');
-					$('#input_target_distance').val('');
-					$('#input_dialog').fadeOut('slow');
+				// ダイアログ内のInputボタンが押下された際の処理
+				// ダイアログ内の値を取得してサーバーへPOSTする
+				// レスポンスが返ってきたら結果をalertで表示する
+				$('#button_input_to_db').click(function(){
+					let month_data = $('#input_month_data').val();
+					let monthly_value = $('#input_monthly_value').val();
+					data = {
+						'table': 'target_distance',
+						'month': month_data,
+						'monthly_value': monthly_value
+					}
+					$.ajax({
+						type: 'POST',
+						contentType: 'application/json',
+						url: 'https://training-logs.herokuapp.com/insert_data',
+						data: JSON.stringify(data),
+						dataType: 'json'
+					}).then(function(response){
+						console.log('response: ' + response);
+						alert('Input Success');
+					}, function(error){
+						console.log('error: ' + error);
+						alert('Input Error. Try again');
+					});
 				})
 
 
+				// Backボタンがタップされた際の処理
+				// 値をクリアしダイアログを閉じる
+				// ダイアログ表示時に非活性化されたボタンを活性化する
+				$('.button_back').click(function(){
+					$('#input_month').val('');
+					$('#input_target_distance').val('');
+					$('#input_dialog').fadeOut();
+					
+					$('.button_to_next').prop('disabled', false);
+				})
+
+
+				// Bicycleボタンがタップされた際の処理
+				// ページ遷移する
 				$('#button_bicycle').click(function(){
 					window.location.href = 'https://training-logs.herokuapp.com/bicycle_contents'
 				})
