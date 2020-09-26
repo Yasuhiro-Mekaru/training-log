@@ -67,10 +67,20 @@
 				console.log('today: ' + today);
 
 				// 今日の日付が1日だった際の処理
-				if(date == 25){
+				if(date == 26){
 					$('#input_dialog').fadeIn('slow');
 					$('#input_month').val(today);
 				}
+
+				// ここにinputボタンがタップされた際の処理を記述する
+
+				// Backボタンがタップされた際の処理
+				// 値をクリアしダイアログを閉じる
+				$('.button_back').click(function(){
+					$('#input_month').val('');
+					$('#input_target_distance').val('');
+					$('#input_dialog').fadeOut('slow');
+				})
 
 
 				$('#button_bicycle').click(function(){
