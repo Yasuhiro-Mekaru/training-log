@@ -62,13 +62,15 @@
 				let month = now.getMonth() + 1;
 				let date = now.getDate();
 				//日付のフォーマットを合わせるための処理
+				let changed_month;
 				if(month < 10){
-					month = '0' + month;
+					changed_month = '0' + month;
 				}
+				let changed_date;
 				if(date < 10){
-					date = '0' + date;
+					chanded_date = '0' + date;
 				}
-				let today = year + '-' + month + '-' + date;
+				let today = year + '-' + changed_month + '-' + changed_date;
 				console.log('today: ' + today);
 
 
@@ -104,11 +106,6 @@
 					}).then(function(response){
 						console.log('response: ' + response);
 						alert('Input Success');
-
-						// $('#input_month').val('');
-						// $('#input_target_distance').val('');
-						// $('#input_dialog').fadeOut();
-						// $('.button_to_next').prop('disabled', false);
 						back_from_dialog();
 					}, function(error){
 						console.log('error: ' + error);
@@ -118,14 +115,7 @@
 
 
 				// Backボタンがタップされた際の処理
-				// 値をクリアしダイアログを閉じる
-				// ダイアログ表示時に非活性化されたボタンを活性化する
 				$('.button_back').click(function(){
-					// $('#input_month').val('');
-					// $('#input_target_distance').val('');
-					// $('#input_dialog').fadeOut();
-
-					// $('.button_to_next').prop('disabled', false);
 					back_from_dialog();
 				})
 
@@ -136,6 +126,9 @@
 					window.location.href = 'https://training-logs.herokuapp.com/bicycle_contents'
 				})
 
+
+				// 値をクリアしダイアログを閉じる
+				// ダイアログ表示時に非活性化されたボタンを活性化する処理
 				function back_from_dialog(){
 					$('#input_month').val('');
 					$('#input_target_distance').val('');
