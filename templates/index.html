@@ -61,23 +61,22 @@
 				let year = now.getFullYear();
 				let month = now.getMonth() + 1;
 				let date = now.getDate();
-				//日付のフォーマットを合わせるための処理
-				let changed_month;
-				if(month < 10){
-					changed_month = '0' + month;
-				}
-				let changed_date;
-				if(date < 10){
-					chanded_date = '0' + date;
-				}
-				let today = year + '-' + changed_month + '-' + changed_date;
-				console.log('today: ' + today);
 
 
 				// 今日の日付が1日だった際の処理
 				// 1日の場合は target_distanceテーブルに今月の目標を入力するダイアログを開く
 				// 今日の日付はデフォルトで表示する
 				if(date == 26){
+					//日付のフォーマットを合わせるための処理
+					if(month < 10){
+						month = '0' + month;
+					}
+					if(date < 10){
+						date = '0' + date;
+					}
+					let today = year + '-' + month + '-' + date;
+					console.log('today: ' + today);
+
 					$('#input_dialog').fadeIn('slow');
 					$('#input_month_data').val(today);
 
