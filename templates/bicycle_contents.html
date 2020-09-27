@@ -47,6 +47,9 @@
 			<div>
 				<input type="button" value="Input Logs" id="button_to_input_dialog">
 				<input type="button" value="Display Chart" id="button_to_chart_dialog">
+
+				<!-- STRAVA apiのテスト -->
+				<input type="button" id="button_to_strava">
 			</div>
 
 			<!-- ログを入力するダイアログ -->
@@ -136,6 +139,10 @@
 				let chart_type;
 				let response_target_distance = [];
 
+				// レンダリングが完了した時点でサーバーにアクセスして走行距離の差分データを取得する処理
+				// 取得するデータは、
+				// ・今月の目標の日割り値の合計に達しているか
+				// ・今日の目標までの残り走行距離
 				let datas = {
 					'table': 'target_distance'
 				};
@@ -152,14 +159,15 @@
 						let sum_diff_result = response['sum_diff_result'];
 						let daily_diff_result = response['daily_diff_result'];
 
-						// sum_diff_resultの値で条件分岐
+						// sum_diff_resultの値で条件分岐し今月の目標の日割り値の合計に達しているか表示
 						if(sum_diff_result < 0){
 							$('#body_block').css('background', 'red');
 						}
 
-						// daily_diff_resultの値で条件分岐
+						// daily_diff_resultの値で条件分岐し今日の目標までの走行距離を表示させる処理
+						// 値に応じて pタグでコメントを分けて表示させる
 						if(daily_diff_result < 0){
-							let word = 'あと ' + daily_diff_result + 'km 足りません';
+							let word = '今日の目標まで ' + daily_diff_result + 'km 足りません';
 							console.log('word: ' + word);
 							$('#shortfall_distance').text(word).css('color', 'red');
 						}
@@ -462,6 +470,24 @@
 						$('#button_to_chart_dialog').prop('disabled', false);
 					}
 				})
+
+
+
+				// STARAVAのテスト
+				$('#button_to_strava').click(function(){
+					$.ajax({
+						type: 'GET',
+						Authorization: 'Bearer ccae17f3683d4007323b5e8b2f060f9453e06390',
+						url: 'https://www.strava.com/api/v3/activities/4113552766',
+						// data: JSON.stringify(data),
+						// dataType: 'json'
+					}).then(function(response){
+						console.log('STRAVA response: ' + response);
+					}, function(error){
+						console.log('STARAVA error: ' + error);
+					})
+				})
+
 			});
 		</script>
 
