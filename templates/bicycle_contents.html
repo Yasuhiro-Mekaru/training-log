@@ -475,10 +475,14 @@
 
 				// STARAVAのテスト
 				$('#button_to_strava').click(function(){
+					data = {
+						'access_token': 'ccae17f3683d4007323b5e8b2f060f9453e06390'
+					}
 					$.ajax({
-						type: 'GET',
+						type: 'POST',
 						Authorization: 'Bearer ccae17f3683d4007323b5e8b2f060f9453e06390',
-						url: 'https://www.strava.com/api/v3/activities/4113552766',
+						url: 'https://www.strava.com/api/v3/athletes/23490374',
+						data: data
 						// data: JSON.stringify(data),
 						// dataType: 'json'
 					}).then(function(response){
