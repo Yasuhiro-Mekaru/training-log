@@ -253,6 +253,8 @@
 					}).then(function(response){
 						console.log('insert_data response: ' + response);
 						alert('Input Success')
+						
+						back_from_input_dialog();
 						}, function(error){
 							console.log('insert_data error: ' + error);
 							alert('Failed to regist')
@@ -446,12 +448,7 @@
 					//Input Dialogが表示されている際の分岐
 					if($('#input_dialog').css('display')=='block'){
 						console.log('button_back: input_dialog');
-						//入力ボックスの値をクリアする処理
-						$('#input_date').val('');
-						$('#input_milage').val('');
-						$('#input_elevation').val('');
-
-						$('#input_dialog').fadeOut('slow');
+						back_from_input_dialog();
 					}
 					//Chart Dialogが表示されている際の分岐
 					else if($('#chart_dialog').css('display')=='block'){
@@ -475,6 +472,16 @@
 						$('#button_to_chart_dialog').prop('disabled', false);
 					}
 				})
+
+
+				function back_from_input_dialog(){
+					//入力ボックスの値をクリアする処理
+					$('#input_date').val('');
+					$('#input_milage').val('');
+					$('#input_elevation').val('');
+
+					$('#input_dialog').fadeOut('slow');
+				}
 
 
 
