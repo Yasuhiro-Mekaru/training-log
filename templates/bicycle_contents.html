@@ -446,6 +446,11 @@
 					//Input Dialogが表示されている際の分岐
 					if($('#input_dialog').css('display')=='block'){
 						console.log('button_back: input_dialog');
+						//入力ボックスの値をクリアする処理
+						$('#input_date').val('');
+						$('#input_milage').val('');
+						$('#input_elevation').val('');
+
 						$('#input_dialog').fadeOut('slow');
 					}
 					//Chart Dialogが表示されている際の分岐
