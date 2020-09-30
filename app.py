@@ -98,15 +98,12 @@ def get_diff_data():
     milage_date_instance = date.My_date(listed_response)
     changed_listed_response = milage_date_instance.change_to_date()
 
+    #util.py のクラスのインスタンスを生成し、Pandas DataFrameオブジェクトを受け取る処理
     pandas_instance = util.My_pandas_data(datas=changed_listed_response, target_distance=target_distance)
     df = pandas_instance.create_data_frame()
 
-    logger.info({
-        'action': 'get_diff_data',
-        'df[Sum_milage]': df['Sum_milage']
-        })
-    sum_milage = df.iloc[-1]['Sum_milage']
-    # sum_milage = round(sum_milage, 1)
+    # 今月の合計走行距離の一番最新の値を取得
+    sum_milage = df.iloc[-1]['Sum_milage']   
     logger.info({
         'action': 'get_diff_data',
         'sum_milage': sum_milage,
