@@ -103,8 +103,13 @@ def get_diff_data():
 
     logger.info({
         'action': 'get_diff_data',
-        'df': df,
         'df[Sum_milage]': df['Sum_milage']
+        })
+    sum_milage = df.iloc[-1]['Sum_milage']
+    logger.info({
+        'action': 'get_diff_data',
+        'sum_milage': sum_milage,
+        'sum_milage type': type(sum_milage)
         })
 
     sum_diff_result = pandas_instance.get_sum_diff()
