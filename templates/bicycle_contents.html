@@ -39,6 +39,7 @@
 		<div id="body_block">
 			<div id="top_block">
 				<h1>Bicycle</h1>
+				<p id="sum_milage"></p>
 				<p id="shortfall_distance"></p>
 				<p>This page has your bicycle training logs.</p>
 				<p>push the under button</p>
@@ -169,7 +170,7 @@
 						// daily_diff_resultの値で条件分岐し今日の目標までの走行距離を表示させる処理
 						// 値に応じて pタグでコメントを分けて表示させる
 						if(daily_diff_result < 0){
-							let word = '今日の目標まで ' + daily_diff_result + 'km 足りません';
+							let word = '今日の目標まで ' + daily_diff_result + ' km 足りません';
 							console.log('word: ' + word);
 							$('#shortfall_distance').text(word).css('color', 'red');
 						}
@@ -182,7 +183,13 @@
 							let word = '今日はまだデータが登録されていません';
 							console.log('word: ' + word);
 							$('#shortfall_distance').text(word);
-						}						
+						}
+
+						//今月の合計走行距離を表示する処理
+						let milage_word = '今月は ' + sum_milage + ' km 走っています。';
+						console.log('milage_word: ' + milage_word);
+						$('#sum_milage').text(milage_word).css('color', 'blue');
+
 					},function(error){
 						console.log('get_diff_data error: ' + error);
 					});
