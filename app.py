@@ -106,6 +106,7 @@ def get_diff_data():
         'df[Sum_milage]': df['Sum_milage']
         })
     sum_milage = df.iloc[-1]['Sum_milage']
+    # sum_milage = round(sum_milage, 1)
     logger.info({
         'action': 'get_diff_data',
         'sum_milage': sum_milage,
@@ -116,7 +117,8 @@ def get_diff_data():
     daily_diff_result = pandas_instance.get_daily_diff(today)
     datas = {
         'sum_diff_result': sum_diff_result,
-        'daily_diff_result': daily_diff_result
+        'daily_diff_result': daily_diff_result,
+        'sum_milage': sum_milage
     }
 
     return jsonify(datas)

@@ -155,9 +155,11 @@
 					}).then(function(response){
 						console.log('get_diff_data response.sum_diff_result: ' + response['sum_diff_result']);
 						console.log('get_diff_data response.daily_diff_result: ' + response['daily_diff_result']);
+						console.log('get_diff_data response.sum_milage: ' + response['sum_milage']);
 
 						let sum_diff_result = response['sum_diff_result'];
 						let daily_diff_result = response['daily_diff_result'];
+						let sum_milage = response['sum_milage'];
 
 						// sum_diff_resultの値で条件分岐し今月の目標の日割り値の合計に達しているか表示
 						if(sum_diff_result < 0){
@@ -253,7 +255,7 @@
 					}).then(function(response){
 						console.log('insert_data response: ' + response);
 						alert('Input Success')
-						
+
 						back_from_input_dialog();
 						}, function(error){
 							console.log('insert_data error: ' + error);
