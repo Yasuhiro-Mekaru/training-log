@@ -118,9 +118,7 @@ class My_pandas_data(object):
 		self.df = df
 		logger.info({
 			'action': 'create_data_frame',
-			"df['Daily_target']": df['Daily_target'],
-			"df['Sum_diff']": df['Sum_diff'],
-			"df['Daily_diff']": df['Daily_diff']
+			"df['Sum_milage']": df['Sum_milage'],
 			})
 
 		return df

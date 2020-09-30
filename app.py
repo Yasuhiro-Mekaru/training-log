@@ -101,6 +101,12 @@ def get_diff_data():
     pandas_instance = util.My_pandas_data(datas=changed_listed_response, target_distance=target_distance)
     df = pandas_instance.create_data_frame()
 
+    logger.info({
+        'action': 'get_diff_data',
+        'df': df,
+        'df[Sum_milage]': df['Sum_milage']
+        })
+
     sum_diff_result = pandas_instance.get_sum_diff()
     daily_diff_result = pandas_instance.get_daily_diff(today)
     datas = {
