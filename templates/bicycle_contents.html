@@ -164,7 +164,7 @@
 
 						// sum_diff_resultの値で条件分岐し画面表示を変化(今月の目標の日割り値の合計に達しているか)
 						if(sum_diff_result < 0){
-							$('#body_block').css('background', 'red');
+							$('#body_block').css('background', 'black');
 						}
 
 						// daily_diff_resultの値で条件分岐し今日の目標までの走行距離を表示させる処理
@@ -182,7 +182,7 @@
 						else{
 							let word = '今日はまだデータが登録されていません';
 							console.log('word: ' + word);
-							$('#shortfall_distance').text(word);
+							$('#shortfall_distance').text(word).css('color', 'green');;
 						}
 
 						//今月の合計走行距離を表示する処理
