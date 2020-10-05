@@ -42,12 +42,6 @@ def hello():
 
 
 
-# @app.route('/login', methods=['GET'])
-# def login():
-#     return render_template('login.html')
-
-
-
 @app.route('/bicycle_contents', methods=['GET'])
 def bicycle_contents():
     return render_template('bicycle_contents.html')
@@ -103,7 +97,8 @@ def get_diff_data():
     df = pandas_instance.create_data_frame()
 
     # 今月の合計走行距離の一番最新の値を取得
-    sum_milage = df.iloc[-1]['Sum_milage']   
+    sum_milage = df.iloc[-1]['Sum_milage']
+    sum_milage = round(sum_milage, 2)   
     logger.info({
         'action': 'get_diff_data',
         'sum_milage': sum_milage,
