@@ -28,7 +28,7 @@ class My_date(object):
 		############################################################
 		datetime_format = '%Y-%m-%d %H:%M:%S' 
 		now = datetime.datetime.now()
-		jtcnow = now + datetime.datetimedelta(hours=9)
+		jtcnow = now + datetime.timedelta(hours=9)
 		logger.info({
 			'action': 'date.py',
 			'now': now,
