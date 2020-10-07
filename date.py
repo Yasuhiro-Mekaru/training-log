@@ -25,12 +25,17 @@ class My_date(object):
 		# dateオブジェクトを文字列に変更
 		date_format = '%Y-%m-%d'
 
+		############################################################
 		datetime_format = '%Y-%m-%d %H:%M:%S' 
-		changed_to_str_datetime = today.strftime(datetime_format)
+		now = datetime.datetime.now()
+		utcnow = datetime.datetime.utcnow()
 		logger.info({
 			'action': 'date.py',
-			'changed_to_str_datetime': changed_to_str_datetime
+			'now': now,
+			'utcnow': utcnow
 			})
+
+		############################################################
 
 		changed_to_str = today.strftime(date_format)
 
