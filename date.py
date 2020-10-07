@@ -24,6 +24,14 @@ class My_date(object):
 		self.today = today
 		# dateオブジェクトを文字列に変更
 		date_format = '%Y-%m-%d'
+
+		datetime_format = '%Y-%m-%d %H:%M:%S' 
+		changed_to_str_datetime = today.strftime(datetime_format)
+		logger.info({
+			'action': 'date.py',
+			'changed_to_str_datetime': changed_to_str_datetime
+			})
+
 		changed_to_str = today.strftime(date_format)
 
 		logger.info({
