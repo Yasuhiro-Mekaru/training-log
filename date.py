@@ -16,6 +16,8 @@ class My_date(object):
 	def __init__(self, datas=None, today=None):
 		self.datas = datas
 		self.today = today
+		#Test
+		self.now = now
 
 
 	def today_date(self):
@@ -31,6 +33,7 @@ class My_date(object):
 		datetime_format = '%Y-%m-%d %H:%M:%S' 
 		now = datetime.datetime.now()
 		jtcnow = now + datetime.timedelta(hours=9)
+		self.now = jtcnow
 		logger.info({
 			'action': 'date.py',
 			'now': now,
@@ -52,7 +55,8 @@ class My_date(object):
 			'changed_to_str': changed_to_str,
 			'changed_to_str type': type(changed_to_str)
 			})
-		return changed_to_str
+		#return changed_to_str
+		return changed_to_jtc_str
 
 
 
