@@ -13,7 +13,7 @@ logger.info({
 
 class My_date(object):
 	"""docstring for My_date"""
-	def __init__(self, datas=None, today=None):
+	def __init__(self, datas=None, today=None, now=None):
 		self.datas = datas
 		self.today = today
 		#Test
