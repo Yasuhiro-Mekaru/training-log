@@ -36,6 +36,12 @@ class My_date(object):
 			'now': now,
 			'jtcnow': jtcnow
 			})
+		changed_to_jtc_str = jtcnow.strftime(date_format)
+		logger.info({
+			'action': 'date.py',
+			'changed_to_jtc_str': changed_to_jtc_str,
+			'changed_to_jtc_str type': type(changed_to_jtc_str)
+			})
 
 		############################################################
 
