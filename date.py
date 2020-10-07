@@ -21,6 +21,8 @@ class My_date(object):
 	def today_date(self):
 		# datetime で今日の日付け情報をdateオブジェクトとして取得
 		today = datetime.date.today()
+		# タイムゾーンを日本時間にする
+		today = today + datetime.timedelta(hours=9)
 		self.today = today
 		# dateオブジェクトを文字列に変更
 		date_format = '%Y-%m-%d'
