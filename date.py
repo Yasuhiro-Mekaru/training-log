@@ -28,11 +28,11 @@ class My_date(object):
 		############################################################
 		datetime_format = '%Y-%m-%d %H:%M:%S' 
 		now = datetime.datetime.now()
-		utcnow = datetime.datetime.utcnow()
+		jtcnow = now + datetime.datetimedelta(hours=9)
 		logger.info({
 			'action': 'date.py',
 			'now': now,
-			'utcnow': utcnow
+			'jtcnow': jtcnow
 			})
 
 		############################################################
