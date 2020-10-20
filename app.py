@@ -166,6 +166,7 @@ def get_data():
 
 
 
+
 # DBのテーブルにPOSTする際の処理
 @app.route('/insert_data', methods=['POST'])
 def  insert_data():
@@ -183,6 +184,7 @@ def  insert_data():
     return jsonify('Success')
 
 
+
 # DBのテーブルのデータをDELETEする際の処理
 @app.route('/delete_data', methods=['DELETE'])
 def delete_data():
@@ -198,6 +200,7 @@ def delete_data():
     database.delete_data()
 
     return 'Deleted'
+
 
 
 # DBのテーブルからデータをGETする際の処理
