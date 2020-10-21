@@ -94,7 +94,9 @@ def get_diff_data():
 
     #util.py のクラスのインスタンスを生成し、Pandas DataFrameオブジェクトを受け取る処理
     pandas_instance = util.My_pandas_data(datas=changed_listed_response, target_distance=target_distance)
-    df = pandas_instance.create_data_frame()
+    #df = pandas_instance.create_data_frame()
+
+    df = pandas_instance.df
 
     # 今月の合計走行距離の一番最新の値を取得
     sum_milage = df.iloc[-1]['Sum_milage']
@@ -250,7 +252,9 @@ def select_data():
 
     # util.pyのMy_pandas_dataクラスのインスタンスを作成し、Pandasのdfオブジェクトを作成する
     pandas_instance = util.My_pandas_data(changed_listed_response, target_distance)
-    df = pandas_instance.create_data_frame()
+    #df = pandas_instance.create_data_frame()
+
+    df = pandas_instance.df
 
     logger.info({
         'action': 'select_data',
