@@ -235,7 +235,7 @@ class My_pandas_data(object):
 		# 	'self.today': self.today
 		# 	})
 		#today_df = self.df.query('Date == @self.today')
-		today_df = self.df.query('Date == today')
+		today_df = self.df.query('Date == @today')
 		logger.info({
 			'action': 'get_daily_diff',
 			'today_df': today_df
