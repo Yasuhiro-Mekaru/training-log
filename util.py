@@ -27,11 +27,15 @@ class My_pandas_data(object):
 		self.datas = datas
 		self.target_distance = target_distance
 		#self.df = None
-		self.df = create_data_frame()
+		self.df = self.create_data_frame()
 		self.today = None
 
 
 	def create_data_frame(self):
+		logger.info({
+			'action': 'create_data_frame',
+			'self.datas[0]': self.datas[0]
+			})
 		df = pd.DataFrame(self.datas)
 		df.columns = ['Date', 'Milage', 'Elevation']
 		df = df.set_index('Date')
