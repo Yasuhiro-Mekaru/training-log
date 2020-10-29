@@ -40,7 +40,7 @@ class My_bokeh_chart(object):
 					('合計走行距離', '@Sum_milage'+'( km)'),
 					('目標距離', '@Sum_target'+' (km)')],
 				formatters={
-					'index': 'datetime',
+					'@index': 'datetime',
 					},
 				mode='mouse')
 
@@ -134,7 +134,7 @@ class My_bokeh_chart(object):
 					('合計走行距離', '@Sum_milage'+'( km)'),
 					('目標距離', '@Sum_target'+' (km)')],
 				formatters={
-					'index': 'datetime',
+					'@index': 'datetime',
 					},
 				mode='mouse')
 
@@ -185,7 +185,7 @@ class My_bokeh_chart(object):
 					('当日獲得標高', "@Elevation"+' (m)'),
 					('合計獲得標高', '@Sum_elevation'+' (m)')],
 				formatters={
-					'index': 'datetime',
+					'@index': 'datetime',
 					},
 				mode='mouse')
 
