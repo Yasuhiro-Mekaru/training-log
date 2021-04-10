@@ -19,7 +19,7 @@ class My_log_database(object):
 
 
 	def select_data(self):
-		# Insert するテーブルによって処理を分岐する
+		# Select するテーブルによって処理を分岐する
 		if self.data['table'] == 'milage_log':
 			table = self.data['table']
 			target_id = self.data['target_id']
@@ -215,6 +215,11 @@ class My_log_database(object):
 
 		elif self.data['table'] == 'weather':
 			pass
+
+
+
+class Mysql_database(object):
+	
 
 
 
