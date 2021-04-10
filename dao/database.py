@@ -31,10 +31,11 @@ class Database(object):
 
 	def exec_select(self, query_str, kwags):
 		print('database.py exec_select is celled')
-		conn = mysql.connector.connect(**self.kwargs)
+		conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
+								ssl_disabled=True)
 		cursor = conn.cursor()
 		datas = []
-		cursor.execute(query_str.format(**kwargs))
+		cursor.execute(query_str.format(**kwags))
 		for row in cursor:
 			datas.append(row)
 		conn.commit()
@@ -46,7 +47,7 @@ class Database(object):
 	def exec_insert(self, query_str, kwags):
 		conn = mysql.connector.connect(**self.kwargs)
 		cursor = conn.cursor()
-		cursor.execute(query_str.format(**kwargs))
+		cursor.execute(query_str.format(**kwags))
 		conn.commit()
 		cursor.close()
 		conn.close()
