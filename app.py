@@ -12,6 +12,8 @@ import date
 import db
 import util
 
+from dao import controller
+
 
 app = Flask(__name__)
 app.debug = True
