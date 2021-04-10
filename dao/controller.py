@@ -8,7 +8,12 @@ logger = logging.getLogger(__name__)
 
 def select_from_table(table):
 	if table == 'account_category':
-		query_str = 'SELECT * from "{table}"'.format(table)
+		query_str = 'SELECT * from {table}'.format(table)
+		logger.info({
+			'action': 'controller.py select_from_table category',
+			'query_str': query_str,
+			'query_str type': type(query_str)
+			})
 		# kwags = {
 		# 	'table': table
 		# }
