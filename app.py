@@ -287,6 +287,8 @@ def select_data():
 ### 2021/04/10 Finance Account の追加 ###
 @app.route('/finance_account', methods=['GET'])
 def finance_account():
+    table = 'account_category'
+    controller.select_from_table(table)
     return render_template('finance_data_input.html')
 
 
