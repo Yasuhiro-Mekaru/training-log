@@ -30,7 +30,6 @@ class Database(object):
 
 
 	def exec_select(self, query_str, kwags):
-		print('database.py exec_select is called')
 		conn = mysql.connector.connect(**self.kwargs)
 		cursor = conn.cursor()
 		datas = []
