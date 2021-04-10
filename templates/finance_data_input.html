@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head Section -->
+	<head>
+	    <!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <title>Logs</title>
+
+	</head>
+
+<!-- Body Section -->
+	<body>
+		<div id="top_block">
+			<h1>Input Product Data</h1>
+			<p></p>
+		</div>
+			<form>
+				<!-- 日時の入力 -->
+				<label>
+					Date:
+					<input type="text" name="date" value="" id="input_date">
+				</label>
+				<!-- Categoryの入力 -->
+				<label>
+					Category:
+					<input type="text" name="category" list="category_list">
+					<datalist id="category_list">
+						<option value="sample"></option>
+					</datalist>
+				</label>
+			</form>
+		<div>
+		</div> 
+
+		<!-- 今月の目標を入力するダイアログ -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript">
+
+			$(function(){
+				console.log('finance_data_input.html: jquery Start');
+
+				// 今日の日付を取得
+				let now = new Date();
+				let year = now.getFullYear();
+				let month = now.getMonth() + 1;
+				let date = now.getDate();
+
+				//日付のフォーマットを合わせるための処理
+				if(month < 10){
+					month = '0' + month;
+				}
+				if(date < 10){
+					date = '0' + date;
+				}
+				let today = year + '-' + month + '-' + date;
+				console.log('today: ' + today);
+
+				// 日時項目に表示
+				$('#input_date').val(today)
+
+
+				// ダイアログ内のInputボタンが押下された際の処理
+				// ダイアログ内の値を取得してサーバーへPOSTする
+				// レスポンスが返ってきたら結果をalertで表示する
+				// $('#button_input_to_db').click(function(){
+				// 	let month_data = $('#input_month_data').val();
+				// 	let monthly_value = $('#input_monthly_value').val();
+				// 	data = {
+				// 		'table': 'target_distance',
+				// 		'month': month_data,
+				// 		'monthly_value': monthly_value
+				// 	}
+				// 	$.ajax({
+				// 		type: 'POST',
+				// 		contentType: 'application/json',
+				// 		url: 'https://training-logs.herokuapp.com/insert_data',
+				// 		data: JSON.stringify(data),
+				// 		dataType: 'json'
+				// 	}).then(function(response){
+				// 		console.log('response: ' + response);
+				// 		alert('Input Success');
+				// 		back_from_dialog();
+				// 	}, function(error){
+				// 		console.log('error: ' + error);
+				// 		alert('Input Error. Try again');
+				// 	});
+				// })
+			});
+		</script>
+	</body>
+</html>
