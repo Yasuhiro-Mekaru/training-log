@@ -216,9 +216,6 @@ class My_log_database(object):
 		elif self.data['table'] == 'weather':
 			pass
 
-
-
-class Mysql_database(object):
 	
 
 
