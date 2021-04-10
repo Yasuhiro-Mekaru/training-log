@@ -29,13 +29,13 @@ class Database(object):
 		self.table = table
 
 
-	def exec_select(self, query_str, kwags):
+	def exec_select(self, query_str):
 		print('database.py exec_select is celled')
 		conn = mysql.connector.connect(host=DB_HOST, user=DB_USERNAME, password=DB_PASSWORD, database=DB_DATABASE, 
 								ssl_disabled=True)
 		cursor = conn.cursor()
 		datas = []
-		cursor.execute(query_str.format(**kwags))
+		cursor.execute(query_str)
 		for row in cursor:
 			datas.append(row)
 		conn.commit()
