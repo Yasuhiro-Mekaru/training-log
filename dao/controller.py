@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 def select_from_table(table):
-	if table == 'category':
+	if table == 'account_category':
 		query_str = 'SELECT * from "{table}"'
 		kwags = {
 			'table': table
