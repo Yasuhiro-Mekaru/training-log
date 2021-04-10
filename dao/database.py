@@ -20,7 +20,7 @@ class Database(object):
 		self.ssl_disabled = True
 		self.kwargs = {
 			'host': self.host,
-			'port': self.port,
+			# 'port': self.port,
 			'database': self.database,
 			'user': self.user,
 			'password': self.password,
