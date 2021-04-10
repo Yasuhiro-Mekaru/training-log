@@ -284,6 +284,12 @@ def select_data():
         return jsonify(response_datas)
 
 
+### 2021/04/10 Finance Account の追加 ###
+@app.route('/finance_account', methods=['GET'])
+def finance_account():
+    return render_template('finance_data_input.html')
+
+
 
 # if __name__ == "__main__":
     # app.debug = True
