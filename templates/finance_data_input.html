@@ -81,10 +81,14 @@
 				// 日時項目に表示
 				$('#input_date').val(today)
 
+				let count = 0
 				// category項目にDBから取得したデータをセット
 				for(let i=0; i<category_datas.length; i++){
 					$('#category_list').append('<option value="' + category_datas[i][1] + '">');
+					count += 1;
 				}
+				console.log('category_datas length: ' + category_datas.length);
+				console.log('count: ' + count);
 
 
 
