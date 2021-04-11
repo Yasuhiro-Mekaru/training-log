@@ -64,7 +64,7 @@
 
 				let db_datas = {{ db_datas | tojson }};
 				let category_datas = db_datas['category_datas'];
-				let entry_datas = db_datas['entry_datas'];
+				let entries_datas = db_datas['entries_datas'];
 				console.log('db_datas: ');
 				console.log(db_datas);
 
@@ -93,8 +93,8 @@
 				}
 
 				// entry項目にDBから取得したデータをセット
-				for(let i=0; i<entry_datas.length; i++){
-					$('#entry_list').append('<option value="' + entry_datas[i][1] + '">');
+				for(let i=0; i<entries_datas.length; i++){
+					$('#entry_list').append('<option value="' + entries_datas[i][1] + '">');
 				}
 				
 
