@@ -19,17 +19,33 @@
 		</div>
 			<form>
 				<!-- 日時の入力 -->
-				<label>
+				<p>
 					Date:
 					<input type="text" name="date" value="" id="input_date">
-				</label>
+				</p>
 				<!-- Categoryの入力 -->
-				<label>
+				<p>
 					Category:
-					<input type="text" name="category" list="category_list">
+					<input type="text" name="category" list="category_list" id="input_category">
 					<datalist id="category_list">
 					</datalist>
-				</label>
+				</p>
+				<!-- Entryの入力 -->
+				<p>
+					Entry:
+					<input type="text" name="entry" list="entry_list" id="input_entry" disabled="true">
+					<datalist id="entry_list">
+					</datalist>
+				</p>
+				<!-- Product Nameの入力 -->
+				<p>
+					Product Name:
+					<input type="text" name="product_name" list="product_name_list" id="input_product_name" disabled>
+					<datalist id="product_name_list">
+					</datalist>
+				</p>
+				<!-- 送信ボタン -->
+				<input type="submit" name="" value="btn_input">
 			</form>
 		<div>
 		</div> 
@@ -67,8 +83,12 @@
 
 				// category項目にDBから取得したデータをセット
 				for(let i=0; i<category_datas.length; i++){
-					$('#category_list').append('<option value="' + category_datas[i][0] + '"' + category_datas[i][1] + '></option>');
+					$('#category_list').append('<option value="' + category_datas[i][1] + '">');
 				}
+
+
+
+
 
 
 				// ダイアログ内のInputボタンが押下された際の処理
