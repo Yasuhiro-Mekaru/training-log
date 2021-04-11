@@ -290,8 +290,8 @@ def select_data():
 @app.route('/finance_account', methods=['GET'])
 def finance_account():
     table = 'account_category'
-    controller.select_from_table(table)
-    return render_template('finance_data_input.html')
+    category_datas = controller.select_from_table(table)
+    return render_template('finance_data_input.html', category_datas=category_datas)
 
 
 

@@ -26,3 +26,4 @@ def select_from_table(table):
 			'category_datas': category_datas,
 			'category_datas type': type(category_datas)
 			})
+		return category_datas
