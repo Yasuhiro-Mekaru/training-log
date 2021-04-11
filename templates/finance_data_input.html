@@ -34,10 +34,12 @@
 				</div>
 				<!-- Entryの入力 -->
 				<p>
-					Entry:
-					<input type="text" name="entry" list="entry_list" id="input_entry" disabled="true">
-					<datalist id="entry_list">
-					</datalist>
+					<label>
+						Entry:
+						<input type="text" name="entry" list="entry_list" id="input_entry" disabled="true" value="">
+						<datalist id="entry_list">
+						</datalist>
+					</label>
 				</p>
 				<!-- Product Nameの入力 -->
 				<p>
@@ -60,9 +62,11 @@
 			$(function(){
 				console.log('finance_data_input.html: jquery Start');
 
-				let category_datas = {{ db_datas | tojson }};
-				console.log('category_datas: ');
-				console.log(category_datas);
+				let db_datas = {{ db_datas | tojson }};
+				let category_datas = db_datas['category_datas'];
+				let entry_datas = db_datas['entry_datas'];
+				console.log('db_datas: ');
+				console.log(db_datas);
 
 				// 今日の日付を取得
 				let now = new Date();
@@ -81,13 +85,16 @@
 				console.log('today: ' + today);
 
 				// 日時項目に表示
-				$('#input_date').val(today)
+				$('#input_date').val(today);
 
-				let count = 0
 				// category項目にDBから取得したデータをセット
 				for(let i=0; i<category_datas.length; i++){
 					$('#category_list').append('<option value="' + category_datas[i][1] + '">');
-					count += 1;
+				}
+
+				// entry項目にDBから取得したデータをセット
+				for(let i=0; i<entry_datas.length; i++){
+					$('#entry_list').append('<option value="' + entry_datas[i][1] + '">');
 				}
 				
 

@@ -293,7 +293,10 @@ def finance_account():
     category_datas = controller.select_from_table(table)
     table = 'account_entries'
     entries_datas = controller.select_from_table(table)
-    db_datas = [category_datas, entries_datas]
+    db_datas = {
+        'category_datas': category_datas, 
+        'entries_datas': entries_datas
+        }
     return render_template('finance_data_input.html', db_datas=db_datas)
 
 
