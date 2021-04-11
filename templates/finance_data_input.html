@@ -28,7 +28,6 @@
 					Category:
 					<input type="text" name="category" list="category_list">
 					<datalist id="category_list">
-						<option value="sample"></option>
 					</datalist>
 				</label>
 			</form>
@@ -65,6 +64,11 @@
 
 				// 日時項目に表示
 				$('#input_date').val(today)
+
+				// category項目にDBから取得したデータをセット
+				for(let i=0; i<category_datas.length(); i++){
+					$('#category_list').append('<option value="' + category_datas[i][0] + '"' + category_datas[i][1] + '></option>');
+				}
 
 
 				// ダイアログ内のInputボタンが押下された際の処理
