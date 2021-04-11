@@ -47,7 +47,7 @@
 					</datalist>
 				</p>
 				<!-- 送信ボタン -->
-				<input type="submit" name="" value="btn_input">
+				<input type="submit" name="" value="btn_input" disabled="true">
 			</form>
 		<div>
 		</div> 
@@ -60,7 +60,7 @@
 			$(function(){
 				console.log('finance_data_input.html: jquery Start');
 
-				let category_datas = {{ category_datas | tojson }};
+				let category_datas = {{ db_datas | tojson }};
 				console.log('category_datas: ');
 				console.log(category_datas);
 
@@ -94,14 +94,18 @@
 
 
 
+				// categoryを入力したらentryを活性化
 				$('#input_category').on('input', function(){
 					$('#input_entry').prop('disabled', false);
-					let inputed = $('#input_category').val();
-					console.log('inputed category: ' + inputed);
-					let inputed2 = $(this).val();
-					console.log('inputed2 category: ' + inputed2);
+					// 選択した値を取得する際のコード
+					// let inputed2 = $(this).val();
+					// console.log('inputed2 category: ' + inputed2);
 				});
 
+				// entryを入力したらnameを活性化
+				$('#input_entry').on('input', function(){
+					$('#input_product_name').prop('disabled', false);
+				})
 
 
 
