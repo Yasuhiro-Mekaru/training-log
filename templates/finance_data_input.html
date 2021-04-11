@@ -17,19 +17,21 @@
 			<h1>Input Product Data</h1>
 			<p></p>
 		</div>
-			<form>
+			<form action="/finance_data_insert" method="POST">
 				<!-- 日時の入力 -->
-				<p>
+				<div>
 					Date:
 					<input type="text" name="date" value="" id="input_date">
-				</p>
+				</div>
 				<!-- Categoryの入力 -->
-				<p>
-					Category:
-					<input type="text" name="category" list="category_list" id="input_category">
-					<datalist id="category_list">
-					</datalist>
-				</p>
+				<div>
+					<label for="input_category">
+						Category:
+						<input type="text" name="category" list="category_list" id="input_category" value="">
+						<datalist id="category_list">
+						</datalist>
+					</label>
+				</div>
 				<!-- Entryの入力 -->
 				<p>
 					Entry:
@@ -87,8 +89,18 @@
 					$('#category_list').append('<option value="' + category_datas[i][1] + '">');
 					count += 1;
 				}
-				console.log('category_datas length: ' + category_datas.length);
-				console.log('count: ' + count);
+				
+
+
+
+
+				$('#input_category').on('input', function(){
+					$('#input_entry').prop('disabled', false);
+					let inputed = $('#input_category').val();
+					console.log('inputed category: ' + inputed);
+					let inputed2 = $(this).val();
+					console.log('inputed2 category: ' + inputed2);
+				});
 
 
 
