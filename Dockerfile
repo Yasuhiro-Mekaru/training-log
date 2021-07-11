@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y python3 \
 
 RUN pip3 install flask \
 	mysql-connector-python==8.0.19 \
+	sqlalchemy \
 	numpy \
 	pandas \
 	bokeh==2.2.0
