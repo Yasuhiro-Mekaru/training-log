@@ -22,3 +22,73 @@ Session: クライアント・サーバー間でやりとりされる一連の�
 HTTPのステートレスな性質を克服するために生まれた仕組みがCookieやSession
 
 
+
+
+2. Gitの使い方
+
+新しくブランチを作成する
+$ git checkout -b <branch name>
+
+
+ブランチを変更する
+$git branch <branch name>
+変更する前にファイル類は閉じておく → 変更後のブランチで保存したら反映されてしまう
+
+
+現在のブランチを確認する
+$ git branch
+* dev_ver1
+  master
+*がついているのが現在作業中のブランチ
+
+
+
+
+
+3. docker-composeの使い方
+
+docker-compose.ymlサンプル
+
+version: '3'
+
+services: 
+
+  flask:
+    build: ./flask
+    container_name: flask
+    command: flask run -h 0.0.0.0 -p 5000
+    volumes:
+      - ./flask:/work/
+    ports:
+      - 5000:5000
+    links:
+      - database
+    # tty: true
+
+  database:
+    build: ./mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test_training_log
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./mysql/sql:/docker-entrypoint-initdb.d
+      - ./mysql/log:/var/log/mysql
+    ports:
+      - 3306:3306
+
+書き方
+yamlファイルの書き方に準ずる。
+データはkey,value方式で、jsonのような入れ子構造で保管する
+
+version: 2021/11現在、3に設定
+services: 連携したいコンテナを記述していく
+services直下のkey名はなんでも良い
+
+

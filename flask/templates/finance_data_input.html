@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head Section -->
+	<head>
+	    <!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <title>Logs</title>
+
+	</head>
+
+<!-- Body Section -->
+	<body>
+		<div id="top_block">
+			<h1>Input Product Data</h1>
+			<p></p>
+		</div>
+			<form action="/finance_data_insert" method="POST">
+				<!-- 日時の入力 -->
+				<div>
+					Date:
+					<input type="text" name="date" value="" id="input_date">
+				</div>
+				<!-- Categoryの入力 -->
+				<div>
+					<label for="input_category">
+						Category:
+						<input type="text" name="category" list="category_list" id="input_category" value="">
+						<datalist id="category_list">
+						</datalist>
+					</label>
+				</div>
+				<!-- Entryの入力 -->
+				<p>
+					<label>
+						Entry:
+						<input type="text" name="entry" list="entry_list" id="input_entry" disabled="true" value="">
+						<datalist id="entry_list">
+						</datalist>
+					</label>
+				</p>
+				<!-- Product Nameの入力 -->
+				<p>
+					Product Name:
+					<input type="text" name="product_name" list="product_name_list" id="input_product_name" disabled>
+					<datalist id="product_name_list">
+					</datalist>
+				</p>
+				<!-- 送信ボタン -->
+				<input type="submit" name="" value="btn_input" disabled="true">
+			</form>
+		<div>
+		</div> 
+
+		<!-- 今月の目標を入力するダイアログ -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript">
+
+			$(function(){
+				console.log('finance_data_input.html: jquery Start');
+
+				let db_datas = {{ db_datas | tojson }};
+				let category_datas = db_datas['category_datas'];
+				let entries_datas = db_datas['entries_datas'];
+				console.log('db_datas: ');
+				console.log(db_datas);
+
+				// 今日の日付を取得
+				let now = new Date();
+				let year = now.getFullYear();
+				let month = now.getMonth() + 1;
+				let date = now.getDate();
+
+				//日付のフォーマットを合わせるための処理
+				if(month < 10){
+					month = '0' + month;
+				}
+				if(date < 10){
+					date = '0' + date;
+				}
+				let today = year + '-' + month + '-' + date;
+				console.log('today: ' + today);
+
+				// 日時項目に表示
+				$('#input_date').val(today);
+
+				// category項目にDBから取得したデータをセット
+				for(let i=0; i<category_datas.length; i++){
+					$('#category_list').append('<option value="' + category_datas[i][1] + '">');
+				}
+
+				// entry項目にDBから取得したデータをセット
+				for(let i=0; i<entries_datas.length; i++){
+					$('#entry_list').append('<option value="' + entries_datas[i][1] + '">');
+				}
+				
+
+
+
+
+				// categoryを入力したらentryを活性化
+				$('#input_category').on('input', function(){
+					$('#input_entry').prop('disabled', false);
+					// 選択した値を取得する際のコード
+					// let inputed2 = $(this).val();
+					// console.log('inputed2 category: ' + inputed2);
+				});
+
+				// entryを入力したらnameを活性化
+				$('#input_entry').on('input', function(){
+					$('#input_product_name').prop('disabled', false);
+				})
+
+
+
+
+
+				// ダイアログ内のInputボタンが押下された際の処理
+				// ダイアログ内の値を取得してサーバーへPOSTする
+				// レスポンスが返ってきたら結果をalertで表示する
+				// $('#button_input_to_db').click(function(){
+				// 	let month_data = $('#input_month_data').val();
+				// 	let monthly_value = $('#input_monthly_value').val();
+				// 	data = {
+				// 		'table': 'target_distance',
+				// 		'month': month_data,
+				// 		'monthly_value': monthly_value
+				// 	}
+				// 	$.ajax({
+				// 		type: 'POST',
+				// 		contentType: 'application/json',
+				// 		url: 'https://training-logs.herokuapp.com/insert_data',
+				// 		data: JSON.stringify(data),
+				// 		dataType: 'json'
+				// 	}).then(function(response){
+				// 		console.log('response: ' + response);
+				// 		alert('Input Success');
+				// 		back_from_dialog();
+				// 	}, function(error){
+				// 		console.log('error: ' + error);
+				// 		alert('Input Error. Try again');
+				// 	});
+				// })
+			});
+		</script>
+	</body>
+</html>
