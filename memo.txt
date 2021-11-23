@@ -42,6 +42,31 @@ $ git branch
 *がついているのが現在作業中のブランチ
 
 
+repositoryの状態を確認する
+$ git status
+
+
+repositoryの変更をStaging Areaにあげる
+$ git add <file name>
+<file name>の箇所を .「ドット」で指定するとカレントディレクトリ配下全てを指定できる
+
+
+Staging Areaの変更ぶんをコミットする
+$ git commit -m 'comment'
+コミットする際は必ず -mオプションでコメントをつけなければならない
+
+
+logを確認する
+$ git log
+logファイル表示状態から戻るときは Q をクリック
+
+remote repositoryを確認する
+$ git remote -v
+
+
+
+
+
 
 
 
