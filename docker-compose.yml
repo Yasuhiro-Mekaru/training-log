@@ -7,7 +7,7 @@ services:
     container_name: flask
     command: flask run -h 0.0.0.0 -p 5000
     volumes:
-      - ./flask:/work/
+      - ./flask:/app/
     ports:
       - 5000:5000
     links:

@@ -11,6 +11,7 @@ Training Log App改修プラン
 	・必要な画面の抽出　→ OK
 
 2021/11/23
+改修作業は基本開発用ブランチで実施
 ・ローカルに開発環境を構築
 	・必要な環境
 		・Python → 前回アプリ使用verを継続
@@ -19,3 +20,11 @@ Training Log App改修プラン
 	
 	・Gitでブランチを切る
 		・ブランチ名: dev_ver1 → 再度ブランチを切る可能性もあるので連番制にできるようにする
+
+・既存のindex.htmlの名称変更
+	index.html → main_menu.html
+
+・新規のindex.html作成
+
+・flask内のDB情報をMySQLコンテナの情報に変更
+

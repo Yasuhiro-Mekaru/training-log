@@ -6,13 +6,47 @@
 	    <!-- Required meta tags -->
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	    <title>Login</title>
-
+	    <title>My Logs</title>
 	</head>
 
 <!-- Body Section -->
 	<body>
-		<h1>Logged in</h1>
+		<div class="header">
+			<h1>ログイン画面</h1>
+			<p>explanation...</p>
+		</div>
+		<div class="main">
+			<div>
+				<form action="/login" method="POST" class="h-adr">
+					<h3>ログインしてください</h3>
+					<p>emailアドレスとパスワードを入力してログインしてください</p>
+					<!-- メールアドレス -->
+					<div>
+						<p>email: <input type="email" placeholder="sample@email.com" name="e_mail_address"></p>
+					</div>
+					<!-- パスワード -->
+					<div>
+						<p>パスワード: <input type="password" placeholder="パスワード" maxlength="16" name="user_password"></p>
+					</div>
+
+					<!-- ボタン -->
+					<div>
+						<input type="button" value="戻る" id="btn_back">
+						<input type="submit" value="ログイン">
+					</div>
+				</form>
+
+			</div>
+		</div>
+		<div class="footer">
+			<p>who create this app...</p>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				console.log('login.html: jquery Start');
+				
+			});
+		</script>
 	</body>
 </html>

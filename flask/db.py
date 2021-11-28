@@ -3,10 +3,10 @@ import logging
 import mysql.connector
 
 
-DB_HOST = 'us-cdbr-east-02.cleardb.com'
-DB_USERNAME = 'b57547af749fe1'
-DB_PASSWORD = '74315ba5'
-DB_DATABASE = 'heroku_d2e365081e3ffbe'
+DB_HOST = 'database'
+DB_USERNAME = 'admin'
+DB_PASSWORD = 'password'
+DB_DATABASE = 'test_training_log'
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

@@ -150,7 +150,7 @@
 				$.ajax({
 						type: 'POST',
 						contentType: 'application/json',
-						url: 'https://training-logs.herokuapp.com/get_diff_data',
+						url: 'http://localhost/get_diff_data',
 						data: JSON.stringify(datas),
 						dataType: 'json'
 					}).then(function(response){
@@ -256,7 +256,7 @@
 					$.ajax({
 						type: 'POST',
 	                    contentType: 'application/json',
-	                    url: 'https://training-logs.herokuapp.com/insert_data', 
+	                    url: 'http://localhost/insert_data', 
 	                    data: JSON.stringify(data),
 	                    dataType: 'json'
 					}).then(function(response){
@@ -298,7 +298,7 @@
 					$.ajax({
 						type: 'POST',
 						contentType: 'application/json',
-						url: 'https://training-logs.herokuapp.com/select_data',
+						url: 'http://localhost/select_data',
 						data: JSON.stringify(data),
 						dataType: 'json'
 					}).then(function(response){
@@ -332,7 +332,7 @@
 					$.ajax({
 						type: 'POST',
 						contentType: 'application/json',
-						url: 'https://training-logs.herokuapp.com/get_data',
+						url: 'http://localhost/get_data',
 						data: JSON.stringify(data),
 						dataType: 'json'
 					}).then(function(response){
@@ -365,7 +365,7 @@
 					$.ajax({
 						type: 'POST',
 						contentType: 'application/json',
-						url: 'https://training-logs.herokuapp.com/get_data',
+						url: 'http://localhost/get_data',
 						data: JSON.stringify(data),
 						dataType: 'json'
 					}).then(function(response){
@@ -494,24 +494,24 @@
 
 
 
-				// STARAVAのテスト
-				$('#button_to_strava').click(function(){
-					data = {
-						'access_token': 'ccae17f3683d4007323b5e8b2f060f9453e06390'
-					}
-					$.ajax({
-						type: 'POST',
-						Authorization: 'Bearer ccae17f3683d4007323b5e8b2f060f9453e06390',
-						url: 'https://www.strava.com/api/v3/athletes/23490374',
-						data: data
-						// data: JSON.stringify(data),
-						// dataType: 'json'
-					}).then(function(response){
-						console.log('STRAVA response: ' + response);
-					}, function(error){
-						console.log('STARAVA error: ' + error);
-					})
-				})
+				// // STARAVAのテスト
+				// $('#button_to_strava').click(function(){
+				// 	data = {
+				// 		'access_token': 'ccae17f3683d4007323b5e8b2f060f9453e06390'
+				// 	}
+				// 	$.ajax({
+				// 		type: 'POST',
+				// 		Authorization: 'Bearer ccae17f3683d4007323b5e8b2f060f9453e06390',
+				// 		url: 'https://www.strava.com/api/v3/athletes/23490374',
+				// 		data: data
+				// 		// data: JSON.stringify(data),
+				// 		// dataType: 'json'
+				// 	}).then(function(response){
+				// 		console.log('STRAVA response: ' + response);
+				// 	}, function(error){
+				// 		console.log('STARAVA error: ' + error);
+				// 	})
+				// })
 
 			});
 		</script>

@@ -33,6 +33,7 @@ $ git checkout -b <branch name>
 ブランチを変更する
 $git branch <branch name>
 変更する前にファイル類は閉じておく → 変更後のブランチで保存したら反映されてしまう
+Staging Areaに変更が残っているとブランチの変更はできない
 
 
 現在のブランチを確認する
@@ -62,6 +63,11 @@ logファイル表示状態から戻るときは Q をクリック
 
 remote repositoryを確認する
 $ git remote -v
+
+
+remote repositoryにpushする
+$ git push <repository name> <branch name>
+repository nameは省略することも可能 → だいたいorigin
 
 
 
@@ -115,5 +121,73 @@ yamlファイルの書き方に準ずる。
 version: 2021/11現在、3に設定
 services: 連携したいコンテナを記述していく
 services直下のkey名はなんでも良い
+
+
+
+4. 
+ubuntu環境で ModuleNotFoundError: No module named 'MySQLdb' が出た場合の対応
+
+・apt-get update
+・apt-get install build-essential python3-dev libmysqlclient-dev
+・pip3 install mysqlclient 
+
+参考サイト
+https://instructobit.com/tutorial/104/Installing-MySQL-for-python-2-and-3-on-Ubuntu
+
+root@d4b9d1121b3e:/# apt-get install build-essential python3-dev libmysqlclient-dev
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+python3-dev is already the newest version (3.8.2-0ubuntu2).
+python3-dev set to manually installed.
+build-essential is already the newest version (12.8ubuntu1.1).
+build-essential set to manually installed.
+The following additional packages will be installed:
+  libmysqlclient21 libssl-dev mysql-common
+Suggested packages:
+  libssl-doc
+The following NEW packages will be installed:
+  libmysqlclient-dev libmysqlclient21 libssl-dev mysql-common
+0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
+Need to get 4485 kB of archives.
+After this operation, 25.8 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://archive.ubuntu.com/ubuntu focal/main amd64 mysql-common all 5.8+1.0.5ubuntu2 [7496 B]
+Get:2 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libmysqlclient21 amd64 8.0.27-0ubuntu0.20.04.1 [1291 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libssl-dev amd64 1.1.1f-1ubuntu2.9 [1583 kB]                               
+Get:4 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libmysqlclient-dev amd64 8.0.27-0ubuntu0.20.04.1 [1603 kB]                 
+Fetched 4485 kB in 12s (388 kB/s)                                                                                                          
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package mysql-common.
+(Reading database ... 14378 files and directories currently installed.)
+Preparing to unpack .../mysql-common_5.8+1.0.5ubuntu2_all.deb ...
+Unpacking mysql-common (5.8+1.0.5ubuntu2) ...
+Selecting previously unselected package libmysqlclient21:amd64.
+Preparing to unpack .../libmysqlclient21_8.0.27-0ubuntu0.20.04.1_amd64.deb ...
+Unpacking libmysqlclient21:amd64 (8.0.27-0ubuntu0.20.04.1) ...
+Selecting previously unselected package libssl-dev:amd64.
+Preparing to unpack .../libssl-dev_1.1.1f-1ubuntu2.9_amd64.deb ...
+Unpacking libssl-dev:amd64 (1.1.1f-1ubuntu2.9) ...
+Selecting previously unselected package libmysqlclient-dev.
+Preparing to unpack .../libmysqlclient-dev_8.0.27-0ubuntu0.20.04.1_amd64.deb ...
+Unpacking libmysqlclient-dev (8.0.27-0ubuntu0.20.04.1) ...
+Setting up mysql-common (5.8+1.0.5ubuntu2) ...
+update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Setting up libmysqlclient21:amd64 (8.0.27-0ubuntu0.20.04.1) ...
+Setting up libssl-dev:amd64 (1.1.1f-1ubuntu2.9) ...
+Setting up libmysqlclient-dev (8.0.27-0ubuntu0.20.04.1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
+root@d4b9d1121b3e:/# 
+root@d4b9d1121b3e:/# 
+root@d4b9d1121b3e:/# pip3 install mysqlclient
+Collecting mysqlclient
+  Using cached mysqlclient-2.1.0.tar.gz (87 kB)
+Building wheels for collected packages: mysqlclient
+  Building wheel for mysqlclient (setup.py) ... done
+  Created wheel for mysqlclient: filename=mysqlclient-2.1.0-cp38-cp38-linux_x86_64.whl size=109141 sha256=01141726a40a064273fbac4c8c3868574f2ce6f1a5965a70b06b016fb9fc3f49
+  Stored in directory: /root/.cache/pip/wheels/61/e7/42/9d56347e42d7ce19397c0ca050c6bef56640e18be7021ac189
+Successfully built mysqlclient
+Installing collected packages: mysqlclient
+Successfully installed mysqlclient-2.1.0
 
 

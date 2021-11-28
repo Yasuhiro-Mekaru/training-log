@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head Section -->
+	<head>
+	    <!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <title>My Logs</title>
+	</head>
+
+<!-- Body Section -->
+	<body>
+		<div class="header">
+			<div>
+				<h1>ユーザー登録画面</h1>
+			</div>
+		</div>
+		<div class="main">
+			<div>
+				<form action="/user_registration" method="POST" class="h-adr">
+					<h3>ユーザー情報を入力してください</h3>
+					<p>explanation...</p>
+
+					<!-- ユーザーネーム -->
+					<div>
+						<p>10文字以内でユーザーネームを入力してください</p>
+						<p>ユーザーネーム: <input type="text" pattern="^([a-zA-Z0-9]{,10})$" placeholder="半角英数字" maxlength="10" name="user_name"></p>
+					</div>
+					<!-- メールアドレス -->
+					<div>
+						<p>メールアドレスを入力してください</p>
+						<p><input type="email" placeholder="sample@email.com" name="e_mail_address"></p>
+					</div>
+					<!-- パスワード -->
+					<div>
+						<p>半角英数字8文字以上16文字以内、1文字以上の数字、小文字アルファベット、大文字アルファベットを含めて入力してください</p>
+						<p>パスワード: <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}" placeholder="半角英数字" minlength="8" maxlength="16" name="user_password"></p>
+					</div>
+
+					<!-- ボタン -->
+					<div>
+						<input type="button" value="戻る" id="btn_back">
+						<input type="submit" value="登録する">
+					</div>
+				</form>
+
+			</div>
+		<div class="footer">
+			<p>who create this app...</p>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				console.log('user_registration.html: jquery Start');
+				
+			});
+		</script>
+	</body>
+</html>

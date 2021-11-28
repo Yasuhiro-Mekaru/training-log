@@ -1,7 +1,13 @@
 import json
 import logging
 
-from flask import Flask, jsonify, render_template, request, redirect
+from flask import Flask
+from flask import jsonify
+from flask import redirect
+from flask import render_template
+from flask import request
+from flask import session
+from flask import url_for
 import numpy as np
 import pandas as pd
 import bokeh
@@ -11,11 +17,12 @@ import bokeh_chart
 import date
 import db
 import util
-
-# from dao import controller
+import controller
 
 
 app = Flask(__name__)
+app.secret_key = 'test_secret_key'
+app.config['JSON_AS_ASCII'] = False
 app.debug = True
 
 logging.basicConfig(level=logging.INFO)
@@ -38,14 +45,118 @@ logging.info({
 
 
 
-@app.route("/", methods=['GET'])
-def hello():
-    return render_template('index.html')
+@app.route('/', methods=['GET'])
+def index():
+    logger.info({
+        'action': 'app.py index',
+        'message': 'index is called'
+        })
+    # sessionがあるか確認
+    if session:
+        #sessionがあればmain_menuメソッドへリダイレクト
+        return redirect(url_for('main_menu'))
+    else:
+        return render_template('index.html') 
+
+
+@app.route('/main_menu', methods=['GET'])
+def main_menu():
+    logger.info({
+        'action': 'app.py main_menu',
+        'message': 'main_menu is called'
+        })
+    # sessionがあるか確認
+    if session:
+        return render_template('main_menu.html')
+    else:
+        # sessionがなければindexメソッドへリダイレクト
+        return redirect(url_for('index'))
+
+
+@app.route('/user_registration', methods=['GET', 'POST'])
+def user_registration():
+    logger.info({
+        'action': 'app.py user_registration',
+        'message': 'user_registration is called',
+        'request.method': request.method
+        })
+    # sessionがあるか確認
+    if session:
+        #sessionがあればmain_menuメソッドへリダイレクト
+        return redirect(url_for('main_menu'))
+    else:
+        if request.method == 'GET':
+            # GETリクエストの際の処理
+            return render_template('user_registration.html')
+        else:
+            # POSTリクエストの際の処理。User情報をDBに登録する
+            # クライアントから送られたデータを変数に格納
+            user_datas = request.form
+            logger.info({
+                'action': 'app.py user_registration',
+                'user_datas': user_datas,
+                'user_datas type': type(user_datas)
+            })
+
+            # Usersテーブルにinsertする処理。返り値はboolian型
+            response = controller.insert_user(datas=user_datas)
+            logger.info({
+                'response': response,
+                'response type': type(response)
+            })
+
+            if response:
+                return redirect(url_for('login'))
+
+            return 'Fail to registration'
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    logger.info({
+        'action': 'app.py login()',
+        'message': 'login is called'
+        })
+    # sessionがあるか確認
+    if session:
+        #sessionがあればmain_menuメソッドへリダイレクト
+        return redirect(url_for('main_menu'))
+    else:
+        if request.method == 'GET':
+            # GETリクエストの際の処理
+            return render_template('login.html')
+        else:
+            # Todo User情報をDBに問い合わせる処理
+            # クライアントから送られたデータを変数に格納
+            login_datas = request.form
+            logger.info({
+                'action': 'app.py login',
+                'login_datas': login_datas,
+                'login_datas type': type(login_datas)
+                })
+
+            user_datas = controller.get_user(login_datas=login_datas)
+            logger.info({
+                'action': 'app.py login',
+                'user_datas': user_datas,
+                'user_datas type': type(user_datas)
+                })
+
+            if user_datas:
+                session['user_id'] = user_datas[0]['user_id']
+                session['user_name'] = user_datas[0]['user_name']
+                return redirect(url_for('main_menu'))
+
+            return 'Login Failed'
 
 
 
 @app.route('/bicycle_contents', methods=['GET'])
 def bicycle_contents():
+    logger.info({
+        'action': 'app.py bicycle_contents',
+        'message': 'bicycle_contents is called'
+        })
     return render_template('bicycle_contents.html')
 
 
