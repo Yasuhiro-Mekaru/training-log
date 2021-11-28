@@ -191,3 +191,63 @@ Installing collected packages: mysqlclient
 Successfully installed mysqlclient-2.1.0
 
 
+
+
+5. SQLAlchemyの使い方
+
+前提
+engin, session, baseはこんな感じで作成
+database.py
+DATABASE = 'mysql://%s:%s@%s/%s?charset=utf8' % (
+	'admin', 'password', 'database', 'test_training_log'
+	)
+
+ENGINE = create_engine(DATABASE, encoding='utf-8', echo=False)
+
+session = scoped_session(
+	sessionmaker(
+		autocommit = False,
+		autoflush = True,
+		bind = ENGINE
+	)
+)
+
+Base = declarative_base()
+Base.query = session.query_property()
+
+
+
+
+tableを削除する (drop table)
+
+Usersテーブルを削除する
+Users.__table__.drop(ENGINE)
+
+確認の方法が分からないので、削除すみtableにinsertしてみて確認
+NFO:__main__:{'action': 'controller.py insert_user', 'Exception': ProgrammingError('(MySQLdb._exceptions.ProgrammingError) (1146, "Table \'test_training_log.users\' doesn\'t exist")')}
+
+参考ページ https://stackoverflow.com/questions/35918605/how-to-delete-a-table-in-sqlalchemy
+
+
+
+テーブルを作成する
+tableを定義し、create_all()メソッドを実行する
+class Users(Base):
+	"""docstring for Users"""
+	__tablename__ = 'users'
+	user_id = Column('user_id', Integer, nullable=False, primary_key=True, autoincrement=True)
+	user_name = Column('user_name', String(20), nullable=False,)
+
+Base.metadata.create_all(bind=ENGINE)
+
+
+tableを追加したい場合は、
+Base.metadata.create_all(bind=ENGINE, tables=[User.__table__])
+__table__プロパティをList形式で指定する
+
+
+
+
+
+
+

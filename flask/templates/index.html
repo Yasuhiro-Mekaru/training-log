@@ -6,29 +6,61 @@
 	    <!-- Required meta tags -->
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	    <title>My Logs</title>
+
+	    <!-- Application title -->
+	    <title>Logs World</title>
+
+	    <!-- Font Awesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+		<!-- local css files -->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/index.css')}}">
+
+		<!-- jQuery CDN -->
+	   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	   	<!-- local js files -->
+	   	<script src="static/js/index.js"></script>
 	</head>
 
 <!-- Body Section -->
 	<body>
-		<div class="header">
-			<h1>Log Management Application</h1>
-			<p>explanation...</p>
-		</div>
-		<div class="main">
-			<div class="buttons">
-				<div class="button">
-					<input type="submit" value="Login" id="btn_login">
+		<!-- Header Section -->
+		<header>
+			<div class="header">
+				<!-- hamburger menu -->
+				<i class="fas fa-bars fa-4x fa-border fa-pull-left" id="hamburger_icon"></i>
+				
+				<h3>Logs World</h3>
+			</div>
+		</header>
+
+		<!-- Main Section -->
+		<main>
+			<div class="main">
+				<div class="main_title">
+					<h3>Welcome to Logs World.</h3>
+					<p>We provide you the world that you will find out the new future by managing your logs that you generated.</p>
+					<p>Let's start logging and get future.</p>
 				</div>
-				<div class="button">
-					<input type="submit" value="New User" id="btn_user_registration">
+				<div class="main_buttons">
+					<div class="button">
+						<input type="submit" value="Login" id="btn_login">
+					</div>
+					<div class="button">
+						<input type="submit" value="New User" id="btn_user_registration">
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="footer">
-			<p>who create this app...</p>
-		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		</main>
+
+		<!-- Footer Section -->
+		<footer>
+			<div class="footer">
+				<p>who create this app...</p>
+			</div>
+		</footer>
+		
 		<script type="text/javascript">
 			$(function(){
 				console.log('index.html: jquery Start');

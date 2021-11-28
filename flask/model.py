@@ -22,15 +22,8 @@ class Users(Base):
 	__tablename__ = 'users'
 	user_id = Column('user_id', Integer, nullable=False, primary_key=True, autoincrement=True)
 	user_name = Column('user_name', String(20), nullable=False,)
-	e_mail_address = Column('e_mail_address', String(50), nullable=False,)
-	user_password = Column('user_password', String(20), nullable=False,)
-
-
-# class Category(Base):
-# 	"""docstring for Category"""
-# 	__tablename__ = 'category'
-# 	category_id = Column('category_id', Integer, nullable=False, primary_key=True)
-# 	category = Column('category', String(10), nullable=False)
+	email_address = Column('email_address', String(64), nullable=False,)
+	user_password = Column('user_password', String(128), nullable=False,)
 
 
 # class Real_life_location(Base):
@@ -46,9 +39,9 @@ class Users(Base):
 # 	products_id = Column('products_id', Integer, nullable=False,)
 		
 
-
-def main(args):
+def main():
 	Base.metadata.create_all(bind=ENGINE)
+
 
 
 if __name__ == '__main__':
@@ -56,4 +49,7 @@ if __name__ == '__main__':
 		'action': 'model.py main',
 		'sys.argv': sys.argv
 		})
-	main(sys.argv)
+	main()
+	
+	# # Usersテーブルを削除する
+	# Users.__table__.drop(ENGINE)

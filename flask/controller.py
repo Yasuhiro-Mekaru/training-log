@@ -3,6 +3,8 @@ import logging
 from database import session
 from model import *
 
+import utils
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -23,12 +25,16 @@ def insert_user(datas):
 	"""
 	users = Users()
 	users.user_name = datas.get('user_name')
-	users.e_mail_address = datas.get('e_mail_address')
-	users.user_password = datas.get('user_password')
+	users.email_address = datas.get('email_address')
+	# passwordはhash化してDBに格納する
+	password = datas.get('user_password')
+	hashed_password = utils.hash_password(password=password)
+	users.user_password = hashed_password
 
 	logger.info({
 		'action': 'controller.py insert_user',
-		'users.user_name': users.user_name
+		'users.user_name': users.user_name,
+		'users.user_password': users.user_password
 		})
 
 	is_success = True
@@ -58,16 +64,19 @@ def get_user(login_datas):
 	Returns:
 		user_datas: List
 	"""
-	e_mail_address = login_datas.get('e_mail_address')
-	user_password = login_datas.get('user_password')
+	email_address = login_datas.get('email_address')
+	# passwordはhash化してDB検索する
+	password = login_datas.get('user_password')
+	hashed_password = utils.hash_password(password=password)
 	logger.info({
 		'action': 'controller.py get_user',
-		'e_mail_address': e_mail_address
+		'email_address': email_address,
+		'hashed_password': hashed_password
 		})
 
 	datas = []
 	try:
-		users = session.query(Users).filter(Users.e_mail_address==e_mail_address, Users.user_password==user_password).all()
+		users = session.query(Users).filter(Users.email_address==email_address, Users.user_password==hashed_password).all()
 		for user in users:
 			data = {}
 			data['user_id'] = user.user_id
@@ -252,7 +261,7 @@ def get_user(login_datas):
 # 			data = {}
 # 			data['user_id'] = user.user_id
 # 			data['user_name'] = user.user_name
-# 			data['e_mail_address'] = user.e_mail_address
+# 			data['email_address'] = user.email_address
 # 			data['user_password'] = user.user_password
 # 			datas.append(data)
 # 		logger.info({
@@ -273,21 +282,21 @@ def get_user(login_datas):
 
 if __name__ == '__main__':
 	# datas = {
-	# 	'user_name': 'yasuhiro',
-	# 	'e_mail_address': 'sample@gmail.com',
-	# 	'user_password': '12345678'
+	# 	'user_name': 'yasuhiro M',
+	# 	'email_address': 'taijyu@gmail.com',
+	# 	'user_password': '0123456789'
 	# }
 
 	# insert_user(datas)
 
-	users = get_user()
-	user = users[0]
-	logger.info({
-		'action': 'controller.py main',
-		'users': users,
-		'user': user,
-		'user_name': user['user_name']
-		})
+	# users = get_user()
+	# user = users[0]
+	# logger.info({
+	# 	'action': 'controller.py main',
+	# 	'users': users,
+	# 	'user': user,
+	# 	'user_name': user['user_name']
+	# 	})
 
 	# insert_real_life_location(datas)
 
