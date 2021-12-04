@@ -150,6 +150,27 @@ def login():
             return 'Login Failed'
 
 
+@app.route('/budget_main', methods=['GET'])
+def budget_main():
+    logger.info({
+        'action': 'app.py budget_main()',
+        'message': 'budget_main is called'
+        })
+    # sessionがあるか確認
+    if session:
+        # Todo 
+        # DBから当月の予算の進捗のデータを取得するしhtmlに付加する処理
+
+        return render_template('budget_main.html')
+    else:
+        # sessionがなければlogin.htmlへ遷移
+        return redirect(url_for('login'))
+
+
+
+
+
+
 
 @app.route('/bicycle_contents', methods=['GET'])
 def bicycle_contents():

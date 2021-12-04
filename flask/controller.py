@@ -34,7 +34,8 @@ def insert_user(datas):
 	logger.info({
 		'action': 'controller.py insert_user',
 		'users.user_name': users.user_name,
-		'users.user_password': users.user_password
+		'users.user_password': users.user_password,
+		'users.email_address': users.email_address,
 		})
 
 	is_success = True
@@ -281,6 +282,7 @@ def get_user(login_datas):
 # 	return datas
 
 if __name__ == '__main__':
+	pass
 	# datas = {
 	# 	'user_name': 'yasuhiro M',
 	# 	'email_address': 'taijyu@gmail.com',

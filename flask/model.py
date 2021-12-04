@@ -1,7 +1,8 @@
 import logging
 import sys
 
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
 from database import Base
@@ -24,6 +25,21 @@ class Users(Base):
 	user_name = Column('user_name', String(20), nullable=False,)
 	email_address = Column('email_address', String(64), nullable=False,)
 	user_password = Column('user_password', String(128), nullable=False,)
+
+
+class Categories(Base):
+	__tablename__ = 'categories'
+	category_id = Column('category_id', Integer, nullable=False, primary_key=True, autoincrement=True)
+	category_name = Column('category_name', String(30), nullable=False, unique=True)
+	classes = relationship('Classes', back_populates='categories')
+
+
+class Classes(Base):
+	__tablename__ = 'classes'
+	class_id = Column('class_id', Integer, nullable=False, primary_key=True, autoincrement=True)
+	class_name = Column('class_name', String(30), nullable=False, unique=True)
+	category_id = Column('category_id', Integer, ForeignKey(Categories.category_id))
+	categories = relationship('Categories', back_populates='classes')
 
 
 # class Real_life_location(Base):
