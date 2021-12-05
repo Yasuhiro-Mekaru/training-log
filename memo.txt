@@ -245,6 +245,103 @@ tableを追加したい場合は、
 Base.metadata.create_all(bind=ENGINE, tables=[User.__table__])
 __table__プロパティをList形式で指定する
 
+※ ↑を実行しなくても追加できた。
+追加前
+mysql> show tables;
++-----------------------------+
+| Tables_in_test_training_log |
++-----------------------------+
+| users                       |
++-----------------------------+
+1 row in set (0.00 sec)
+
+
+先に作成したテーブルと同じモジュールに追加したいテーブル定義を記述し、
+Base.metadata.create_all(bind=ENGINE)
+を実行。
+mysql> show tables;
++-----------------------------+
+| Tables_in_test_training_log |
++-----------------------------+
+| budget_category             |
+| budget_classification       |
+| budget_currency             |
+| budget_essential            |
+| budget_group                |
+| budget_kind                 |
+| budget_monthly_plan         |
+| budget_monthly_result       |
+| budget_payment              |
+| budget_section              |
+| users                       |
++-----------------------------+
+11 rows in set (0.00 sec)
+追加できた。
+
+念のためusersテーブルに格納されている値が変わっていないか確認
+mysql> select * from users;
++---------+------------+---------------------+------------------------------------------------------------------+
+| user_id | user_name  | email_address       | user_password                                                    |
++---------+------------+---------------------+------------------------------------------------------------------+
+|       1 | yasuhiro   | taijyu720@gmail.com | 0123456789                                                       |
+|       2 | yasuhiro M | taijyu@gmail.com    | 84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882 |
++---------+------------+---------------------+------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+問題なし
+
+
+
+DockerでMySQLコンテナを作成した時、DBに直接アクセスしたい時の手順
+
+・コンテナを起動する
+・docker exec -it mysql bashでコンテナに別プロセスからアクセスする
+・とりあえずmysqlコマンドが使用できるか確認する
+	mysql --versionコマンド
+	root@4d51346adb55:/# mysql --version
+	mysql  Ver 8.0.24 for Linux on x86_64 (MySQL Community Server - GPL)
+・mysql -u <user名> -p コマンドを実行
+	root@4d51346adb55:/# mysql -u admin -p         
+	Enter password: 
+	パスワード入力後、下記の表記が出ればOK
+	Welcome to the MySQL monitor.  Commands end with ; or \g.
+・show databases; → use <database名>; で使用しているデータベースに移動すればok
+
+
+
+DockerでMySQLコンテナを作成しDBに直接アクセスした時のエラー
+
+・insertする時、auto_increment指定のカラムに値を入力しないとエラーになった。
+	mysql> insert into budget_currency values('USD');
+	ERROR 1136 (21S01): Column count doesn't match value count at row 1
+
+	当該カラムにNULLを入力すると通った。
+	mysql> insert into budget_currency values(null, 'USD');
+	Query OK, 1 row affected (0.01 sec)
+
+・
+
+
+
+
+マスタに入力したデータ
+
+Budget_category
+income: 収入
+outgo: 支出
+
+Budget_classification
+Fixed costs: 固定費 →→ Constant に変更しても良いかも
+Variable costs: 変動費
+
+Budget_currency
+JPY
+USD
+
+
+
+
+
 
 
 
