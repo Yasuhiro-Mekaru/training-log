@@ -122,6 +122,7 @@ class Budget_monthly_result(Base):
 	class_id = Column('class_id', Integer, nullable=False)
 	section_id = Column('section_id', Integer, nullable=False)
 	essential_id = Column('essential_id', Integer, nullable=False)
+	user_id = Column('user_id', Integer, nullable=False)
 
 
 class Budget_monthly_plan(Base):
@@ -137,6 +138,7 @@ class Budget_monthly_plan(Base):
 	class_id = Column('class_id', Integer, nullable=False)
 	section_id = Column('section_id', Integer, nullable=False)
 	essential_id = Column('essential_id', Integer, nullable=False)
+	user_id = Column('user_id', Integer, nullable=False)
 
 
 class Budget_payment(Base):
@@ -156,6 +158,7 @@ class Budget_payment(Base):
 	group_id = Column('group_id', Integer, nullable=False)
 	currency_id = Column('currency_id', Integer, nullable=False)
 	essential_id = Column('essential_id', Integer, nullable=False)
+	user_id = Column('user_id', Integer, nullable=False)
 
 
 
@@ -185,4 +188,4 @@ if __name__ == '__main__':
 	main()
 	
 	# # Usersテーブルを削除する
-	# Users.__table__.drop(ENGINE)
+	# Budget_monthly_result.__table__.drop(ENGINE)

@@ -7,20 +7,107 @@
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	    <title>Logs World</title>
+
+	    <!-- Font Awesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+		<!-- local css files -->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/budget_main.css')}}">
+
 	</head>
 
 <!-- Body Section -->
 	<body>
-		<div class="header">
+		<!-- header Section -->
+		<header class="header">
 			<div>
 				<h3>家計簿Top画面</h3>
 			</div>
-		</div>
-		<div class="main">
-			
-		<div class="footer">
+		</header>
+
+		<!-- main Section -->
+		<main class="main">
+			<!-- modal -->
+			<div class="info_modal" id="info_modal">
+				<div class="modal_header_div">
+					<div class="modal_header_content">
+						<h1>Shop Information</h1>
+						<i class="far fa-times-circle fa-5x fa-pull-right" id="modal_back_icon"></i>
+					</div>
+				</div>
+				<div class="modal_main_div">
+					<p>Coding Shop Information</p>
+				</div>
+				<div class="modal_footer_div">
+					<div class="modal_footer_content">
+						<i class="fab fa-4x fa-twitter-square"></i>
+						<i class="fab fa-4x fa-instagram-square"></i>
+						<i class="fab fa-4x fa-facebook-square"></i>
+						<i class="fab fa-4x fa-tiktok"></i>
+					</div>
+				</div>
+			</div>
+
+			<!-- Overlay -->
+			<div id="overlay"></div>
+
+			<!-- side bar -->
+			<aside class="sidebar">
+				<div class="sidebar_header_div">
+					<div class="sidebar_header_content">
+						<h3 class="sidebar_title">MENUS</h3>
+						<i class="far fa-times-circle fa-5x fa-pull-right sidebar_back_icon"></i>
+					</div>
+				</div>
+				<div class="sidebar_main_div">
+					<div class="sidebar_main_content">
+						<div class="sidebar_main_content_menu" id="sidebar_main_content_shop_list">
+							<i class="fas fa-3x fa-store sidebar_main_content_icon"></i>
+							<p class="sidebar_menu" id="sidebar_profile">予算ページ</p>
+							<i class="fas fa-3x fa-chevron-right sidebar_main_content_icon"></i>
+						</div>
+						<div class="sidebar_main_content_menu" id="sidebar_main_content_favorite_shop">
+							<i class="far fa-3x fa-grin-stars sidebar_main_content_icon"></i>
+							<p class="sidebar_menu" id="sidebar_myplace">分析ページ</p>
+							<i class="fas fa-3x fa-chevron-right sidebar_main_content_icon"></i>
+						</div>
+						<div class="sidebar_main_content_menu" id="sidebar_main_content_new_shops">
+							<i class="far fa-3x fa-plus-square sidebar_main_content_icon"></i>
+							<p class="sidebar_menu" id="sidebar_mypoint">ユーザーインフォ</p>
+							<i class="fas fa-3x fa-chevron-right sidebar_main_content_icon"></i>
+						</div>
+						<div class="sidebar_main_content_menu" id="sidebar_main_content_shop_info">
+							<i class="fas fa-3x fa-info sidebar_main_content_icon"></i>
+							<p class="sidebar_menu" id="configure">設定</p>
+							<i class="fas fa-3x fa-chevron-right sidebar_main_content_icon"></i>
+						</div>
+					</div>
+					<div class="sidebar_main_config">
+						<div class="sidebar_main_config_menu">
+							<i class="far fa-3x fa-check-square sidebar_main_content_icon"></i>
+							<p class="sidebar_menu" id="config">設定</p>
+							<i class="fas fa-3x fa-chevron-right sidebar_main_content_icon"></i>
+						</div>
+						<div class="sidebar_main_config_text">
+							<p>※ログインしないと見れない機能があります</p>
+						</div>
+					</div>
+				</div>
+				<div class="sidebar_footer_div">
+					<div class="sidebar_footer_content">
+						<p>App company information</p>
+						<p>request form</p>
+					</div>
+				</div>
+			</aside>
+		</main>	
+
+		<!-- footer Section -->
+		<footer class="footer">
 			<p>who create this app...</p>
-		</div>
+		</footer>
+
+		<!-- script Section -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
@@ -28,5 +115,6 @@
 				
 			});
 		</script>
+
 	</body>
 </html>
