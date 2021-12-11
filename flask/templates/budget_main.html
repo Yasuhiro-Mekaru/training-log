@@ -14,79 +14,138 @@
 		<!-- local css files -->
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/budget_main.css')}}">
 
+		<!-- jQuery CDN -->
+	   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	   	<!-- local js files -->
+	   	<script src="static/js/budget_main.js"></script>
+
 	</head>
 
 <!-- Body Section -->
 	<body>
 		<!-- header Section -->
-		<header class="header">
-			<div>
+		<header>
+			<div class="header">
+				<!-- hamburger menu -->
+				<i class="fas fa-bars fa-sm fa-border fa-pull-left" id="hamburger_icon"></i>
 				<h3>家計簿Top画面</h3>
 			</div>
 		</header>
 
 		<!-- main Section -->
 		<main class="main">
+
+			<input type="button" value="Input Log" id="btn_input">
+
 			<!-- modal -->
 			<div class="info_modal" id="info_modal">
 				<div class="modal_header_div">
 					<div class="modal_header_content">
-						<h1>Shop Information</h1>
-						<i class="far fa-times-circle fa-5x fa-pull-right" id="modal_back_icon"></i>
+						<h3>ログ入力画面</h3>
+						<i class="far fa-times-circle fa-sm fa-pull-right" id="modal_back_icon"></i>
 					</div>
 				</div>
 				<div class="modal_main_div">
-					<p>Coding Shop Information</p>
+					<div class="modal_main_contents">
+						<div class="modal_main_content">
+							<input type="text" id="input_date" placeholder="2021-12-31">
+						</div>
+						<div class="modal_main_content">
+							<input type="number" id="input_amount" placeholder="price">
+						</div>
+						<div class="modal_main_content">
+							<select id="select_category"></select> <select id="select_classification"></select>
+						</div>
+						<div class="modal_main_content">
+							<select id="select_section"></select> <input type="button" value="add" class="btn_add" id="section">
+						</div>
+						<div class="modal_main_content">
+							<select id="select_kind"></select> <input type="button" value="add" class="btn_add" id="kind">
+						</div>
+						<div class="modal_main_content">
+							<select id="select_group"></select> <input type="button" value="add" class="btn_add" id="group" >
+						</div>
+						<div class="modal_main_content">
+							<input type="text" id="input_item_name" placeholder="item name">
+						</div>
+						<div class="modal_main_content">
+							<input type="checkbox" id="check_immediate" value="Immediate"><label>Immediate</label>
+							<input type="checkbox" id="check_necessary" value="Necessary"><label>Necessary</label>
+						</div>
+						<div class="modal_main_content">
+							
+						</div>
+					</div>
 				</div>
 				<div class="modal_footer_div">
 					<div class="modal_footer_content">
-						<i class="fab fa-4x fa-twitter-square"></i>
-						<i class="fab fa-4x fa-instagram-square"></i>
-						<i class="fab fa-4x fa-facebook-square"></i>
-						<i class="fab fa-4x fa-tiktok"></i>
+						<input type="button" value="Register" id="btn_register">
 					</div>
+				</div>
+			</div>
+
+			<!-- second modal -->
+			<div class="second_modal" id="second_modal">
+				<div class="modal_header_div">
+					<div class="modal_header_content">
+						<i class="far fa-times-circle fa-sm fa-pull-right" id="second_modal_back_icon"></i>
+					</div>
+				</div>
+				<div class="modal_main_div">
+					<div class="second_modal_main_contents">
+						<div class="second_modal_main_content">
+							<input type="text" id="second_modal_input" placeholder="Input here">
+						</div>
+						<div class="second_modal_main_content">
+							<input type="button" value="Add" id="btn_insert_item">
+						</div>
+					</div>
+				</div>
+				<div class="modal_footer_div">
 				</div>
 			</div>
 
 			<!-- Overlay -->
 			<div id="overlay"></div>
+			<div id="overlay2"></div>
 
 			<!-- side bar -->
 			<aside class="sidebar">
 				<div class="sidebar_header_div">
 					<div class="sidebar_header_content">
 						<h3 class="sidebar_title">MENUS</h3>
-						<i class="far fa-times-circle fa-5x fa-pull-right sidebar_back_icon"></i>
+						<i class="far fa-times-circle fa-sm fa-pull-right sidebar_back_icon"></i>
 					</div>
 				</div>
 				<div class="sidebar_main_div">
 					<div class="sidebar_main_content">
 						<div class="sidebar_main_content_menu" id="sidebar_main_content_shop_list">
-							<i class="fas fa-3x fa-store sidebar_main_content_icon"></i>
+							<i class="fas fa-sm fa-store sidebar_main_content_icon"></i>
 							<p class="sidebar_menu" id="sidebar_profile">予算ページ</p>
-							<i class="fas fa-3x fa-chevron-right sidebar_main_content_icon"></i>
+							<i class="fas fa-sm fa-chevron-right sidebar_main_content_icon"></i>
 						</div>
 						<div class="sidebar_main_content_menu" id="sidebar_main_content_favorite_shop">
-							<i class="far fa-3x fa-grin-stars sidebar_main_content_icon"></i>
+							<i class="far fa-sm fa-grin-stars sidebar_main_content_icon"></i>
 							<p class="sidebar_menu" id="sidebar_myplace">分析ページ</p>
-							<i class="fas fa-3x fa-chevron-right sidebar_main_content_icon"></i>
+							<i class="fas fa-sm fa-chevron-right sidebar_main_content_icon"></i>
 						</div>
 						<div class="sidebar_main_content_menu" id="sidebar_main_content_new_shops">
-							<i class="far fa-3x fa-plus-square sidebar_main_content_icon"></i>
+							<i class="far fa-sm fa-plus-square sidebar_main_content_icon"></i>
 							<p class="sidebar_menu" id="sidebar_mypoint">ユーザーインフォ</p>
-							<i class="fas fa-3x fa-chevron-right sidebar_main_content_icon"></i>
+							<i class="fas fa-sm fa-chevron-right sidebar_main_content_icon"></i>
 						</div>
 						<div class="sidebar_main_content_menu" id="sidebar_main_content_shop_info">
-							<i class="fas fa-3x fa-info sidebar_main_content_icon"></i>
+							<i class="fas fa-sm fa-info sidebar_main_content_icon"></i>
 							<p class="sidebar_menu" id="configure">設定</p>
-							<i class="fas fa-3x fa-chevron-right sidebar_main_content_icon"></i>
+							<i class="fas fa-sm fa-chevron-right sidebar_main_content_icon"></i>
 						</div>
 					</div>
 					<div class="sidebar_main_config">
 						<div class="sidebar_main_config_menu">
-							<i class="far fa-3x fa-check-square sidebar_main_content_icon"></i>
+							<i class="far fa-sm fa-check-square sidebar_main_content_icon"></i>
 							<p class="sidebar_menu" id="config">設定</p>
-							<i class="fas fa-3x fa-chevron-right sidebar_main_content_icon"></i>
+							<i class="fas fa-sm fa-chevron-right sidebar_main_content_icon"></i>
 						</div>
 						<div class="sidebar_main_config_text">
 							<p>※ログインしないと見れない機能があります</p>
@@ -106,15 +165,6 @@
 		<footer class="footer">
 			<p>who create this app...</p>
 		</footer>
-
-		<!-- script Section -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script type="text/javascript">
-			$(function(){
-				console.log('budget_main.html: jquery Start');
-				
-			});
-		</script>
 
 	</body>
 </html>
