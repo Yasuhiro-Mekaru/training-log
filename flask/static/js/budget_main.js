@@ -18,15 +18,65 @@ $(function(){
 		return formatted
 	}
 
+	// DBのマスターテーブルの値を格納する処理
+	let master_datas = {};
+
 	// ログ入力ボタンをタップした際の処理
 	$('#btn_input').on('click', function(){
 		console.log('btn_input is clicked');
-		let date = date_format();
-		$('#input_date').val(date);
-		// info_modalを表示
-		$('#info_modal').fadeIn(1000, 'swing');
-		$('#overlay').fadeIn();
+
+		// DBのマスターデータを全件取得する処理
+		$.ajax({
+			type: 'GET',
+	        url: 'http://localhost:5000/select_items', 
+	        contentType: 'application/json',
+	        dataType: 'json'
+		}).then(function(response){
+			console.log('DB master datas: ' + response);
+			console.log(response);
+			master_datas = response;
+			console.log(response['Budget_classification']);
+			console.log(response['Budget_classification'][0]);
+			console.log(response['Budget_classification'][0]['class_id']);
+			console.log(master_datas['Budget_classification'][0]);
+			console.log(master_datas['Budget_classification'][0]['class_id']);
+
+			// 各selectタグへ値の入れ込み
+			// Categoryのselect
+			for(let i=0; i<master_datas['Budget_category'].length; i++){
+				if(master_datas['Budget_category'][i]['category_id'] == 2){
+					// outgoをselectedにする
+					$('#select_category').append('<option value="' + master_datas['Budget_category'][i]['category_id'] + '" selected>' + master_datas['Budget_category'][i]['category_name'] + '</option>');
+				}
+				else{
+					$('#select_category').append('<option value="' + master_datas['Budget_category'][i]['category_id'] + '">' + master_datas['Budget_category'][i]['category_name'] + '</option>');
+				}
+			}
+
+			// Classificationのselect
+			for(let i=0; i<master_datas['Budget_classification'].length; i++){
+				if(master_datas['Budget_classification'][i]['class_id'] == 2){
+					// variable costをselectedにする
+					$('#select_classification').append('<option value="' + master_datas['Budget_classification'][i]['class_id'] + '" selected>' + master_datas['Budget_classification'][i]['class_name'] + '</option>');
+				}
+				else{
+					$('#select_classification').append('<option value="' + master_datas['Budget_classification'][i]['class_id'] + '">' + master_datas['Budget_classification'][i]['class_name'] + '</option>');
+				}
+			}
+
+			// Todo DBにデータを格納次第、Section, Kind, Groupのselectを追加する
+
+			let date = date_format();
+			$('#input_date').val(date);
+			// info_modalを表示
+			$('#info_modal').fadeIn(1000, 'swing');
+			$('#overlay').fadeIn();
+			
+		}, function(error){
+			console.log('DB master datas error: ' + error);
+		});
 	})
+
 
 	// modal内のback iconをタップした際の処理
 	$('#modal_back_icon').on('click', function(){
@@ -36,6 +86,7 @@ $(function(){
 		$('#overlay').fadeOut();
 	})
 
+
 	// modal内のaddボタンをクリックした際の処理
 	$('.btn_add').on('click', function(){
 		console.log('add button is clicked...')
@@ -44,6 +95,36 @@ $(function(){
 		console.log('id is ', id);
 		// second modalのボタンのneme属性にidを設定する
 		$('#btn_insert_item').attr('name', id);
+
+		// 入力するマスタの親マスタの表示の可否を判定する処理
+		switch(id){
+			case 'section':
+				console.log('switch: section is called...');
+				// selectタグへ値の入れ込み
+				for(let i=0; i<master_datas['Budget_classification'].length; i++){
+					if(master_datas['Budget_classification'][i]['class_id'] == 2){
+						// variable costをselectedにする
+						$('#modal_select_parent').append('<option value="' + master_datas['Budget_classification'][i]['class_id'] + '" selected>' + master_datas['Budget_classification'][i]['class_name'] + '</option>');
+					}
+					else{
+						$('#modal_select_parent').append('<option value="' + master_datas['Budget_classification'][i]['class_id'] + '">' + master_datas['Budget_classification'][i]['class_name'] + '</option>');
+					}
+				}
+				$('.parent').show();
+				break;
+			case 'group':
+				console.log('switch: group is called...');
+				// Todo DBにデータを格納次第、Groupのselectを追加する
+				$('.parent').show();
+				break;
+			case 'kind':
+				console.log('switch: kind is called...');
+				break;
+			default:
+				console.log('Error: something occured...');
+				alert('Cannot register the item.Please do again.')
+		}
+
 		// second modalを表示
 		$('#second_modal').fadeIn(1000, 'swing');
 		$('#overlay2').fadeIn();
@@ -52,8 +133,34 @@ $(function(){
 	// second modalのボタンをクリックした際の処理
 	$('#btn_insert_item').on('click', function(){
 		console.log('button in second modal is clicked...');
+		// 押されたボタンのidを取得する
 		let id = $(this).attr('name');
+		// 入力データを取得する
+		let inputted_data = $('#master_data').val();
+		// selectタグのデータを取得する
+		let selected_data = $('#modal_select_parent').val();
 		console.log('second modal button name is ', id);
+		console.log('inputted data: ', inputted_data);
+		console.log('selected data: ', selected_data);
+
+		send_datas = {
+			'table_name': id,
+			'inputted_data': inputted_data,
+			'selected_data': selected_data
+		}
+
+		// 入力データをサーバーへPOST
+		$.ajax({
+			type: 'POST',
+	        contentType: 'application/json',
+	        url: 'http://localhost:5000/budget_main', 
+	        data: JSON.stringify(send_datas),
+	        dataType: 'json'
+		}).then(function(response){
+			console.log('btn_insert_item response: ' + response);
+		}, function(error){
+			console.log('btn_insert_item error: ' + error);
+		});
 	})
 
 	// second_modal内のback iconをタップした際の処理

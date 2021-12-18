@@ -162,12 +162,29 @@ def budget_main():
             # Todo DBから当月の予算の進捗のデータを取得しhtmlに付加する処理
             return render_template('budget_main.html')
         else:
-            pass
+            recieve_data = request.json
+            logger.info({
+                'action': 'app.py budget_main()',
+                'recieve_data': recieve_data,
+                'recieve_data type': type(recieve_data)
+                })
+            return 'success'
     else:
         # sessionがなければlogin.htmlへ遷移
         return redirect(url_for('login'))
 
 
+@app.route('/select_items', methods=['GET'])
+def select_items():
+    logger.info({
+        'action': 'app.py select_items()',
+        'message': 'select_items is called'
+        })
+    if session:
+        table_datas = controller.select_item()
+        return jsonify(table_datas)
+    else:
+        return False
 
 
 

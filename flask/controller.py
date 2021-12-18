@@ -100,6 +100,150 @@ def get_user(login_datas):
 	return datas
 
 
+def insert_item(datas):
+	if datas['table_name'] == 'section':
+		budget_section = Budget_section()
+		budget_section.name = datas['data']
+		pass
+
+
+def select_item():
+	master_tables = [Budget_category, Budget_classification, Budget_section, Budget_kind, Budget_group]
+	master_tables_str = ['Budget_category', 'Budget_classification', 'Budget_section', 'Budget_kind', 'Budget_group']
+
+	master_datas = {}
+	master_datas[master_tables_str[0]] = select_category(database_name=master_tables[0])
+	master_datas[master_tables_str[1]] = select_classification(database_name=master_tables[1])
+	# master_datas[master_tables_str[2]] = select_section(database_name=master_tables[2])
+	# master_datas[master_tables_str[3]] = select_kind(database_name=master_tables[3])
+	# master_datas[master_tables_str[4]] = select_group(database_name=master_tables[4])
+
+	return master_datas
+
+
+def select_category(database_name):
+	try:
+		categories = session.query(database_name).all()
+		datas = []
+		for category in categories:
+			data = {}
+			data['category_id'] = category.category_id
+			data['category_name'] = category.category_name
+			datas.append(data)
+		logger.info({
+			'action': 'controller.py select_category',
+			'datas': datas
+			})
+	except Exception as e:
+		session.rollback()
+		logger.info({
+			'action': 'controller.py select_category',
+			'Exception': e
+			})
+	finally:
+		session.close()
+	return datas
+
+
+def select_classification(database_name):
+	try:
+		classifications = session.query(database_name).all()
+		datas = []
+		for classification in classifications:
+			data = {}
+			data['class_id'] = classification.class_id
+			data['class_name'] = classification.class_name
+			data['category_id'] = classification.category_id
+			datas.append(data)
+		logger.info({
+			'action': 'controller.py select_classification',
+			'datas': datas
+			})
+	except Exception as e:
+		session.rollback()
+		logger.info({
+			'action': 'controller.py select_classification',
+			'Exception': e
+			})
+	finally:
+		session.close()
+	return datas
+
+
+def select_section(database_name):
+	try:
+		sections = session.query(database_name).all()
+		datas = []
+		for section in sections:
+			data = {}
+			data['section_id'] = section.section_id
+			data['section_name'] = section.section_name
+			data['class_id'] = section.class_id
+			datas.append(data)
+		logger.info({
+			'action': 'controller.py select_section',
+			'datas': datas
+			})
+	except Exception as e:
+		session.rollback()
+		logger.info({
+			'action': 'controller.py select_section',
+			'Exception': e
+			})
+	finally:
+		session.close()
+	return datas
+
+
+def select_kind(database_name):
+	try:
+		kinds = session.query(database_name).all()
+		datas = []
+		for kind in kinds:
+			data = {}
+			data['kind_id'] = kind.kind_id
+			data['kind_name'] = kind.kind_name
+			datas.append(data)
+		logger.info({
+			'action': 'controller.py select_kind',
+			'datas': datas
+			})
+	except Exception as e:
+		session.rollback()
+		logger.info({
+			'action': 'controller.py select_kind',
+			'Exception': e
+			})
+	finally:
+		session.close()
+	return datas
+
+
+def select_group(database_name):
+	try:
+		groups = session.query(database_name).all()
+		datas = []
+		for group in groups:
+			data = {}
+			data['group_id'] = group.group_id
+			data['group_name'] = group.group_name
+			data['kind_id'] = group.kind_id
+			datas.append(data)
+		logger.info({
+			'action': 'controller.py select_group',
+			'datas': datas
+			})
+	except Exception as e:
+		session.rollback()
+		logger.info({
+			'action': 'controller.py select_group',
+			'Exception': e
+			})
+	finally:
+		session.close()
+	return datas
+
+
 # def get_category():
 # 	"""
 # 	Args:

@@ -67,7 +67,7 @@
 							<select id="select_group"></select> <input type="button" value="add" class="btn_add" id="group" >
 						</div>
 						<div class="modal_main_content">
-							<input type="text" id="input_item_name" placeholder="item name">
+							<input type="text" id="input_item_name" placeholder="item name" maxlength="30">
 						</div>
 						<div class="modal_main_content">
 							<input type="checkbox" id="check_immediate" value="Immediate"><label>Immediate</label>
@@ -93,11 +93,14 @@
 					</div>
 				</div>
 				<div class="modal_main_div">
-					<div class="second_modal_main_contents">
-						<div class="second_modal_main_content">
-							<input type="text" id="second_modal_input" placeholder="Input here">
+					<div class="second_modal_contents">
+						<div class="second_modal_content parent">
+							<select id="modal_select_parent"></select>
 						</div>
-						<div class="second_modal_main_content">
+						<div class="second_modal_content">
+							<input type="text" id="modal_input_master" placeholder="Input here" maxlength="30">
+						</div>
+						<div class="second_modal_content">
 							<input type="button" value="Add" id="btn_insert_item">
 						</div>
 					</div>
